@@ -1,0 +1,18 @@
+{
+    "model_id": "10005",
+    "version": "1.0.0",
+    "model_name": "YOLO11n Helmet/Peapol Detection",
+    "model_format": "cvimodel",
+    "ai_framwork": "6",
+    "pic_url": "local.jpg",
+    "description": "YOLO11n helmet and peapol.",
+    "author": "Patrik",
+    "classes": [
+        "helmet",
+        "no_helmet",
+        "nose",
+        "person",
+        "vest"
+    ],
+    "checksum": "010099903a4b1fb0a9083118dd65a6c9"
+}
