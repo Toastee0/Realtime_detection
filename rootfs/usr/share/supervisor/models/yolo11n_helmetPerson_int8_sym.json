@@ -6,7 +6,7 @@
     "ai_framwork": "6",
     "pic_url": "local.jpg",
     "description": "YOLO11n helmet and peapol.",
-    "author": "Patrik",
+    "author": "Modelo entrenado por Patrik de Seeed (Discord)",
     "classes": [
         "helmet",
         "no_helmet",

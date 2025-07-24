@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/daemon.cpp.o: \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/daemon.cpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/semaphore.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/features.h \
@@ -11,7 +11,7 @@ CMakeFiles/main.dir/main/src/daemon.cpp.o: \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/strings.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/syslog.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/time.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/daemon.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/daemon.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/thread \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/c++config.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/os_defines.h \
@@ -105,7 +105,7 @@ CMakeFiles/main.dir/main/src/daemon.cpp.o: \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/cerrno \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/errno.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/errno.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/global_cfg.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hv.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hconfig.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hexport.h \

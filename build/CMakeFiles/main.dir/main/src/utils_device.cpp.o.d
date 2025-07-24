@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/utils_device.cpp.o: \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_device.cpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/filesystem \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/fs_fwd.h \
@@ -168,8 +168,8 @@ CMakeFiles/main.dir/main/src/utils_device.cpp.o: \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/sys/ioctl.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/ioctl.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/ioctl_fix.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/common.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/daemon.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/common.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/daemon.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/thread \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/memory \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_uninitialized.h \
@@ -182,7 +182,7 @@ CMakeFiles/main.dir/main/src/utils_device.cpp.o: \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/auto_ptr.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/pstl/glue_memory_defs.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/pstl/execution_defs.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/global_cfg.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpServer.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hexport.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hssl.h \
@@ -290,4 +290,4 @@ CMakeFiles/main.dir/main/src/utils_device.cpp.o: \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hsocket.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/Buffer.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpContext.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_device.h
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_device.h

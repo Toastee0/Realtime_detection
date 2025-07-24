@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/http.cpp.o: \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/http.cpp \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/http.cpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/thread \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/c++config.h \
@@ -130,7 +130,7 @@ CMakeFiles/main.dir/main/src/http.cpp.o: \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/../porting/ma_misc.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/../porting/../core/ma_config_internal.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/ma_config.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdlib.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
@@ -367,7 +367,7 @@ CMakeFiles/main.dir/main/src/http.cpp.o: \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/model_detector.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/model_detector.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/opencv.hpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/opencv_modules.hpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/core.hpp \
@@ -412,13 +412,13 @@ CMakeFiles/main.dir/main/src/http.cpp.o: \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hthread.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/sys/syscall.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/syscall.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/common.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/http.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_device.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_file.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_led.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_user.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/common.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/http.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/global_cfg.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_device.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_file.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_led.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_user.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/iomanip \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/locale \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets_nonio.h \
@@ -431,5 +431,25 @@ CMakeFiles/main.dir/main/src/http.cpp.o: \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/random.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/opt_random.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/random.tcc \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_wifi.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/version.h
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/utils_wifi.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/version.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/frame_builder.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/mqtt_client.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hv.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hatomic.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/herr.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/htime.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hversion.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hsysinfo.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/sys/sysinfo.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hproc.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hthread.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hmutex.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/semaphore.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hlog.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hdir.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hurl.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/mqtt_client.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/mqtt_protocol.h \
+ /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hmutex.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/../include/nlohmann/json.hpp

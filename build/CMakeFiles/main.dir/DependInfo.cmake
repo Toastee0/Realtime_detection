@@ -8,15 +8,17 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp" "CMakeFiles/main.dir/main/main.cpp.o" "gcc" "CMakeFiles/main.dir/main/main.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp" "CMakeFiles/main.dir/main/src/daemon.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/daemon.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/http.cpp" "CMakeFiles/main.dir/main/src/http.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/http.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/model_detector.cpp" "CMakeFiles/main.dir/main/src/model_detector.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/model_detector.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp" "CMakeFiles/main.dir/main/src/utils_device.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_device.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp" "CMakeFiles/main.dir/main/src/utils_file.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_file.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_led.cpp" "CMakeFiles/main.dir/main/src/utils_led.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_led.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_user.cpp" "CMakeFiles/main.dir/main/src/utils_user.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_user.cpp.o.d"
-  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp" "CMakeFiles/main.dir/main/src/utils_wifi.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_wifi.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/main.cpp" "CMakeFiles/main.dir/main/main.cpp.o" "gcc" "CMakeFiles/main.dir/main/main.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/daemon.cpp" "CMakeFiles/main.dir/main/src/daemon.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/daemon.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/frame_build.cpp" "CMakeFiles/main.dir/main/src/frame_build.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/frame_build.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/http.cpp" "CMakeFiles/main.dir/main/src/http.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/http.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/model_detector.cpp" "CMakeFiles/main.dir/main/src/model_detector.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/model_detector.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/mqtt_client.cpp" "CMakeFiles/main.dir/main/src/mqtt_client.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/mqtt_client.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_device.cpp" "CMakeFiles/main.dir/main/src/utils_device.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_device.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_file.cpp" "CMakeFiles/main.dir/main/src/utils_file.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_file.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_led.cpp" "CMakeFiles/main.dir/main/src/utils_led.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_led.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_user.cpp" "CMakeFiles/main.dir/main/src/utils_user.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_user.cpp.o.d"
+  "/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/src/utils_wifi.cpp" "CMakeFiles/main.dir/main/src/utils_wifi.cpp.o" "gcc" "CMakeFiles/main.dir/main/src/utils_wifi.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

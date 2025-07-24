@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/devtlab/.local/lib/python3.10/site-packages/cmake/data/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /home/devtlab/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection
+CMAKE_SOURCE_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
+CMAKE_BINARY_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build
 
 # Utility rule file for deploy_www.
 
@@ -67,10 +67,10 @@ include CMakeFiles/deploy_www.dir/compiler_depend.make
 include CMakeFiles/deploy_www.dir/progress.make
 
 CMakeFiles/deploy_www:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Deploying web files"
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && rm -rf /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/*
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && mkdir -p /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && cp -r /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/dist/* /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Deploying web files"
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www && rm -rf /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www/../rootfs/usr/share/supervisor/www/*
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www && mkdir -p /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www/../rootfs/usr/share/supervisor/www/
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www && cp -r /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www/dist/* /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www/../rootfs/usr/share/supervisor/www/
 
 CMakeFiles/deploy_www.dir/codegen:
 .PHONY : CMakeFiles/deploy_www.dir/codegen
@@ -88,6 +88,6 @@ CMakeFiles/deploy_www.dir/clean:
 .PHONY : CMakeFiles/deploy_www.dir/clean
 
 CMakeFiles/deploy_www.dir/depend:
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/deploy_www.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/CMakeFiles/deploy_www.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/deploy_www.dir/depend
 

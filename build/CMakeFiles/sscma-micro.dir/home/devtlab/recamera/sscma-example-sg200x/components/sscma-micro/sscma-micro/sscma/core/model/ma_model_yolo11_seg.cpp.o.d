@@ -132,7 +132,7 @@ CMakeFiles/sscma-micro.dir/home/devtlab/recamera/sscma-example-sg200x/components
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../ma_common.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../../porting/ma_misc.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../../porting/../core/ma_config_internal.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/ma_config.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdlib.h \
  /home/devtlab/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../ma_version.h \

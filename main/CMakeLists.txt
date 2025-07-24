@@ -1,8 +1,11 @@
 file(GLOB_RECURSE srcs ${CMAKE_CURRENT_LIST_DIR}/*.c ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
 
-set(incs ${CMAKE_CURRENT_LIST_DIR}
+set(incs ${CMAKE_CURRENT_LIST_DIR})
+list(APPEND incs
     ${CMAKE_CURRENT_LIST_DIR}/include
+    ${CMAKE_CURRENT_LIST_DIR}/../include
 )
+
 
 component_register(
     COMPONENT_NAME main

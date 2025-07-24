@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/devtlab/.local/lib/python3.10/site-packages/cmake/data/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /home/devtlab/.local/lib/python3.10/site-packages/cmake/data/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection
+CMAKE_SOURCE_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
+CMAKE_BINARY_DIR = /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build
 
 # Utility rule file for npm_install.
 
@@ -67,8 +67,8 @@ include CMakeFiles/npm_install.dir/compiler_depend.make
 include CMakeFiles/npm_install.dir/progress.make
 
 CMakeFiles/npm_install:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Installing npm dependencies"
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && npm install
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Installing npm dependencies"
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/www && npm install
 
 CMakeFiles/npm_install.dir/codegen:
 .PHONY : CMakeFiles/npm_install.dir/codegen
@@ -86,6 +86,6 @@ CMakeFiles/npm_install.dir/clean:
 .PHONY : CMakeFiles/npm_install.dir/clean
 
 CMakeFiles/npm_install.dir/depend:
-	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/npm_install.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/CMakeFiles/npm_install.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/npm_install.dir/depend
 

@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/main.cpp.o: \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/main.cpp \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/iostream \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/c++config.h \
@@ -117,8 +117,8 @@ CMakeFiles/main.dir/main/main.cpp.o: \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/syslog.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/unistd.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/posix.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/version.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/daemon.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/version.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/daemon.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/thread \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/chrono \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/ratio \
@@ -149,8 +149,8 @@ CMakeFiles/main.dir/main/main.cpp.o: \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/auto_ptr.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/pstl/glue_memory_defs.h \
  /home/devtlab/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/pstl/execution_defs.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/http.h \
- /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/http.h \
+ /home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/main/include/global_cfg.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hlog.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/string.h \
  /home/devtlab/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/strings.h \
