@@ -7,7 +7,7 @@
 #include "version.h"
 
 #include "daemon.h"
-#include "http.h"
+#include "connect.h"
 #include "hv/hlog.h"
 
 const char* ca_cert= "../cam_1/AmazonRootCA1.pem";
@@ -37,6 +37,9 @@ static void initSupervisor() {
     initWiFi();
     initHttpd();
     initDaemon();
+
+    initConnectivity();
+
 
     signal(SIGINT, &exitHandle);
     signal(SIGTERM, &exitHandle);

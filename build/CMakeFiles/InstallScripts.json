@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/devtlab/recamera/sscma-example-sg200x/solutions/Realtime_detection_http/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
