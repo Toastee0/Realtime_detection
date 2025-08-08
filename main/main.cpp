@@ -10,12 +10,6 @@
 #include "connect.h"
 #include "hv/hlog.h"
 
-const char* ca_cert= "../cam_1/AmazonRootCA1.pem";
-const char* cert= "../cam_1/cam_1-certificate.pem.crt";
-const char* key= "../cam_1/cam_1-private.pem.key";
-
-const char* aws_endpoint = "a265m6rkc34opn-ats.iot.us-east-1.amazonaws.com";
-const char* cli_id = "cam_1";
 
 // cuando inicio la verifico conexión a internet
 // si hay conexión a internet, entonces inicio el mqtt
@@ -33,11 +27,11 @@ static void exitHandle(int signo) {
 static void initSupervisor() {
     hlog_disable();
     openlog("supervisor", LOG_CONS | LOG_PERROR, LOG_DAEMON);
-
+    
+    initDaemon();
     initWiFi();
     initHttpd();
-    initDaemon();
-
+    
     initConnectivity();
 
 

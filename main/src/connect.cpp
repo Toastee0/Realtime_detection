@@ -14,6 +14,7 @@
 #include "hv/requests.h" 
 #include "common.h"
 #include "connect.h"
+#include "daemon.h"
 #include "utils_device.h"
 #include "utils_file.h"
 #include "utils_led.h"
@@ -22,10 +23,11 @@
 #include "version.h"
 #include "frame_builder.h"
 #include "hv/mqtt_client.h"
+#include "hv/hssl.h"
 #include <nlohmann/json.hpp>
 #include <sstream>
 #include <iomanip>
-
+#include <atomic>
 using json = nlohmann::json;
 using namespace hv;
 
@@ -56,177 +58,17 @@ extern "C" {
 #define API_POST(api, func) router.POST(API_STR(api, func), func)
 
 
-class MQTTManager {
-private:
-    std::mutex mtx_;
-    hv::MqttClient* client_ = nullptr;
-    std::thread loop_thread_;
-    std::atomic<bool> connecting_{false};
-    std::atomic<bool> running_{false};
-    
-    // Configuración
-    const std::string host_ = "a265m6rkc34opn-ats.iot.us-east-1.amazonaws.com";
-    const int port_ = 8883;
-    const int ssl_ = 1;
-    const std::string client_id_ = "cam_1";
-    
-    // SSL config
-    const std::string ca_file_ = "/etc/ssl/certs/cam_1/AmazonRootCA1.pem";
-    const std::string crt_file_ = "/etc/ssl/certs/cam_1/cam_1-certificate.pem.crt";
-    const std::string key_file_ = "/etc/ssl/certs/cam_1/cam_1-private.pem.key";
-    
-public:
-    MQTTManager() = default;
-    ~MQTTManager() {
-        disconnect();
-    }
-    
-    bool is_connected() const {
-        return client_ && client_->isConnected();
-    }
-    
-    bool connect() {
-        if (connecting_.exchange(true)) {
-            MA_LOGW(TAG, "Already attempting to connect");
-            return false;
-        }
-        
-        std::lock_guard<std::mutex> lock(mtx_);
-        
-        try {
-            // Limpiar conexión existente
-            if (client_) {
-                client_->disconnect();
-                if (loop_thread_.joinable()) {
-                    running_ = false;
-                    loop_thread_.join();
-                }
-                delete client_;
-                client_ = nullptr;
-            }
-            
-            // Configurar nuevo cliente
-            client_ = new hv::MqttClient();
-            client_->setID(client_id_.c_str());
-            
-            // Configurar SSL
-            hssl_ctx_opt_t ssl_opt;
-            memset(&ssl_opt, 0, sizeof(ssl_opt));
-            ssl_opt.ca_file = ca_file_.c_str();
-            ssl_opt.crt_file = crt_file_.c_str();
-            ssl_opt.key_file = key_file_.c_str();
-            ssl_opt.verify_peer = 1;
-            
-            if (client_->newSslCtx(&ssl_opt) != 0) {
-                MA_LOGE(TAG, "Failed to configure SSL");
-                delete client_;
-                client_ = nullptr;
-                connecting_ = false;
-                return false;
-            }
-            
-            // Configurar callbacks
-            client_->onConnect = [this](hv::MqttClient* cli) {
-                MA_LOGI(TAG, "MQTT connected");
-                connecting_ = false;
-            };
-            
-            client_->onClose = [this](hv::MqttClient* cli) {
-                MA_LOGW(TAG, "MQTT disconnected");
-                if (running_) {
-                    MA_LOGI(TAG, "Attempting to reconnect...");
-                    std::this_thread::sleep_for(std::chrono::seconds(2));
-                    connect();
-                }
-            };
-            
-            // Conectar
-            int ret = client_->connect(host_.c_str(), port_, ssl_);
-            if (ret != 0) {
-                MA_LOGE(TAG, "MQTT connect failed: %d", ret);
-                delete client_;
-                client_ = nullptr;
-                connecting_ = false;
-                return false;
-            }
-            
-            // Iniciar loop en hilo separado
-            running_ = true;
-            loop_thread_ = std::thread([this]() {
-                while (running_) {
-                    if (client_) {
-                        client_->run();
-                    }
-                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                }
-            });
-            
-            return true;
-        } catch (const std::exception& e) {
-            MA_LOGE(TAG, "MQTT connect exception: %s", e.what());
-            connecting_ = false;
-            return false;
-        }
-    }
-    
-    void disconnect() {
-        running_ = false;
-        connecting_ = false;
-        
-        std::lock_guard<std::mutex> lock(mtx_);
-        
-        if (client_) {
-            client_->disconnect();
-        }
-        
-        if (loop_thread_.joinable()) {
-            loop_thread_.join();
-        }
-        
-        if (client_) {
-            delete client_;
-            client_ = nullptr;
-        }
-    }
-    
-    bool publish(const std::string& topic, const std::string& payload, int qos) {
-        std::lock_guard<std::mutex> lock(mtx_);
-        
-        if (!client_ || !client_->isConnected()) {
-            MA_LOGW(TAG, "MQTT not connected for publish");
-            return false;
-        }
-        
-        try {
-            int result = client_->publish(topic.c_str(), payload, qos);
-            if (result < 0) {
-                MA_LOGE(TAG, "MQTT publish failed: %d", result);
-                return false;
-            }
-            return true;
-        } catch (const std::exception& e) {
-            MA_LOGE(TAG, "MQTT publish exception: %s", e.what());
-            return false;
-        }
-    }
-};
-
-// Reemplazar global_mqtt_client con:
-
-
-
-// Variable global para el contexto MQTT
-//MqttContext* global_mqtt_ctx = nullptr;
 std::mutex detector_mutex;
 ma::Camera* global_camera = nullptr;
 ma::Model* global_model = nullptr;
 ma::engine::EngineCVI* global_engine = nullptr;
-std::thread mqtt_loop_thread;
 bool isInitialized = false;
 int i = 1;
-MQTTManager mqtt_manager;
-static HttpServer server;
 
+std::atomic<bool> keepRunning{true};
+std::string current_ssid;
+static HttpServer server;
+std::string url = "http://192.168.4.1/report";
 
 static void registerHttpRedirect(HttpService& router) {
     router.GET("/hotspot-detect*", [](HttpRequest* req, HttpResponse* resp) {  // IOS
@@ -331,39 +173,75 @@ static void registerWebSocket(HttpService& router) {
     });
 }
 
-
-
- // Función para publicar con reintentos
-int safe_mqtt_publish(const char* topic, const std::string& payload, int qos, int max_retries = 2) {
-    for (int attempt = 0; attempt < max_retries; ++attempt) {
-        if (mqtt_manager.publish(topic, payload, qos)) {
-            return 1;
-        }
-        
-        if (attempt < max_retries - 1) {
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            
-            // Intentar reconectar solo una vez
-            if (attempt == 0 && !mqtt_manager.is_connected()) {
-                MA_LOGI(TAG, "Attempting to reconnect...");
-                mqtt_manager.connect();
-            }
-        }
-    }
-    
-    return 0;
+void on_wifi_connected(const char* ssid) {
+    current_ssid = ssid;
 }
 
-// Resto del código con las adaptaciones necesarias
-std::string frame_to_hex_string(const uint8_t* frame, size_t len) {
-    static const char* hex_digits = "0123456789ABCDEF";
-    std::string hex;
-    hex.reserve(len * 2);
-    for (size_t i = 0; i < len; ++i) {
-        hex += hex_digits[(frame[i] >> 4) & 0x0F];
-        hex += hex_digits[frame[i] & 0x0F];
+// Y la función:
+bool is_connected_to_esp_ap() {
+    return (current_ssid == "ReCamNet");
+}
+
+bool check_internet_connection() {
+    MA_LOGI(TAG, "Verificando conexión a Internet...");
+    char result[CMD_BUF_SIZE];
+    int ret = exec_cmd("ping -c 1 -W 2 8.8.8.8", result, NULL);
+    
+    if (ret == 0) {
+        MA_LOGI(TAG, "Conexión a Internet disponible");
+        return true;
     }
-    return hex;
+    
+    MA_LOGE(TAG, "No se detectó conexión a Internet. Código de error: %d", ret);
+    return false;
+}
+
+bool ensure_wifi_connection() {
+    if (g_wifiStatus) {
+        MA_LOGI(TAG, "WiFi ya está conectado");
+        return true;
+    }
+
+    MA_LOGI(TAG, "Intentando conectar WiFi...");
+    HttpRequest dummy_req;
+    HttpResponse dummy_resp;
+    
+    for (int i = 0; i < 3; i++) {  // 3 intentos
+        if (autoConnectWiFi(&dummy_req, &dummy_resp) == 0) {
+            MA_LOGI(TAG, "Conexión WiFi exitosa (intento %d/3)", i+1);
+            return true;
+        }
+        MA_LOGW(TAG, "Fallo conexión WiFi (intento %d/3)", i+1);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    
+    MA_LOGE(TAG, "No se pudo conectar al WiFi después de 3 intentos");
+    return false;
+}
+
+int send_http_post(const std::string& payload, const std::string& url) {
+    MA_LOGI(TAG, "Preparando envío HTTP a %s", url.c_str());
+    
+    try {
+        auto resp = requests::post(url.c_str(), payload);
+        
+        if (!resp) {
+            MA_LOGE(TAG, "Error: No hubo respuesta del servidor HTTP");
+            return 0;
+        }
+
+        MA_LOGI(TAG, "HTTP código de respuesta: %d", resp->status_code);
+        
+        if (resp->status_code >= 400) {
+            MA_LOGE(TAG, "Error HTTP: %d", resp->status_code);
+            return 0;
+        }
+        
+        return 1;
+    } catch (const std::exception& e) {
+        MA_LOGE(TAG, "Excepción en HTTP POST: %s", e.what());
+        return 0;
+    }
 }
 
 static bool initialize_resources() {
@@ -383,7 +261,7 @@ static bool initialize_resources() {
     return true;
 }
 
-static void cleanup_resources() {
+static void clean_resources() {
     if (global_camera) {
         release_camera(global_camera);
         global_camera = nullptr;
@@ -392,28 +270,22 @@ static void cleanup_resources() {
         release_model(global_model, global_engine);
         global_model = nullptr;
     }
-    mqtt_manager.disconnect();
+
 }
 
-static void handle_camera_failure() {
+static void camera_failure() {
     std::lock_guard<std::mutex> lock(detector_mutex);
     release_camera(global_camera);
     global_camera = initialize_camera();
     if (!global_camera) {
         MA_LOGE(TAG, "Critical camera failure");
-        cleanup_resources();
+        clean_resources();
         exit(1);
     }
 }
 
-static void process_detection_results(json& parsed, uint8_t* frame, 
-                                    std::chrono::steady_clock::time_point& last_helmet_alert, 
-                                    std::chrono::steady_clock::time_point& last_zone_alert,
-                                    std::chrono::steady_clock::time_point& last_person_report) {
+static void process_detection_results(json& parsed, uint8_t* frame,std::chrono::steady_clock::time_point& last_helmet_alert, std::chrono::steady_clock::time_point& last_zone_alert,std::chrono::steady_clock::time_point& last_person_report) {
     auto now = std::chrono::steady_clock::now();
-    
-    // Debug: Verificar estado de conexión
-    MA_LOGI(TAG, "Estado MQTT antes de publicar: conectado=%d", mqtt_manager.is_connected());
     
     if (parsed.contains("image_saved")) {
         i++;
@@ -430,9 +302,11 @@ static void process_detection_results(json& parsed, uint8_t* frame,
             std::string msg_str = alarm_msg.dump();
             MA_LOGD(TAG, "Enviando alerta de casco: %s", msg_str.c_str());
             
-            if (!safe_mqtt_publish("industria4-0/devices/cam_1/events", msg_str, 1)) {
-                MA_LOGE(TAG, "Fallo al publicar alerta de casco");
-            }
+            if (connectivity_mode == ConnectivityMode::MQTT) {
+                sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/events"); 
+            }else if (connectivity_mode == ConnectivityMode::HTTP) {
+                //.............
+            } 
         }
 
         if (parsed.contains("restricted_zone_violation")) {
@@ -444,9 +318,11 @@ static void process_detection_results(json& parsed, uint8_t* frame,
             std::string msg_str = alarm_msg.dump();
             MA_LOGD(TAG, "Enviando alerta de zona restringida: %s", msg_str.c_str());
             
-            if (!safe_mqtt_publish("industria4-0/devices/cam_1/events", msg_str, 1)) {
-                MA_LOGE(TAG, "Fallo al publicar alerta de zona restringida");
-            }
+            if (connectivity_mode == ConnectivityMode::MQTT) {
+                sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/events"); 
+            }else if (connectivity_mode == ConnectivityMode::HTTP) {
+                //.............
+            } 
         }
 
         if (parsed.contains("person_count")) {
@@ -462,9 +338,11 @@ static void process_detection_results(json& parsed, uint8_t* frame,
             std::string msg_str = report_msg.dump();
             MA_LOGD(TAG, "Enviando reporte de personas: %s", msg_str.c_str());
             
-            if (!safe_mqtt_publish("industria4-0/devices/cam_1/status", msg_str, 1)) {
-                MA_LOGE(TAG, "Fallo al publicar reporte de personas");
-            }
+            if (connectivity_mode == ConnectivityMode::MQTT) {
+                sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/status"); 
+            } else if (connectivity_mode == ConnectivityMode::HTTP) {
+                //.............
+            } 
         }
     } catch (const json::exception& e) {
         MA_LOGE(TAG, "Error procesando JSON: %s", e.what());
@@ -473,133 +351,82 @@ static void process_detection_results(json& parsed, uint8_t* frame,
     }
 }
 
-static void handle_detection_cycle() {
-    uint8_t frame[9];
-    auto last_helmet_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
-    auto last_zone_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
-    auto last_person_report = std::chrono::steady_clock::now();
-
-    while (true) {
-        try {
-            std::lock_guard<std::mutex> lock(detector_mutex);
-
-            auto now = std::chrono::steady_clock::now();
-            bool report_person = (now - last_person_report) >= std::chrono::seconds(5);
-            bool can_alert = (now - last_helmet_alert) >= std::chrono::seconds(10);
-            bool can_zone = (now - last_zone_alert) >= std::chrono::seconds(10);
-
-            std::string result = model_detector(global_model, global_camera, i, report_person, can_alert, can_zone);
-            json parsed = json::parse(result);
-
-            if (parsed.contains("error")) {
-                MA_LOGE(TAG, "Detector error: %s", parsed["error"].get<std::string>().c_str());
-                continue;
-            }
-
-            if (result.find("Camera capture failed") != std::string::npos) {
-                handle_camera_failure();
-                continue;
-            }
-
-            process_detection_results(parsed, frame, last_helmet_alert, last_zone_alert, last_person_report);
-            std::this_thread::sleep_for(std::chrono::milliseconds(5));
-
-        } catch (const std::exception& e) {
-            MA_LOGE(TAG, "Detection cycle exception: %s", e.what());
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        }
-    }
-}
-
 static void register_model_detector() {
-    MA_LOGI(TAG, "Starting register_model_detector");
-
-    if (connectivity_mode == ConnectivityMode::MQTT && !mqtt_manager.is_connected()) {
-        MA_LOGE(TAG, "MQTT not initialized despite connectivity mode");
-        return;
-    }
-
-    MA_LOGI(TAG, "Checking resource initialization...");
     if (!isInitialized && !initialize_resources()) {
-        cleanup_resources();
+        MA_LOGE(TAG, "Resource initialization failed");
+        clean_resources();
         return;
     }
-    MA_LOGI(TAG, "Resources initialized successfully");
     isInitialized = true;
 
     std::thread([] {
-        try {
-            MA_LOGI(TAG, "Starting detection cycle");
-            handle_detection_cycle();
-            MA_LOGI(TAG, "Detection cycle exited normally");
-        } catch (const std::exception& ex) {
-            MA_LOGE(TAG, "Exception in detection cycle: %s", ex.what());
-        } catch (...) {
-            MA_LOGE(TAG, "Unknown exception in detection cycle");
+        MA_LOGI(TAG, "Starting detection cycle");
+
+        uint8_t frame[9];
+        auto last_helmet_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
+        auto last_zone_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
+        auto last_person_report = std::chrono::steady_clock::now();
+        auto last_processing_time = std::chrono::steady_clock::now();
+
+        while (keepRunning) {
+            try {
+                auto processing_start = std::chrono::steady_clock::now();
+                
+                {
+                    static int frame_id = 0;
+                    frame_id++;
+                    printf("[Detector] Frame #%d processed\n", frame_id);
+                    
+                    std::lock_guard<std::mutex> lock(detector_mutex);
+                    auto now = std::chrono::steady_clock::now();
+                    
+                    bool report_person = (now - last_person_report) >= std::chrono::seconds(5);
+                    bool can_alert = (now - last_helmet_alert) >= std::chrono::seconds(10);
+                    bool can_zone = (now - last_zone_alert) >= std::chrono::seconds(10);
+                    
+                    std::string result = model_detector(global_model, global_camera, i, report_person, can_alert, can_zone);
+                    
+                    json parsed = json::parse(result);
+                    if (parsed.contains("error")) {
+                        MA_LOGE(TAG, "Detector error: %s", parsed["error"].get<std::string>().c_str());
+                        continue;
+                    }
+                    if (result.find("Camera capture failed") != std::string::npos) {
+                        camera_failure();
+                        continue;
+                    }
+                    
+                    process_detection_results(parsed, frame, last_helmet_alert, last_zone_alert, last_person_report);
+                }
+
+                auto processing_end = std::chrono::steady_clock::now();
+                auto processing_duration = std::chrono::duration_cast<std::chrono::milliseconds>(processing_end - processing_start);
+                
+                std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+                
+            } catch (const std::exception& e) {
+                MA_LOGE(TAG, "Detection cycle exception: %s", e.what());
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            }
         }
     }).detach();
 }
 
-int check_internet_connection() {
-    int result = system("ping -c 1 -W 2 8.8.8.8 > /dev/null 2>&1");
-    return (result == 0);
-}
-
-int connect_to_wifi(const std::string& ssid, const std::string& password) {
-    std::string command = "nmcli device wifi connect '" + ssid + "' password '" + password + "'";
-    int result = system(command.c_str());
-    return (result == 0);
-}
-
-int send_http_post(const std::string& payload, const std::string& url) {
-    syslog(LOG_DEBUG, "[send_http_post] POST to %s, payload len=%zu",
-           url.c_str(), payload.size());
-
-    auto resp = requests::post(url.c_str(), payload);
-    if (!resp) {
-        syslog(LOG_ERR, "[send_http_post] request failed (resp == NULL)");
-        return 0;
-    }
-
-    int code = resp->status_code;
-    syslog(LOG_DEBUG, "[send_http_post] HTTP code=%d", code);
-
-    if (code >= 400) {
-        std::cerr << "HTTP POST failed: code=" << code << "\n";
-        syslog(LOG_ERR, "[send_http_post] error code=%d", code);
-        return 0;
-    }
-    return 1;
-}
-
-void send_event_message(const char* topic, const std::string& payload, int qos) {
-    switch (connectivity_mode) {
-        case ConnectivityMode::MQTT:
-            safe_mqtt_publish(topic, payload, qos);
-            break;
-        case ConnectivityMode::HTTP_TO_ESP:
-            send_http_post(payload, topic); // Note: parámetros invertidos para coincidir con tu implementación
-            break;
-        default:
-            MA_LOGE(TAG, "Connectivity mode not set");
-            break;
-    }
-}
-
 void initConnectivity() {
+
+    // Estrategia de conectividad
     if (check_internet_connection()) {
-        MA_LOGI(TAG, "Internet available. Using MQTT.");
         connectivity_mode = ConnectivityMode::MQTT;
-        
-        if (!mqtt_manager.connect()) {
-            MA_LOGE(TAG, "MQTT initialization failed. Switching to HTTP.");
-            connectivity_mode = ConnectivityMode::HTTP_TO_ESP;
-        }
-    } else {
-        MA_LOGW(TAG, "No internet. Using HTTP fallback.");
-        connectivity_mode = ConnectivityMode::HTTP_TO_ESP;
+    } 
+    else if (is_connected_to_esp_ap()) {
+        connectivity_mode = ConnectivityMode::HTTP;
+        MA_LOGI(TAG, "Modo HTTP activado (WiFi local)");
     }
-    
+    else {
+        connectivity_mode = ConnectivityMode::HTTP;
+        MA_LOGW(TAG, "Modo HTTP activado (sin conexión)");
+    }
+
     register_model_detector();
 }
 

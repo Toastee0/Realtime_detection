@@ -29,29 +29,52 @@ void runMqtt() {
     cli.run();
 }
 
+void sendDetectionJsonByMqtt(const hv::Json& json, std::string topic) {
+    if (cli.isConnected()) {
+        std::string payload = json.dump();  // Convierte a string
+        cli.publish(topic, payload.c_str());
+    } else {
+        syslog(LOG_WARNING, "MQTT client not connected. Skipping publish.");
+    }
+}
+
 void initMqtt() {
-    sem_init(&semSscma, 0, 0);
+    hssl_ctx_opt_t opt;
+    memset(&opt, 0, sizeof(opt));
+    opt.ca_file   = "/etc/ssl/certs/cam_1/AmazonRootCA1.pem";
+    opt.crt_file  = "/etc/ssl/certs/cam_1/cam_1-certificate.pem.crt";
+    opt.key_file  = "/etc/ssl/certs/cam_1/cam_1-private.pem.key";
+    opt.verify_peer = 1;
+
+    if (cli.newSslCtx(&opt) != 0) {
+        syslog(LOG_INFO, "Error al crear SSL context\n");
+        return;
+    }
+
+    cli.setConnectTimeout(3000); 
+    cli.setHost("a265m6rkc34opn-ats.iot.us-east-1.amazonaws.com", 8883, 1); // 1 = SSL
 
     cli.onConnect = [](hv::MqttClient* cli) {
-        cli->subscribe(MQTT_TOPIC_OUT);
-        cli->publish(MQTT_TOPIC_IN, MQTT_PAYLOAD);
+        syslog(LOG_INFO, "MQTT conectado\n");
+        cli->subscribe("topic/test", 0);
     };
 
     cli.onMessage = [](hv::MqttClient* cli, mqtt_message_t* msg) {
-        sem_post(&semSscma);
+        syslog(LOG_INFO, "Mensaje en topic: %.*s\n", msg->topic_len, msg->topic);
     };
 
     cli.onClose = [](hv::MqttClient* cli) {
-        syslog(LOG_INFO, "mqtt disconnected");
+        syslog(LOG_INFO,"MQTT desconectado\n");
     };
 
-    cli.setPingInterval(10);
-    cli.setID("supervisor");
-    cli.connect("localhost", 1883, 0);
+    // Esta llamada conecta e inicia el loop de eventos
+    std::thread mqttThread([]() {
+        cli.run(); //  Esta función es bloqueante, por eso la ejecutamos en un hilo
+    });
 
-    std::thread th(runMqtt);
-    th.detach();
+    mqttThread.detach(); // Dejalo correr en segundo plano
 }
+
 
 int startFlow() {
     hv::Json data;

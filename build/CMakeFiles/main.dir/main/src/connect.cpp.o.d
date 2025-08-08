@@ -417,6 +417,7 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/common.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/connect.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/daemon.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_device.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_file.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_led.h \
@@ -441,4 +442,5 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hmutex.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/htime.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/semaphore.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hssl.h \
  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/../include/nlohmann/json.hpp
