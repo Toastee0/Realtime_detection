@@ -19,7 +19,7 @@ extern APP_STATUS noderedStatus;
 extern APP_STATUS sscmaStatus;
 
 int stopFlow();
-
+void initMqtt(); 
 void initDaemon();
 void sendDetectionJsonByMqtt(const hv::Json& json, std::string topic); 
 void stopDaemon();

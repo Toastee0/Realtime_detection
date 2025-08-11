@@ -196,8 +196,8 @@ CMakeFiles/sophgo.dir/clean:
 
 # All Build rule for target.
 CMakeFiles/Realtime_detection_http.dir/all: CMakeFiles/sophgo.dir/all
-CMakeFiles/Realtime_detection_http.dir/all: CMakeFiles/main.dir/all
 CMakeFiles/Realtime_detection_http.dir/all: CMakeFiles/sscma-micro.dir/all
+CMakeFiles/Realtime_detection_http.dir/all: CMakeFiles/main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Realtime_detection_http.dir/build.make CMakeFiles/Realtime_detection_http.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Realtime_detection_http.dir/build.make CMakeFiles/Realtime_detection_http.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=1,2 "Built target Realtime_detection_http"

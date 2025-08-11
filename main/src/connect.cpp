@@ -49,7 +49,7 @@ uint64_t getTimestamp() {
     return timestamp.count();
 }
 
-ConnectivityMode connectivity_mode = ConnectivityMode::NONE;
+ConnectivityMode connectivity_mode = ConnectivityMode::MQTT;
 
 extern "C" {
 
@@ -172,12 +172,13 @@ static void registerWebSocket(HttpService& router) {
         return resp->Json(res);
     });
 }
-
+/*
 void on_wifi_connected(const char* ssid) {
     current_ssid = ssid;
 }
 
 // Y la función:
+
 bool is_connected_to_esp_ap() {
     return (current_ssid == "ReCamNet");
 }
@@ -243,6 +244,33 @@ int send_http_post(const std::string& payload, const std::string& url) {
         return 0;
     }
 }
+*/
+
+void sendTestHttpPost(std::string payload) {
+    const std::string url = "http://192.168.4.1/report";
+    //const std::string payload = "E1140100004001000A";
+
+    // Convertir URL a const char* (requerido por la librería)
+    const char* url_cstr = url.c_str();
+
+    // Configurar headers
+    http_headers headers;
+    headers["Content-Type"] = "text/plain";
+
+    // Enviar petición POST
+    MA_LOGI("LOG_INFO", "Enviando prueba HTTP POST a %s", url_cstr);
+    MA_LOGI("LOG_DEBUG", "Payload: %s", payload.c_str());
+    
+    auto resp = requests::post(url_cstr, payload, headers);
+
+    // Manejar respuesta
+    if (resp == nullptr) {
+        MA_LOGI("LOG_ERR", "Error: No se recibió respuesta del servidor");
+    } else {
+        MA_LOGI("LOG_INFO", "Respuesta HTTP %d - Contenido: %s", 
+              resp->status_code, resp->body.c_str());
+    }
+}
 
 static bool initialize_resources() {
     global_camera = initialize_camera();
@@ -305,7 +333,7 @@ static void process_detection_results(json& parsed, uint8_t* frame,std::chrono::
             if (connectivity_mode == ConnectivityMode::MQTT) {
                 sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/events"); 
             }else if (connectivity_mode == ConnectivityMode::HTTP) {
-                //.............
+                sendTestHttpPost(alarm_msg["payload"].get<std::string>());   
             } 
         }
 
@@ -321,7 +349,7 @@ static void process_detection_results(json& parsed, uint8_t* frame,std::chrono::
             if (connectivity_mode == ConnectivityMode::MQTT) {
                 sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/events"); 
             }else if (connectivity_mode == ConnectivityMode::HTTP) {
-                //.............
+                sendTestHttpPost(alarm_msg["payload"].get<std::string>());   
             } 
         }
 
@@ -341,7 +369,7 @@ static void process_detection_results(json& parsed, uint8_t* frame,std::chrono::
             if (connectivity_mode == ConnectivityMode::MQTT) {
                 sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/status"); 
             } else if (connectivity_mode == ConnectivityMode::HTTP) {
-                //.............
+                sendTestHttpPost(report_msg["payload"].get<std::string>());   
             } 
         }
     } catch (const json::exception& e) {
@@ -412,100 +440,10 @@ static void register_model_detector() {
     }).detach();
 }
 
-void initConnectivity() {
-
-    // Estrategia de conectividad
-    if (check_internet_connection()) {
-        connectivity_mode = ConnectivityMode::MQTT;
-    } 
-    else if (is_connected_to_esp_ap()) {
-        connectivity_mode = ConnectivityMode::HTTP;
-        MA_LOGI(TAG, "Modo HTTP activado (WiFi local)");
-    }
-    else {
-        connectivity_mode = ConnectivityMode::HTTP;
-        MA_LOGW(TAG, "Modo HTTP activado (sin conexión)");
-    }
-
-    register_model_detector();
-}
-
-static void initHttpsService() {
-    if (0 != access(PATH_SERVER_CRT, F_OK)) {
-        syslog(LOG_ERR, "The crt file does not exist\n");
-        return;
-    }
-
-    if (0 != access(PATH_SERVER_KEY, F_OK)) {
-        syslog(LOG_ERR, "The key file does not exist\n");
-        return;
-    }
-
-    server.https_port = HTTPS_PORT;
-    hssl_ctx_opt_t param;
-
-    memset(&param, 0, sizeof(param));
-    param.crt_file = PATH_SERVER_CRT;
-    param.key_file = PATH_SERVER_KEY;
-    param.endpoint = HSSL_SERVER;
-
-    if (server.newSslCtx(&param) != 0) {
-        syslog(LOG_ERR, "new SSL_CTX failed!\n");
-        return;
-    }
-
-    syslog(LOG_INFO, "https service open successful!\n");
-}
-
-int initHttpd() {
-    
-    static HttpService router;
-/*
-    router.AllowCORS();
-    router.Static("/", WWW(""));
-    router.Use(authorization);
-    router.GET("/api/version", [](HttpRequest* req, HttpResponse* resp) {
-        hv::Json res;
-        res["code"]      = 0;
-        res["msg"]       = "";
-        res["data"]      = PROJECT_VERSION;
-        res["uptime"]    = getUptime();
-        res["timestamp"] = getTimestamp();
-        return resp->Json(res);
-    });
-
-
-    registerHttpRedirect(router);
-    registerUserApi(router);
-    registerWiFiApi(router);
-    registerDeviceApi(router);
-    registerFileApi(router);
-    registerLedApi(router);
-    registerWebSocket(router);*/
-    
-    
-
-#if HTTPS_SUPPORT
-    initHttpsService();
-#endif
-
-    // server.worker_threads = 3;
-    server.service = &router;
-    server.port    = HTTPD_PORT;
-    server.start();
-
-    return 0;
-}
-
-int deinitHttpd() {
-    server.stop();
-    hv::async::cleanup();
-    return 0;
-}
-
 int initWiFi() {
     char cmd[128]        = SCRIPT_WIFI_START;
     std::string wifiName = getWiFiName("wlan0");
+    MA_LOGI("System", "Iniciando modo MQTT... %s", wifiName.c_str());
     std::thread th;
 
     initUserInfo();
@@ -542,6 +480,187 @@ int stopWifi() {
     g_updateStatus = false;
     system(SCRIPT_WIFI_STOP);
 
+    return 0;
+}
+
+int connectToReCamNet() {
+    MA_LOGI("WiFi", "Initializing ReCamNet connection...");
+    
+    // 1. Verify interface state
+    system("ifconfig wlan0 up"); // Ensure interface is up
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    // 2. Kill existing WiFi processes
+    system("killall wpa_supplicant > /dev/null 2>&1");
+    system("killall dhclient > /dev/null 2>&1");
+
+    // 3. Start clean wpa_supplicant
+    MA_LOGI("WiFi", "Starting WiFi services...");
+    system("wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D nl80211,wext");
+
+    // 4. Manual network configuration
+    const char* setup_commands[] = {
+        "wpa_cli -i wlan0 remove_network all",
+        "wpa_cli -i wlan0 add_network",
+        "wpa_cli -i wlan0 set_network 0 ssid '\"ReCamNet\"'",
+        "wpa_cli -i wlan0 set_network 0 psk '\"12345678\"'",
+        "wpa_cli -i wlan0 set_network 0 key_mgmt WPA-PSK",
+        "wpa_cli -i wlan0 enable_network 0",
+        "wpa_cli -i wlan0 save_config",
+        "wpa_cli -i wlan0 reassociate",
+        NULL
+    };
+
+    for(int i = 0; setup_commands[i]; i++) {
+        if(system(setup_commands[i]) != 0) {
+            MA_LOGE("WiFi", "Command failed: %s", setup_commands[i]);
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    }
+
+    // 5. Verify connection
+    MA_LOGI("WiFi", "Verifying association...");
+    for(int i = 0; i < 15; i++) { // 15-second timeout
+        char result[256] = "";
+        exec_cmd("iwconfig wlan0 | grep 'ESSID:\"ReCamNet\"'", result, NULL);
+        
+        if(strstr(result, "ReCamNet")) {
+            MA_LOGI("WiFi", "✓ Associated with ReCamNet");
+            
+            // Check for IP assignment (optional for local network)
+            exec_cmd("ifconfig wlan0 | grep 'inet addr'", result, NULL);
+            if(strlen(result) > 0) {
+                MA_LOGI("WiFi", "IP Address: %s", strtok(result, " "));
+            } else {
+                MA_LOGW("WiFi", "No IP assigned (expected for LoRaWAN bridge)");
+            }
+            return 0;
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    // 6. Failure diagnosis
+    MA_LOGE("WiFi", "Association failed");
+    char diag[512];
+    exec_cmd("dmesg | grep wlan0 | tail -n 15", diag, NULL);
+    MA_LOGD("WiFi", "Kernel logs:\n%s", diag);
+    
+    exec_cmd("wpa_cli -i wlan0 status", diag, NULL);
+    MA_LOGD("WiFi", "wpa_supplicant status:\n%s", diag);
+    
+    return -1;
+}
+
+int connectToOriginalNet() {
+    stopWifi(); // mata procesos actuales
+
+    // Ejecutar el script original para volver a conectarse a la red inicial
+    return system(SCRIPT_WIFI_START);
+}
+
+void initConnectivity() {
+/*
+    // Estrategia de conectividad
+    if (check_internet_connection()) {
+        connectivity_mode = ConnectivityMode::MQTT;
+    } 
+    else if (is_connected_to_esp_ap()) {
+        connectivity_mode = ConnectivityMode::HTTP;
+        MA_LOGI(TAG, "Modo HTTP activado (WiFi local)");
+    }
+    else {
+        connectivity_mode = ConnectivityMode::HTTP;
+        MA_LOGW(TAG, "Modo HTTP activado (sin conexión)");
+    }
+*/
+
+
+    if (connectivity_mode == ConnectivityMode::MQTT){
+        MA_LOGI("System", "Iniciando modo MQTT...");
+        connectToOriginalNet();
+    } 
+    if (connectivity_mode == ConnectivityMode::HTTP){
+        MA_LOGI("System", "Iniciando modo WiFi...");
+        int wifiStatus = connectToReCamNet();
+        
+        if (wifiStatus == 0) {
+            MA_LOGI("System", "Sistema WiFi listo");
+        } else {
+            MA_LOGE("System", "Fallo crítico en conexión WiFi");
+        }
+    } 
+    register_model_detector();
+}
+
+static void initHttpsService() {
+    if (0 != access(PATH_SERVER_CRT, F_OK)) {
+        syslog(LOG_ERR, "The crt file does not exist\n");
+        return;
+    }
+
+    if (0 != access(PATH_SERVER_KEY, F_OK)) {
+        syslog(LOG_ERR, "The key file does not exist\n");
+        return;
+    }
+
+    server.https_port = HTTPS_PORT;
+    hssl_ctx_opt_t param;
+
+    memset(&param, 0, sizeof(param));
+    param.crt_file = PATH_SERVER_CRT;
+    param.key_file = PATH_SERVER_KEY;
+    param.endpoint = HSSL_SERVER;
+
+    if (server.newSslCtx(&param) != 0) {
+        syslog(LOG_ERR, "new SSL_CTX failed!\n");
+        return;
+    }
+
+    syslog(LOG_INFO, "https service open successful!\n");
+}
+
+int initHttpd() {
+    
+    static HttpService router;
+    router.AllowCORS();
+    router.Static("/", WWW(""));
+    router.Use(authorization);
+    router.GET("/api/version", [](HttpRequest* req, HttpResponse* resp) {
+        hv::Json res;
+        res["code"]      = 0;
+        res["msg"]       = "";
+        res["data"]      = PROJECT_VERSION;
+        res["uptime"]    = getUptime();
+        res["timestamp"] = getTimestamp();
+        return resp->Json(res);
+    });
+
+
+    registerHttpRedirect(router);
+    registerUserApi(router);
+    registerWiFiApi(router);
+    registerDeviceApi(router);
+    registerFileApi(router);
+    registerLedApi(router);
+    registerWebSocket(router);
+    
+    
+
+#if HTTPS_SUPPORT
+    initHttpsService();
+#endif
+
+    // server.worker_threads = 3;
+    server.service = &router;
+    server.port    = HTTPD_PORT;
+    server.start();
+
+    return 0;
+}
+
+int deinitHttpd() {
+    server.stop();
+    hv::async::cleanup();
     return 0;
 }
 
