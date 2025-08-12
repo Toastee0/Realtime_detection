@@ -12,7 +12,7 @@
 
 #include <ClassMapper.h>    
 #include <unistd.h>
-
+#include <filesystem> 
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
@@ -225,54 +225,32 @@ void flush_buffer(ma::Camera* camera) {
     }
 }
 
-std::string model_detector(ma::Model*& model, ma::Camera*& camera, int& i, bool report_person_count, bool can_alert_helmet, bool can_zone) {
+std::string model_detector(ma::Model*& model, ma::Camera*& camera, int& i,
+                           bool report_person_count, bool can_alert_helmet, bool can_zone) {
+    // ===== Captura del frame con reintentos =====
     ma_img_t jpeg;
-    const int max_retries = 3;  // Número máximo de reintentos
+    const int max_retries = 3;
     int retry_count = 0;
-    bool frame_retrieved = false;
 
-    size_t mem_init = getCurrentRSS();
-    MA_LOGI(MA_TAG, "Memory usage: %d KB", mem_init);
-
-    // Intento de recuperación de marco con reintentos
     while (retry_count < max_retries) {
         camera->retrieveFrame(jpeg, MA_PIXEL_FORMAT_JPEG);
-        MA_LOGI(MA_TAG, "jpeg size: %d", jpeg.size);
-
-        if (jpeg.size == 0 || jpeg.data == nullptr) {
-            MA_LOGW(TAG, "Failed to retrieve frame (attempt %d of %d)", retry_count+1, max_retries);
-            retry_count++;
-            
-            // Retroceso de 100 ms antes de reintentar
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        } else {
-            frame_retrieved = true;
-            break;
-        }
+        if (jpeg.size > 0 && jpeg.data != nullptr) break;
+        retry_count++;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
-    if (!frame_retrieved) {
-        MA_LOGE(TAG, "jpeg frame is empty after %d attempts", max_retries);
-        return "{\"error\":\"jpeg frame is empty\"}";
+    if (jpeg.size == 0 || jpeg.data == nullptr) {
+        return R"({"error":"jpeg frame is empty"})";
     }
 
     cv::Mat image_catch = cv::imdecode(cv::Mat(1, jpeg.size, CV_8UC1, jpeg.data), cv::IMREAD_COLOR);
     camera->returnFrame(jpeg);
-    
-    size_t mem_post_capture = getCurrentRSS();
-    MA_LOGI(MA_TAG, "Memory usage_after: %d KB", mem_post_capture);
-
-    if (image_catch.empty()) {
-        MA_LOGE(TAG, "read image failed");
-        return "{\"error\":\"read image failed\"}";
-    }
+    if (image_catch.empty()) return R"({"error":"read image failed"})";
 
     cv::Mat image = preprocessImage(image_catch, model);
-    if (image.empty()) {
-        MA_LOGE(TAG, "preprocessed image is empty");
-        return "{\"error\":\"preprocessed image is empty\"}";
-    }
+    if (image.empty()) return R"({"error":"preprocessed image is empty"})";
 
+    // ===== Inferencia =====
     ma_img_t img;
     img.data   = (uint8_t*)image.data;
     img.size   = static_cast<uint32_t>(image.rows * image.cols * image.channels());
@@ -281,71 +259,58 @@ std::string model_detector(ma::Model*& model, ma::Camera*& camera, int& i, bool 
     img.format = MA_PIXEL_FORMAT_RGB888;
     img.rotate = MA_PIXEL_ROTATE_0;
 
-    size_t mem_pre_model = getCurrentRSS();
-    MA_LOGI(MA_TAG, "Memory usage_before_model: %d KB", mem_pre_model);
-
-    ma::model::Detector* detector = static_cast<ma::model::Detector*>(model);
+    auto* detector = static_cast<ma::model::Detector*>(model);
     detector->run(&img);
-    auto _results = detector->getResults();
+    auto results = detector->getResults();
 
+    // ===== Flags y parámetros =====
     bool detected_no_helmet = false;
     bool restricted_zone_violation = false;
     int person_count = 0;
-    const bool check_restricted_zone = true;
     const float zone_divider = 0.5f;
     bool need_output_image = false;
 
-    // Primera pasada: verificar violaciones
-    for (const auto& result : _results) {
-        const std::string class_name = ClassMapper::get_class(result.target);
-        
-        if (class_name == "person") {
+    // Imagen para anotaciones
+    cv::Mat output_image;
+    cv::cvtColor(image, output_image, cv::COLOR_RGB2BGR);
+
+    // ===== Procesamiento en una sola pasada =====
+    for (const auto& r : results) {
+        std::string cls = ClassMapper::get_class(r.target);
+        float x1 = (r.x - r.w / 2.0f) * output_image.cols;
+        float y1 = (r.y - r.h / 2.0f) * output_image.rows;
+        float x2 = (r.x + r.w / 2.0f) * output_image.cols;
+        float y2 = (r.y + r.h / 2.0f) * output_image.rows;
+        cv::Rect rect(x1, y1, x2 - x1, y2 - y1);
+
+        if (cls == "person") {
             person_count++;
-            if (check_restricted_zone && result.x > zone_divider && can_zone) {
+            if (can_zone && r.x > zone_divider) {
                 restricted_zone_violation = true;
                 need_output_image = true;
+                cv::rectangle(output_image, rect, cv::Scalar(0, 0, 255), 3);
+                cv::putText(output_image, "RESTRICTED ZONE", {x1, y1 - 10},
+                            cv::FONT_HERSHEY_SIMPLEX, 0.6, {0, 0, 255}, 2);
             }
         }
-        else if (class_name == "no_helmet" && can_alert_helmet) {
+        if (cls == "no_helmet" && can_alert_helmet) {
             detected_no_helmet = true;
             need_output_image = true;
+            cv::Scalar color = ColorPalette::getColor(r.target);
+            cv::rectangle(output_image, rect, color, 3);
+            cv::putText(output_image, "no_helmet", {x1, y1 - 10},
+                        cv::FONT_HERSHEY_SIMPLEX, 0.6, color, 2);
         }
     }
 
-    cv::Mat output_image;
-    if (need_output_image) {
-        cv::cvtColor(image, output_image, cv::COLOR_RGB2BGR);
-        
-        if (check_restricted_zone && can_zone) {
-            int divider_x = static_cast<int>(zone_divider * output_image.cols);
-            cv::line(output_image, cv::Point(divider_x, 0), 
-                    cv::Point(divider_x, output_image.rows),
-                    cv::Scalar(0, 0, 255), 2);
-        }
-
-        // Segunda pasada: dibujar anotaciones
-        for (const auto& result : _results) {
-            const std::string class_name = ClassMapper::get_class(result.target);
-            const float x1 = (result.x - result.w / 2.0f) * output_image.cols;
-            const float y1 = (result.y - result.h / 2.0f) * output_image.rows;
-            const float x2 = (result.x + result.w / 2.0f) * output_image.cols;
-            const float y2 = (result.y + result.h / 2.0f) * output_image.rows;
-            const cv::Rect rect(x1, y1, x2 - x1, y2 - y1);
-
-            if (class_name == "person" && check_restricted_zone && result.x > zone_divider && can_zone) {
-                cv::rectangle(output_image, rect, cv::Scalar(0, 0, 255), 3);
-                cv::putText(output_image, "RESTRICTED ZONE", cv::Point(x1, y1 - 10),
-                          cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
-            }
-            else if (class_name == "no_helmet" && can_alert_helmet) {
-                const cv::Scalar color = ColorPalette::getColor(result.target);
-                cv::rectangle(output_image, rect, color, 3);
-                cv::putText(output_image, "no_helmet", cv::Point(x1, y1 - 10),
-                          cv::FONT_HERSHEY_SIMPLEX, 0.6, color, 2);
-            }
-        }
+    // Línea divisoria si aplica
+    if (can_zone) {
+        int divider_x = static_cast<int>(zone_divider * output_image.cols);
+        cv::line(output_image, {divider_x, 0}, {divider_x, output_image.rows},
+                 {0, 0, 255}, 2);
     }
 
+    // ===== Resultado JSON =====
     json result_json;
     if (report_person_count) result_json["person_count"] = person_count;
     if (detected_no_helmet) result_json["detected_no_helmet"] = true;
@@ -353,13 +318,25 @@ std::string model_detector(ma::Model*& model, ma::Camera*& camera, int& i, bool 
     result_json["cooldown"] = false;
 
     if (need_output_image) {
-        std::string filename = "image_detected_" + std::to_string(i) + ".jpg";
+        namespace fs = std::filesystem;
+        std::string folder_name = "images";
+
+        // Crear carpeta si no existe
+        if (!fs::exists(folder_name)) {
+            try {
+                fs::create_directory(folder_name);
+            } catch (const fs::filesystem_error& e) {
+                MA_LOGE(TAG, "Error creating folder: %s", e.what());
+            }
+        }
+
+        // Guardar dentro de la carpeta
+        std::string filename = folder_name + "/alarm_" + std::to_string(i) + ".jpg";
         if (cv::imwrite(filename, output_image)) {
             result_json["image_saved"] = filename;
         } else {
             MA_LOGE(TAG, "Error saving image: %s", filename.c_str());
         }
     }
-
     return result_json.dump();
 }

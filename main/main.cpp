@@ -28,9 +28,9 @@ static void initSupervisor() {
     hlog_disable();
     openlog("supervisor", LOG_CONS | LOG_PERROR, LOG_DAEMON);
     
-    initDaemon();
-    initWiFi();
-    initHttpd();
+    
+    //initWiFi();
+    //initHttpd();
     
     initConnectivity();
 

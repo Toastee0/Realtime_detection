@@ -559,25 +559,14 @@ int connectToOriginalNet() {
 }
 
 void initConnectivity() {
-/*
-    // Estrategia de conectividad
-    if (check_internet_connection()) {
-        connectivity_mode = ConnectivityMode::MQTT;
-    } 
-    else if (is_connected_to_esp_ap()) {
-        connectivity_mode = ConnectivityMode::HTTP;
-        MA_LOGI(TAG, "Modo HTTP activado (WiFi local)");
-    }
-    else {
-        connectivity_mode = ConnectivityMode::HTTP;
-        MA_LOGW(TAG, "Modo HTTP activado (sin conexión)");
-    }
-*/
-
 
     if (connectivity_mode == ConnectivityMode::MQTT){
         MA_LOGI("System", "Iniciando modo MQTT...");
         connectToOriginalNet();
+        /*std::thread th;
+        th           = std::thread(initMqtt);
+        th.detach();*/
+        initDaemon();
     } 
     if (connectivity_mode == ConnectivityMode::HTTP){
         MA_LOGI("System", "Iniciando modo WiFi...");

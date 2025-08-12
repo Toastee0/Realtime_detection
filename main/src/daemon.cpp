@@ -56,7 +56,7 @@ void initMqtt() {
 
     cli.onConnect = [](hv::MqttClient* cli) {
         syslog(LOG_INFO, "MQTT conectado\n");
-        cli->subscribe("topic/test", 0);
+        //cli->subscribe("topic/test", 0);
     };
 
     cli.onMessage = [](hv::MqttClient* cli, mqtt_message_t* msg) {
