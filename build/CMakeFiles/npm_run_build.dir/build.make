@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
 
 # Utility rule file for npm_run_build.
 
@@ -67,8 +67,8 @@ include CMakeFiles/npm_run_build.dir/compiler_depend.make
 include CMakeFiles/npm_run_build.dir/progress.make
 
 CMakeFiles/npm_run_build:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running npm run build"
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && npm run build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running npm run build"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www && npm run build
 
 npm_run_build: CMakeFiles/npm_run_build
 npm_run_build: CMakeFiles/npm_run_build.dir/build.make
@@ -83,6 +83,6 @@ CMakeFiles/npm_run_build.dir/clean:
 .PHONY : CMakeFiles/npm_run_build.dir/clean
 
 CMakeFiles/npm_run_build.dir/depend:
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/npm_run_build.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles/npm_run_build.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/npm_run_build.dir/depend
 

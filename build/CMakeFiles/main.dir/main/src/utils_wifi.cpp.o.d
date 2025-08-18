@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_wifi.cpp \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/utility \
@@ -178,8 +178,8 @@ CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/atomic_lockfree_defines.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/auto_ptr.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/pstl/glue_memory_defs.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/common.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/common.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/global_cfg.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpServer.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hexport.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hssl.h \
@@ -270,4 +270,4 @@ CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hsocket.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/Buffer.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpContext.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_wifi.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_wifi.h

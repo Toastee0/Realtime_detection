@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CPackSourceConfig.cmake
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,9 +152,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -195,19 +195,6 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named sscma-micro
-
-# Build rule for target.
-sscma-micro: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sscma-micro
-.PHONY : sscma-micro
-
-# fast build rule for target.
-sscma-micro/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sscma-micro.dir/build.make CMakeFiles/sscma-micro.dir/build
-.PHONY : sscma-micro/fast
-
-#=============================================================================
 # Target rules for targets named asound_module_pcm_cvi_audio
 
 # Build rule for target.
@@ -232,6 +219,19 @@ sophgo: cmake_check_build_system
 sophgo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sophgo.dir/build.make CMakeFiles/sophgo.dir/build
 .PHONY : sophgo/fast
+
+#=============================================================================
+# Target rules for targets named sscma-micro
+
+# Build rule for target.
+sscma-micro: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sscma-micro
+.PHONY : sscma-micro
+
+# fast build rule for target.
+sscma-micro/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sscma-micro.dir/build.make CMakeFiles/sscma-micro.dir/build
+.PHONY : sscma-micro/fast
 
 #=============================================================================
 # Target rules for targets named Realtime_detection_http
@@ -1762,6 +1762,30 @@ main/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main/main.cpp.s
 .PHONY : main/main.cpp.s
 
+main/rtsp_demo.o: main/rtsp_demo.c.o
+.PHONY : main/rtsp_demo.o
+
+# target to build an object file
+main/rtsp_demo.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main/rtsp_demo.c.o
+.PHONY : main/rtsp_demo.c.o
+
+main/rtsp_demo.i: main/rtsp_demo.c.i
+.PHONY : main/rtsp_demo.i
+
+# target to preprocess a source file
+main/rtsp_demo.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main/rtsp_demo.c.i
+.PHONY : main/rtsp_demo.c.i
+
+main/rtsp_demo.s: main/rtsp_demo.c.s
+.PHONY : main/rtsp_demo.s
+
+# target to generate assembly for a file
+main/rtsp_demo.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main/rtsp_demo.c.s
+.PHONY : main/rtsp_demo.c.s
+
 main/src/connect.o: main/src/connect.cpp.o
 .PHONY : main/src/connect.o
 
@@ -2184,6 +2208,9 @@ help:
 	@echo "... main/main.o"
 	@echo "... main/main.i"
 	@echo "... main/main.s"
+	@echo "... main/rtsp_demo.o"
+	@echo "... main/rtsp_demo.i"
+	@echo "... main/rtsp_demo.s"
 	@echo "... main/src/connect.o"
 	@echo "... main/src/connect.i"
 	@echo "... main/src/connect.s"

@@ -11,6 +11,7 @@ component_register(
     COMPONENT_NAME main
     SRCS ${srcs}
     INCLUDE_DIRS ${incs} 
-    PRIVATE_REQUIREDS sscma-micro cvi_rtsp ssl crypto hv
+    PRIVATE_REQUIREDS sscma-micro cvi_rtsp ssl crypto hv sophgo
     REQUIREDS  opencv_core opencv_imgcodecs opencv_imgproc
-)
+    SRCS "${CMAKE_CURRENT_LIST_DIR}/rtsp_demo.c"
+    )

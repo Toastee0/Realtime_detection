@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/utils_file.cpp.o: \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_file.cpp \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdio.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/features.h \
@@ -259,6 +259,6 @@ CMakeFiles/main.dir/main/src/utils_file.cpp.o: \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hsocket.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/Buffer.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpContext.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_file.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_device.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/global_cfg.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_file.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_device.h

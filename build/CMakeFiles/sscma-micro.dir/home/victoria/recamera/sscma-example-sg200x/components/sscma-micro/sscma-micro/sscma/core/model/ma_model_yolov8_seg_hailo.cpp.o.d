@@ -131,7 +131,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../ma_common.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../../porting/ma_misc.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../../porting/../core/ma_config_internal.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdlib.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/../engine/../ma_version.h \

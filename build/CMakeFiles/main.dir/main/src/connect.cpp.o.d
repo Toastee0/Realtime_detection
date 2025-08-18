@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/src/connect.cpp.o: \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/connect.cpp \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/connect.cpp \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/thread \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/c++config.h \
@@ -130,7 +130,7 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/../porting/ma_misc.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/../porting/../core/ma_config_internal.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdlib.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
@@ -367,7 +367,7 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/model_detector.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/model_detector.h \
  /home/victoria/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/opencv.hpp \
  /home/victoria/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/opencv_modules.hpp \
  /home/victoria/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_tpu_sdk/include/opencv2/core.hpp \
@@ -414,14 +414,15 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/syscall.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/requests.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/HttpClient.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/common.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/connect.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/global_cfg.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/daemon.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_device.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_file.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_led.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_user.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/common.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/connect.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/../include/nlohmann/json.hpp \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/global_cfg.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/daemon.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_device.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_file.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_led.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_user.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/iomanip \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/locale \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets_nonio.h \
@@ -434,13 +435,31 @@ CMakeFiles/main.dir/main/src/connect.cpp.o: \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/random.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/riscv64-unknown-linux-musl/lib64v0p7_xthead/lp64d/bits/opt_random.h \
  /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/random.tcc \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/utils_wifi.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/version.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/frame_builder.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/utils_wifi.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/version.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/frame_builder.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/mqtt_client.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/mqtt_protocol.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hmutex.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/htime.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/semaphore.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/hv/hssl.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/../include/nlohmann/json.hpp
+ /home/victoria/recamera/sg2002_recamera_emmc/cvi_mpi/include/cvi_sys.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/cvi_mpi/include/cvi_debug.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_common.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_type.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/chip/cv181x/uapi/linux/cvi_defines.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_base.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/linux/types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm/types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm-generic/types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm-generic/int-ll64.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm/bitsperlong.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm-generic/bitsperlong.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/linux/posix_types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/linux/stddef.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm/posix_types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/asm-generic/posix_types.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_comm_sys.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_comm_video.h \
+ /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_comm_video.h

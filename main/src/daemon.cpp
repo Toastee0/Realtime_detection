@@ -23,59 +23,6 @@ APP_STATUS noderedStatus = APP_STATUS_UNKNOWN;
 APP_STATUS sscmaStatus   = APP_STATUS_UNKNOWN;
 sem_t semSscma;
 
-hv::MqttClient cli;
-
-void runMqtt() {
-    cli.run();
-}
-
-void sendDetectionJsonByMqtt(const hv::Json& json, std::string topic) {
-    if (cli.isConnected()) {
-        std::string payload = json.dump();  // Convierte a string
-        cli.publish(topic, payload.c_str());
-    } else {
-        syslog(LOG_WARNING, "MQTT client not connected. Skipping publish.");
-    }
-}
-
-void initMqtt() {
-    hssl_ctx_opt_t opt;
-    memset(&opt, 0, sizeof(opt));
-    opt.ca_file   = "/etc/ssl/certs/cam_1/AmazonRootCA1.pem";
-    opt.crt_file  = "/etc/ssl/certs/cam_1/cam_1-certificate.pem.crt";
-    opt.key_file  = "/etc/ssl/certs/cam_1/cam_1-private.pem.key";
-    opt.verify_peer = 1;
-
-    if (cli.newSslCtx(&opt) != 0) {
-        syslog(LOG_INFO, "Error al crear SSL context\n");
-        return;
-    }
-
-    cli.setConnectTimeout(3000); 
-    cli.setHost("a265m6rkc34opn-ats.iot.us-east-1.amazonaws.com", 8883, 1); // 1 = SSL
-
-    cli.onConnect = [](hv::MqttClient* cli) {
-        syslog(LOG_INFO, "MQTT conectado\n");
-        //cli->subscribe("topic/test", 0);
-    };
-
-    cli.onMessage = [](hv::MqttClient* cli, mqtt_message_t* msg) {
-        syslog(LOG_INFO, "Mensaje en topic: %.*s\n", msg->topic_len, msg->topic);
-    };
-
-    cli.onClose = [](hv::MqttClient* cli) {
-        syslog(LOG_INFO,"MQTT desconectado\n");
-    };
-
-    // Esta llamada conecta e inicia el loop de eventos
-    std::thread mqttThread([]() {
-        cli.run(); //  Esta función es bloqueante, por eso la ejecutamos en un hilo
-    });
-
-    mqttThread.detach(); // Dejalo correr en segundo plano
-}
-
-
 int startFlow() {
     hv::Json data;
     http_headers headers;
@@ -170,7 +117,7 @@ APP_STATUS getNoderedStatus() {
 
 APP_STATUS getSscmaStatus() {
     struct timespec ts;
-
+/*
     if (!cli.isConnected()) {
         syslog(LOG_ERR, "mqtt is not connected\n");
         cli.reconnect();
@@ -188,12 +135,11 @@ APP_STATUS getSscmaStatus() {
 
         std::this_thread::sleep_for(std::chrono::seconds(threadTimeout));
     }
-
+*/
     return APP_STATUS_NORESPONSE;
 }
 
 void runDaemon() {
-    initMqtt();
 
     while (daemonStatus) {
         std::this_thread::sleep_for(std::chrono::seconds(threadTimeout));

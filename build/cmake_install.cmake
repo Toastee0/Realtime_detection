@@ -1,4 +1,4 @@
-# Install script for directory: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
+# Install script for directory: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -57,7 +57,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ FILES "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/Realtime_detection_http")
+  file(INSTALL DESTINATION "/usr/local/bin" TYPE EXECUTABLE PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ FILES "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/Realtime_detection_http")
   if(EXISTS "$ENV{DESTDIR}/usr/local/bin/Realtime_detection_http" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/bin/Realtime_detection_http")
     file(RPATH_CHANGE
@@ -79,7 +79,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/" TYPE DIRECTORY FILES "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/rootfs/" USE_SOURCE_PERMISSIONS)
+  file(INSTALL DESTINATION "/" TYPE DIRECTORY FILES "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/rootfs/" USE_SOURCE_PERMISSIONS)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -90,5 +90,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
