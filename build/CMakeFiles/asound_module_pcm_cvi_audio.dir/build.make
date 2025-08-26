@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/asound_module_pcm_cvi_audio.dir/depend.make
@@ -72,7 +72,7 @@ include CMakeFiles/asound_module_pcm_cvi_audio.dir/flags.make
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o: CMakeFiles/asound_module_pcm_cvi_audio.dir/flags.make
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o: CMakeFiles/asound_module_pcm_cvi_audio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o -MF CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o.d -o CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c
 
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/cvi_ain.c.i: cmake_force
@@ -86,7 +86,7 @@ CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o: CMakeFiles/asound_module_pcm_cvi_audio.dir/flags.make
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o: CMakeFiles/asound_module_pcm_cvi_audio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o -MF CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o.d -o CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c
 
 CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.i: cmake_force
@@ -109,7 +109,7 @@ libasound_module_pcm_cvi_audio.so.1.0.0: CMakeFiles/asound_module_pcm_cvi_audio.
 libasound_module_pcm_cvi_audio.so.1.0.0: CMakeFiles/asound_module_pcm_cvi_audio.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/audio_plugin/plugin.c.o
 libasound_module_pcm_cvi_audio.so.1.0.0: CMakeFiles/asound_module_pcm_cvi_audio.dir/build.make
 libasound_module_pcm_cvi_audio.so.1.0.0: CMakeFiles/asound_module_pcm_cvi_audio.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libasound_module_pcm_cvi_audio.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libasound_module_pcm_cvi_audio.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/asound_module_pcm_cvi_audio.dir/link.txt --verbose=$(VERBOSE)
 	$(CMAKE_COMMAND) -E cmake_symlink_library libasound_module_pcm_cvi_audio.so.1.0.0 libasound_module_pcm_cvi_audio.so.1 libasound_module_pcm_cvi_audio.so
 
@@ -128,6 +128,6 @@ CMakeFiles/asound_module_pcm_cvi_audio.dir/clean:
 .PHONY : CMakeFiles/asound_module_pcm_cvi_audio.dir/clean
 
 CMakeFiles/asound_module_pcm_cvi_audio.dir/depend:
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles/asound_module_pcm_cvi_audio.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/asound_module_pcm_cvi_audio.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/asound_module_pcm_cvi_audio.dir/depend
 

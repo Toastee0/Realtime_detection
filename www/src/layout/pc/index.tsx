@@ -28,6 +28,7 @@ const menuList = [
     { label: "Workspace", icon: ApplicationImg, route: "/workspace" },
     { label: "Security", icon: SecurityImg, route: "/security" },
     { label: "Network", icon: NetworkImg, route: "/network" },
+    { label: "Mode", icon: NetworkImg, route: "/mode" },
   ],
   [
     { label: "Terminal", icon: TerminalImg, route: "/terminal" },

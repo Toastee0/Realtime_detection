@@ -12,22 +12,20 @@
 #include "video.h"
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
-#include "model_detector.h"    // model_detector_from_mat(ma::Model*&, const cv::Mat&, int, ...)
+#include "model_detector.h"  
 #include "connect.h"    
 #include "hv/hlog.h"
-// JSON
-using json = nlohmann::json;
+#include "global_cfg.h"
 
-// === Globales ===
+using json = nlohmann::json;
+connectivity_mode_t connectivity_mode = CONNECTIVITY_MODE_MQTT;  
 static ma::Model* g_model = nullptr;
 static std::mutex g_det_mutex;
 
-// Cooldowns
 static std::chrono::steady_clock::time_point g_last_helmet_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
 static std::chrono::steady_clock::time_point g_last_zone_alert   = std::chrono::steady_clock::now() - std::chrono::seconds(10);
 static std::chrono::steady_clock::time_point g_last_person_report= std::chrono::steady_clock::now();
 
-// === Manejador de salida ===
 static CVI_VOID app_ipcam_ExitSig_handle(CVI_S32 signo) {
     signal(SIGINT, SIG_IGN);
     signal(SIGTERM, SIG_IGN);
@@ -40,8 +38,6 @@ static CVI_VOID app_ipcam_ExitSig_handle(CVI_S32 signo) {
     exit(-1);
 }
 
-// =======================================================
-// Callback YOLO para VIDEO_CH0 (RGB888)
 static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
     if (!g_model) return CVI_FAILURE;
 
@@ -62,13 +58,16 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
     frame_id++;
 
     auto now = std::chrono::steady_clock::now();
-    bool report_person = (now - g_last_person_report) >= std::chrono::seconds(5);
-    bool can_alert_helmet = (now - g_last_helmet_alert) >= std::chrono::seconds(10);
-    bool can_zone = (now - g_last_zone_alert) >= std::chrono::seconds(10);
+    bool report_person = (now - g_last_person_report) >= 
+                        std::chrono::milliseconds(PERSON_REPORT_INTERVAL_MS);
+    bool can_alert_helmet = (now - g_last_helmet_alert) >= 
+                           std::chrono::milliseconds(ALERT_COOLDOWN_MS);
+    bool can_zone = (now - g_last_zone_alert) >= 
+                   std::chrono::milliseconds(ALERT_COOLDOWN_MS);
+    
     std::string result_json_str;
     {
         std::lock_guard<std::mutex> lk(g_det_mutex);
-
         result_json_str = model_detector_from_mat(
             g_model,
             frame_rgb888,
@@ -77,7 +76,6 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
             can_alert_helmet,
             can_zone
         );
-        
     }
   
     try {
@@ -95,28 +93,42 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
     return CVI_SUCCESS;
 }
 
+connectivity_mode_t parse_mode(int argc, char* argv[]) {
+    std::string mode = "mqtt";  // valor por defecto
 
-// === main ===
+    for (int i = 1; i < argc; i++) {
+        if ((strcmp(argv[i], "--mode") == 0) && (i + 1 < argc)) {
+            mode = argv[i + 1];
+        }
+    }
+    if (mode == "http") return CONNECTIVITY_MODE_HTTP;
+    if (mode == "mqtt") return CONNECTIVITY_MODE_MQTT;
+
+    std::cerr << "Error: modo inválido '" << mode << "'. Use --mode mqtt|http\n";
+    exit(1);
+}
+
 int main(int argc, char* argv[]) {
+    connectivity_mode = parse_mode(argc, argv);
     signal(SIGINT, app_ipcam_ExitSig_handle);
     signal(SIGTERM, app_ipcam_ExitSig_handle);
     initWiFi();
     initHttpd();
-    initConnectivity(); 
+    initConnectivity(connectivity_mode); 
     if (initVideo()) return -1;
 
     video_ch_param_t param;
-
-    // CH0: RGB888 → YOLO
-    param.format = VIDEO_FORMAT_RGB888;
-    param.width  = 1920;
-    param.height = 1080;
-    param.fps    = 10;
+    
+    param.format = VIDEO_FORMAT_DEFAULT;
+    param.width  = VIDEO_WIDTH_DEFAULT;
+    param.height = VIDEO_HEIGHT_DEFAULT;
+    param.fps    = VIDEO_FPS_DEFAULT;
+    
     setupVideo(VIDEO_CH0, &param);
     registerVideoFrameHandler(VIDEO_CH0, 0, fpRunYolo_CH0, NULL);
 
-    // Cargar modelo
-    g_model = initialize_model("yolo11n_helmetPerson_int8_sym.cvimodel");
+    // Usar la constante definida para la ruta del modelo
+    g_model = initialize_model(PATH_MODEL_YOLO);
     if (!g_model) {
         char msg[128];
         snprintf(msg, sizeof(msg), "Model initialization failed");

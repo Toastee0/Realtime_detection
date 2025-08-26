@@ -30,12 +30,12 @@
 #include <atomic>
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
-
+#include "global_cfg.h"
 using nlohmann_json = nlohmann::json;
 using namespace hv;
-ConnectivityMode connectivity_mode = ConnectivityMode::MQTT;
-hv::MqttClient cli;
 
+hv::MqttClient cli;
+auto internal_mode = 0; //0: mqtt - 1:http
 uint64_t getUptime() {
     std::ifstream uptime_file("/proc/uptime");
     if (uptime_file.is_open()) {
@@ -53,7 +53,6 @@ uint64_t getTimestamp() {
     auto timestamp = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch());
     return timestamp.count();
 }
-
 
 void initMqtt() {
     hssl_ctx_opt_t opt;
@@ -105,12 +104,8 @@ void initMqtt() {
 }
 
 void sendDetectionJsonByMqtt(const hv::Json& json, std::string topic) {
-    printf("Por mandar el msj\n");
     if (cli.isConnected()) {
-        printf("Cliente conectado\n");
-        std::string payload = json.dump();  // Convierte a string
-        printf("Publicando...MQTT\n");
-        cli.publish(topic, payload.c_str());
+        cli.publish(topic, json);
     } else {
         printf("Cliente NO conectado\n");
         syslog(LOG_WARNING, "MQTT client not connected. Skipping publish.");
@@ -353,68 +348,22 @@ int deinitHttpd() {
 
 
 void sendTestHttpPost(std::string payload) {
-    const std::string url = "http://192.168.4.1/report";
-    //const std::string payload = "E1140100004001000A";
-
-    // Convertir URL a const char* (requerido por la librería)
+    const std::string url = HTTP_SERVER_URL;
     const char* url_cstr = url.c_str();
 
-    // Configurar headers
     http_headers headers;
     headers["Content-Type"] = "text/plain";
 
-    // Enviar petición POST
     MA_LOGI("LOG_INFO", "Enviando prueba HTTP POST a %s", url_cstr);
     MA_LOGI("LOG_DEBUG", "Payload: %s", payload.c_str());
     
     auto resp = requests::post(url_cstr, payload, headers);
 
-    // Manejar respuesta
     if (resp == nullptr) {
         MA_LOGI("LOG_ERR", "Error: No se recibió respuesta del servidor");
     } else {
         MA_LOGI("LOG_INFO", "Respuesta HTTP %d - Contenido: %s", 
               resp->status_code, resp->body.c_str());
-    }
-}
-
-static bool initialize_resources() {
-    global_camera = initialize_camera();
-    if (!global_camera) {
-        MA_LOGE(TAG, "Camera initialization failed");
-        return false;
-    }
-
-    global_model = initialize_model("yolo11n_helmetPerson_int8_sym.cvimodel");
-    if (!global_model) {
-        MA_LOGE(TAG, "Model initialization failed");
-        release_camera(global_camera);
-        return false;
-    }
-
-    return true;
-}
-
-static void clean_resources() {
-    if (global_camera) {
-        release_camera(global_camera);
-        global_camera = nullptr;
-    }
-    if (global_model) {
-        release_model(global_model, global_engine);
-        global_model = nullptr;
-    }
-
-}
-
-static void camera_failure() {
-    std::lock_guard<std::mutex> lock(detector_mutex);
-    release_camera(global_camera);
-    global_camera = initialize_camera();
-    if (!global_camera) {
-        MA_LOGE(TAG, "Critical camera failure");
-        clean_resources();
-        exit(1);
     }
 }
 
@@ -435,12 +384,18 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
 
     try {
         std::vector<AlarmConfig> alarms = {
-            {"detected_no_helmet", "E1140140002103", "industria4-0/devices/cam_1/events", &last_helmet_alert},
-            {"restricted_zone_violation", "E1140140002102", "industria4-0/devices/cam_1/events", &last_zone_alert}
+            {EVENT_DETECTED_NO_HELMET,  EVENT_CODE_NO_HELMET,  MQTT_TOPIC_EVENTS, &last_helmet_alert},
+            {EVENT_RESTRICTED_ZONE, EVENT_CODE_ZONE_VIOLATION, MQTT_TOPIC_EVENTS, &last_zone_alert}
         };
+
         for (const auto& alarm : alarms) {
             if (parsed.contains(alarm.json_key)) {
-                if (alarm.last_alert) *(alarm.last_alert) = now;
+                auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - *(alarm.last_alert)).count();
+                if (elapsed < ALERT_COOLDOWN_MS) {
+                    continue; // Todavía en cooldown
+                }
+
+                *(alarm.last_alert) = now;
 
                 nlohmann_json alarm_msg;
                 alarm_msg["timestamp"] = std::chrono::system_clock::now().time_since_epoch().count();
@@ -449,14 +404,14 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
                 std::string msg_str = alarm_msg.dump();
                 MA_LOGD(TAG, "Enviando alerta %s: %s", alarm.json_key.c_str(), msg_str.c_str());
 
-                if (connectivity_mode == ConnectivityMode::MQTT) {
-                    std::cout << "Mandando alarma por MQTT : " << std::endl;
-                    sendDetectionJsonByMqtt(msg_str.c_str(), alarm.topic.c_str());
-                } else if (connectivity_mode == ConnectivityMode::HTTP) {
+                if (internal_mode == CONNECTIVITY_MODE_MQTT) {
+                    sendDetectionJsonByMqtt(msg_str, alarm.topic.c_str());
+                } else if (internal_mode == CONNECTIVITY_MODE_HTTP) {
                     sendTestHttpPost(alarm.payload);
                 }
             }
         }
+
 
         if (parsed.contains("person_count")) {
             last_person_report = now;
@@ -467,16 +422,16 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
             report_msg["timestamp"] = std::chrono::system_clock::now().time_since_epoch().count();
 
             std::stringstream payload;
-            payload << "E1140100004001"
+            payload << EVENT_CODE_PERSON_COUNT
                     << std::setw(4) << std::setfill('0') << std::hex << person_count;
             report_msg["payload"] = payload.str();
 
             std::string msg_str = report_msg.dump();
             MA_LOGD(TAG, "Enviando reporte de personas: %s", msg_str.c_str());
 
-            if (connectivity_mode == ConnectivityMode::MQTT) {
-                sendDetectionJsonByMqtt(msg_str.c_str(), "industria4-0/devices/cam_1/status");
-            } else if (connectivity_mode == ConnectivityMode::HTTP) {
+            if (internal_mode == 0) {
+                sendDetectionJsonByMqtt(msg_str.c_str(), MQTT_TOPIC_STATUS);
+            } else if (internal_mode == 1) {
                 sendTestHttpPost(report_msg["payload"].get<std::string>());
             }
         }
@@ -490,96 +445,19 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
 }
 
 
-int connectToReCamNet() {
-    MA_LOGI("WiFi", "Initializing ReCamNet connection...");
-    
-    // 1. Ensure interface is up
-    system("ifconfig wlan0 up");
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+void initConnectivity(connectivity_mode_t& connectivity_mode) {
 
-    // 2. Kill existing WiFi processes (optional cleanup)
-    system("killall wpa_supplicant > /dev/null 2>&1");
-    system("killall dhclient > /dev/null 2>&1");
-
-    // 3. Start wpa_supplicant
-    MA_LOGI("WiFi", "Starting WiFi services...");
-    system("wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D nl80211,wext");
-
-    // 4. Add ReCamNet network without removing existing ones
-    char add_net_result[64] = "";
-    exec_cmd("wpa_cli -i wlan0 add_network", add_net_result, NULL);
-
-    int net_id = atoi(add_net_result);  // network ID asignado automáticamente
-    if (net_id < 0) {
-        MA_LOGE("WiFi", "Failed to add new network");
-        return -1;
-    }
-
-    char cmd[256];
-    snprintf(cmd, sizeof(cmd), "wpa_cli -i wlan0 set_network %d ssid '\"ReCamNet\"'", net_id);
-    system(cmd);
-    snprintf(cmd, sizeof(cmd), "wpa_cli -i wlan0 set_network %d psk '\"12345678\"'", net_id);
-    system(cmd);
-    snprintf(cmd, sizeof(cmd), "wpa_cli -i wlan0 set_network %d key_mgmt WPA-PSK", net_id);
-    system(cmd);
-    snprintf(cmd, sizeof(cmd), "wpa_cli -i wlan0 enable_network %d", net_id);
-    system(cmd);
-    system("wpa_cli -i wlan0 save_config");
-    system("wpa_cli -i wlan0 reassociate");
-
-    // 5. Verify connection
-    MA_LOGI("WiFi", "Verifying association...");
-    for(int i = 0; i < 15; i++) {
-        char result[256] = "";
-        exec_cmd("iwconfig wlan0 | grep 'ESSID:\"ReCamNet\"'", result, NULL);
-        
-        if(strstr(result, "ReCamNet")) {
-            MA_LOGI("WiFi", "✓ Associated with ReCamNet");
-
-            // Optional: check IP assignment
-            exec_cmd("ifconfig wlan0 | grep 'inet addr'", result, NULL);
-            if(strlen(result) > 0) {
-                MA_LOGI("WiFi", "IP Address: %s", strtok(result, " "));
-            } else {
-                MA_LOGW("WiFi", "No IP assigned (expected for LoRaWAN bridge)");
-            }
-            return 0;
-        }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-
-    // 6. Failure diagnosis
-    MA_LOGE("WiFi", "Association failed");
-    char diag[512];
-    exec_cmd("dmesg | grep wlan0 | tail -n 15", diag, NULL);
-    MA_LOGD("WiFi", "Kernel logs:\n%s", diag);
-
-    exec_cmd("wpa_cli -i wlan0 status", diag, NULL);
-    MA_LOGD("WiFi", "wpa_supplicant status:\n%s", diag);
-
-    return -1;
-}
-
-void initConnectivity() {
-
-    if (connectivity_mode == ConnectivityMode::MQTT){
+    if (connectivity_mode == CONNECTIVITY_MODE_MQTT){
         std::thread th;
         MA_LOGI("System", "Iniciando modo MQTT...");
         th           = std::thread(initMqtt);
         th.detach();
+        internal_mode = 0;
     } 
-    if (connectivity_mode == ConnectivityMode::HTTP){
+    if (connectivity_mode == CONNECTIVITY_MODE_HTTP){
         MA_LOGI("System", "Iniciando modo WiFi...");
-        int wifiStatus = connectToReCamNet();
-        
-        if (wifiStatus == 0) {
-            MA_LOGI("System", "Sistema WiFi listo");
-        } else {
-            MA_LOGE("System", "Fallo crítico en conexión WiFi");
-        }
+        internal_mode = 1;
     } 
 }
-
-
 
 }  // extern "C" {

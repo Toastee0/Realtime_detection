@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/main/rtsp_demo.c.o: \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.c \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.c \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stdc-predef.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/unistd.h \
@@ -40,7 +40,7 @@ CMakeFiles/main.dir/main/rtsp_demo.c.o: \
  /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_comm_venc.h \
  /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_comm_rc.h \
  /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.h \
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.h \
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.h \
  /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/stddef.h \
  /home/victoria/recamera/sg2002_recamera_emmc/osdrv/interdrv/v2/include/common/uapi/linux/cvi_type.h \
  /home/victoria/recamera/sg2002_recamera_emmc/install/soc_sg2002_recamera_emmc/tpu_musl_riscv64/cvitek_ai_sdk/sample/3rd/rtsp/include/cvi_rtsp/rtsp.h \

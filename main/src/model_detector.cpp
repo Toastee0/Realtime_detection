@@ -7,13 +7,13 @@
 #include <opencv2/opencv.hpp>
 #include <sscma.h>
 #include <vector>
-#include <thread>       // 解决std::this_thread错误
+#include <thread>
 #include <iterator>
-
 #include <ClassMapper.h>   
 #include <unistd.h>
 #include <filesystem> 
 #include <nlohmann/json.hpp>
+#include "global_cfg.h"
 using json = nlohmann::json;
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
@@ -88,7 +88,6 @@ void release_model(ma::Model*& model, ma::engine::EngineCVI*& engine) {
     model = nullptr;
     engine = nullptr;
 }
-
 
 ma::Camera* initialize_camera() noexcept{
 
@@ -169,7 +168,7 @@ ma::Camera* initialize_camera() noexcept{
     return camera;
 
 }
-// 定义函数（放在 main 之前）
+
 size_t getCurrentRSS() {
     long rss = 0L;
     FILE* fp = nullptr;
@@ -225,11 +224,11 @@ void flush_buffer(ma::Camera* camera) {
     }
 }
 
-
-std::string model_detector_from_mat(ma::Model*& model,cv::Mat& input_bgr_or_rgb888,int frame_id,bool report_person_count,bool can_alert_helmet,bool can_zone) {
-    auto start = std::chrono::high_resolution_clock::now();  // tiempo inicialInferencia =====
+std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb888, int frame_id, bool report_person_count, bool can_alert_helmet, bool can_zone) {
+    auto start = std::chrono::high_resolution_clock::now();
     if (!model) return R"({"error":"model is null"})";
     if (input_bgr_or_rgb888.empty()) return R"({"error":"input frame is empty"})";
+    
     ma_img_t img;
     img.data   = (uint8_t*)input_bgr_or_rgb888.data;
     img.size   = static_cast<uint32_t>(input_bgr_or_rgb888.rows * input_bgr_or_rgb888.cols * input_bgr_or_rgb888.channels());
@@ -237,14 +236,14 @@ std::string model_detector_from_mat(ma::Model*& model,cv::Mat& input_bgr_or_rgb8
     img.height = static_cast<uint32_t>(input_bgr_or_rgb888.rows);
     img.format = MA_PIXEL_FORMAT_RGB888;
     img.rotate = MA_PIXEL_ROTATE_0;
+    
     auto* detector = static_cast<ma::model::Detector*>(model); 
     detector->run(&img);
     
     auto results = detector->getResults();
   
-    // ===== Flags y resultados =====
     bool detected_no_helmet = false;
-    bool restricted_zone_violation = false;
+    bool restricted_zone = false;
     int person_count = 0;
     const float zone_divider = 0.5f;
     bool need_output_image = false;
@@ -257,57 +256,69 @@ std::string model_detector_from_mat(ma::Model*& model,cv::Mat& input_bgr_or_rgb8
         float y2 = (r.y + r.h / 2.0f) * input_bgr_or_rgb888.rows;
         cv::Rect rect(cv::Point((int)x1, (int)y1), cv::Point((int)x2, (int)y2));
 
-        if (cls == "person") {
+        if (cls == DETECTION_CLASS_PERSON) {
             person_count++;
             if (can_zone && r.x > zone_divider) {
-                restricted_zone_violation = true;
+                restricted_zone = true;
                 need_output_image = true;
 
-                cv::rectangle(input_bgr_or_rgb888, rect, cv::Scalar(0, 0, 255), 3);
-                cv::putText(input_bgr_or_rgb888, "RESTRICTED ZONE",
+                cv::rectangle(input_bgr_or_rgb888, rect, VISUAL_ZONE_DIVIDER_COLOR, VISUAL_BBOX_THICKNESS);
+                cv::putText(input_bgr_or_rgb888, EVENT_RESTRICTED_ZONE,
                             {std::max(0, (int)x1), std::max(15, (int)y1 - 10)},
-                            cv::FONT_HERSHEY_SIMPLEX, 0.6, {0, 0, 255}, 2);
+                            cv::FONT_HERSHEY_SIMPLEX, 0.6, VISUAL_ZONE_DIVIDER_COLOR, 2);
             }
         }
 
-        if (cls == "no_helmet" && can_alert_helmet) {
+        if (cls == DETECTION_CLASS_NO_HELMET && can_alert_helmet) {
             detected_no_helmet = true;
             need_output_image = true;
 
-            // 🟡 Dibujar alerta de casco
             cv::Scalar color = ColorPalette::getColor(r.target);
-            cv::rectangle(input_bgr_or_rgb888, rect, color, 3);
-            cv::putText(input_bgr_or_rgb888, "NO_HELMET",
+            cv::rectangle(input_bgr_or_rgb888, rect, color, VISUAL_ZONE_DIVIDER_THICKNESS);
+            cv::putText(input_bgr_or_rgb888, DETECTION_CLASS_NO_HELMET,
                         {std::max(0, (int)x1), std::max(15, (int)y1 - 10)},
                         cv::FONT_HERSHEY_SIMPLEX, 0.6, color, 2);
         }
     }
-
     
     if (can_zone) {
         int divider_x = static_cast<int>(zone_divider * input_bgr_or_rgb888.cols);
-        cv::line(input_bgr_or_rgb888, {divider_x, 0}, {divider_x, input_bgr_or_rgb888.rows}, {0, 0, 255}, 2);
+        cv::line(input_bgr_or_rgb888,
+                cv::Point(ZONE_LINE_X1, ZONE_LINE_Y1),
+                cv::Point(ZONE_LINE_X2, ZONE_LINE_Y2),
+                VISUAL_ZONE_DIVIDER_COLOR,
+                VISUAL_ZONE_DIVIDER_THICKNESS);
+
     }
 
     json result_json;
     if (report_person_count) result_json["person_count"] = person_count;
-    if (detected_no_helmet) result_json["detected_no_helmet"] = true;
-    if (restricted_zone_violation) result_json["restricted_zone_violation"] = true;
+    if (detected_no_helmet) result_json[EVENT_DETECTED_NO_HELMET] = true;
+    if (restricted_zone) result_json[EVENT_RESTRICTED_ZONE] = true;
     result_json["cooldown"] = false;
     
     if (need_output_image) {
-        namespace fs = std::filesystem;
-        std::string folder_name = "images";
-        if (!fs::exists(folder_name)) {
-            try { fs::create_directory(folder_name); } catch (...) {}
-        }
-        std::string filename = folder_name + "/alarm_" + std::to_string(frame_id) + ".jpg";
-        if (cv::imwrite(filename, input_bgr_or_rgb888)) {
-            result_json["image_saved"] = filename;
+    namespace fs = std::filesystem;
+    std::string folder_name = PATH_IMAGES_DIR;  // ← Usando la constante global
+    
+    if (!fs::exists(folder_name)) {
+        try { 
+            fs::create_directory(folder_name); 
+        } catch (...) {
+            // Opcional: Loggear error de creación de directorio
         }
     }
-    auto end = std::chrono::high_resolution_clock::now();  // tiempo final
+    // Limpieza automática (opcional) generar funcion
+    // cleanup_old_images(folder_name, MAX_IMAGES_STORED, MAX_STORAGE_SIZE_MB);
+    
+    
+    std::string filename = folder_name + "/alarm_" + std::to_string(frame_id) + ".jpg";
+    if (cv::imwrite(filename, input_bgr_or_rgb888)) {
+        result_json["image_saved"] = filename;
+    }
+}
+    
+    auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout << "Tiempotiempo : " << duration << " ms" << std::endl;
     return result_json.dump();
 }

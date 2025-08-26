@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/dummy.c" "CMakeFiles/Realtime_detection_http.dir/dummy.c.o" "gcc" "CMakeFiles/Realtime_detection_http.dir/dummy.c.o.d"
+  "/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/dummy.c" "CMakeFiles/Realtime_detection_http.dir/dummy.c.o" "gcc" "CMakeFiles/Realtime_detection_http.dir/dummy.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

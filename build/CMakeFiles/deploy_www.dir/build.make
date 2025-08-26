@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
 
 # Utility rule file for deploy_www.
 
@@ -67,10 +67,10 @@ include CMakeFiles/deploy_www.dir/compiler_depend.make
 include CMakeFiles/deploy_www.dir/progress.make
 
 CMakeFiles/deploy_www:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Deploying web files"
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www && rm -rf /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www/../rootfs/usr/share/supervisor/www/*
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www && mkdir -p /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www/../rootfs/usr/share/supervisor/www/
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www && cp -r /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www/dist/* /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/www/../rootfs/usr/share/supervisor/www/
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Deploying web files"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && rm -rf /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/*
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && mkdir -p /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www && cp -r /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/dist/* /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/www/../rootfs/usr/share/supervisor/www/
 
 deploy_www: CMakeFiles/deploy_www
 deploy_www: CMakeFiles/deploy_www.dir/build.make
@@ -85,6 +85,6 @@ CMakeFiles/deploy_www.dir/clean:
 .PHONY : CMakeFiles/deploy_www.dir/clean
 
 CMakeFiles/deploy_www.dir/depend:
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles/deploy_www.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/deploy_www.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/deploy_www.dir/depend
 

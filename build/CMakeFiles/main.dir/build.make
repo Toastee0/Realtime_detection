@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -70,158 +70,158 @@ include CMakeFiles/main.dir/progress.make
 include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/main/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/main.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/main.cpp
+CMakeFiles/main.dir/main/main.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp
 CMakeFiles/main.dir/main/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main/main.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/main.cpp.o -MF CMakeFiles/main.dir/main/main.cpp.o.d -o CMakeFiles/main.dir/main/main.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main/main.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/main.cpp.o -MF CMakeFiles/main.dir/main/main.cpp.o.d -o CMakeFiles/main.dir/main/main.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp
 
 CMakeFiles/main.dir/main/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/main.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/main.cpp > CMakeFiles/main.dir/main/main.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp > CMakeFiles/main.dir/main/main.cpp.i
 
 CMakeFiles/main.dir/main/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/main.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/main.cpp -o CMakeFiles/main.dir/main/main.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/main.cpp -o CMakeFiles/main.dir/main/main.cpp.s
 
 CMakeFiles/main.dir/main/rtsp_demo.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/rtsp_demo.c.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.c
+CMakeFiles/main.dir/main/rtsp_demo.c.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.c
 CMakeFiles/main.dir/main/rtsp_demo.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/main/rtsp_demo.c.o"
-	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/main/rtsp_demo.c.o -MF CMakeFiles/main.dir/main/rtsp_demo.c.o.d -o CMakeFiles/main.dir/main/rtsp_demo.c.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/main/rtsp_demo.c.o"
+	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/main/rtsp_demo.c.o -MF CMakeFiles/main.dir/main/rtsp_demo.c.o.d -o CMakeFiles/main.dir/main/rtsp_demo.c.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.c
 
 CMakeFiles/main.dir/main/rtsp_demo.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/main.dir/main/rtsp_demo.c.i"
-	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.c > CMakeFiles/main.dir/main/rtsp_demo.c.i
+	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.c > CMakeFiles/main.dir/main/rtsp_demo.c.i
 
 CMakeFiles/main.dir/main/rtsp_demo.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/main.dir/main/rtsp_demo.c.s"
-	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/rtsp_demo.c -o CMakeFiles/main.dir/main/rtsp_demo.c.s
+	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/rtsp_demo.c -o CMakeFiles/main.dir/main/rtsp_demo.c.s
 
 CMakeFiles/main.dir/main/src/connect.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/connect.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/connect.cpp
+CMakeFiles/main.dir/main/src/connect.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/connect.cpp
 CMakeFiles/main.dir/main/src/connect.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/main/src/connect.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/connect.cpp.o -MF CMakeFiles/main.dir/main/src/connect.cpp.o.d -o CMakeFiles/main.dir/main/src/connect.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/connect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/main/src/connect.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/connect.cpp.o -MF CMakeFiles/main.dir/main/src/connect.cpp.o.d -o CMakeFiles/main.dir/main/src/connect.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/connect.cpp
 
 CMakeFiles/main.dir/main/src/connect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/connect.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/connect.cpp > CMakeFiles/main.dir/main/src/connect.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/connect.cpp > CMakeFiles/main.dir/main/src/connect.cpp.i
 
 CMakeFiles/main.dir/main/src/connect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/connect.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/connect.cpp -o CMakeFiles/main.dir/main/src/connect.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/connect.cpp -o CMakeFiles/main.dir/main/src/connect.cpp.s
 
 CMakeFiles/main.dir/main/src/daemon.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/daemon.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/daemon.cpp
+CMakeFiles/main.dir/main/src/daemon.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp
 CMakeFiles/main.dir/main/src/daemon.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/main/src/daemon.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/daemon.cpp.o -MF CMakeFiles/main.dir/main/src/daemon.cpp.o.d -o CMakeFiles/main.dir/main/src/daemon.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/daemon.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/main/src/daemon.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/daemon.cpp.o -MF CMakeFiles/main.dir/main/src/daemon.cpp.o.d -o CMakeFiles/main.dir/main/src/daemon.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp
 
 CMakeFiles/main.dir/main/src/daemon.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/daemon.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/daemon.cpp > CMakeFiles/main.dir/main/src/daemon.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp > CMakeFiles/main.dir/main/src/daemon.cpp.i
 
 CMakeFiles/main.dir/main/src/daemon.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/daemon.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/daemon.cpp -o CMakeFiles/main.dir/main/src/daemon.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/daemon.cpp -o CMakeFiles/main.dir/main/src/daemon.cpp.s
 
 CMakeFiles/main.dir/main/src/frame_build.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/frame_build.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/frame_build.cpp
+CMakeFiles/main.dir/main/src/frame_build.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/frame_build.cpp
 CMakeFiles/main.dir/main/src/frame_build.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/main/src/frame_build.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/frame_build.cpp.o -MF CMakeFiles/main.dir/main/src/frame_build.cpp.o.d -o CMakeFiles/main.dir/main/src/frame_build.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/frame_build.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/main/src/frame_build.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/frame_build.cpp.o -MF CMakeFiles/main.dir/main/src/frame_build.cpp.o.d -o CMakeFiles/main.dir/main/src/frame_build.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/frame_build.cpp
 
 CMakeFiles/main.dir/main/src/frame_build.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/frame_build.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/frame_build.cpp > CMakeFiles/main.dir/main/src/frame_build.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/frame_build.cpp > CMakeFiles/main.dir/main/src/frame_build.cpp.i
 
 CMakeFiles/main.dir/main/src/frame_build.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/frame_build.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/frame_build.cpp -o CMakeFiles/main.dir/main/src/frame_build.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/frame_build.cpp -o CMakeFiles/main.dir/main/src/frame_build.cpp.s
 
 CMakeFiles/main.dir/main/src/model_detector.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/model_detector.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/model_detector.cpp
+CMakeFiles/main.dir/main/src/model_detector.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/model_detector.cpp
 CMakeFiles/main.dir/main/src/model_detector.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/main/src/model_detector.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/model_detector.cpp.o -MF CMakeFiles/main.dir/main/src/model_detector.cpp.o.d -o CMakeFiles/main.dir/main/src/model_detector.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/model_detector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/main/src/model_detector.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/model_detector.cpp.o -MF CMakeFiles/main.dir/main/src/model_detector.cpp.o.d -o CMakeFiles/main.dir/main/src/model_detector.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/model_detector.cpp
 
 CMakeFiles/main.dir/main/src/model_detector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/model_detector.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/model_detector.cpp > CMakeFiles/main.dir/main/src/model_detector.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/model_detector.cpp > CMakeFiles/main.dir/main/src/model_detector.cpp.i
 
 CMakeFiles/main.dir/main/src/model_detector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/model_detector.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/model_detector.cpp -o CMakeFiles/main.dir/main/src/model_detector.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/model_detector.cpp -o CMakeFiles/main.dir/main/src/model_detector.cpp.s
 
 CMakeFiles/main.dir/main/src/utils_device.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/utils_device.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_device.cpp
+CMakeFiles/main.dir/main/src/utils_device.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp
 CMakeFiles/main.dir/main/src/utils_device.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/main/src/utils_device.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_device.cpp.o -MF CMakeFiles/main.dir/main/src/utils_device.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_device.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_device.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/main/src/utils_device.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_device.cpp.o -MF CMakeFiles/main.dir/main/src/utils_device.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_device.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp
 
 CMakeFiles/main.dir/main/src/utils_device.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/utils_device.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_device.cpp > CMakeFiles/main.dir/main/src/utils_device.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp > CMakeFiles/main.dir/main/src/utils_device.cpp.i
 
 CMakeFiles/main.dir/main/src/utils_device.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/utils_device.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_device.cpp -o CMakeFiles/main.dir/main/src/utils_device.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_device.cpp -o CMakeFiles/main.dir/main/src/utils_device.cpp.s
 
 CMakeFiles/main.dir/main/src/utils_file.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/utils_file.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_file.cpp
+CMakeFiles/main.dir/main/src/utils_file.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp
 CMakeFiles/main.dir/main/src/utils_file.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/main/src/utils_file.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_file.cpp.o -MF CMakeFiles/main.dir/main/src/utils_file.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_file.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_file.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/main/src/utils_file.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_file.cpp.o -MF CMakeFiles/main.dir/main/src/utils_file.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_file.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp
 
 CMakeFiles/main.dir/main/src/utils_file.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/utils_file.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_file.cpp > CMakeFiles/main.dir/main/src/utils_file.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp > CMakeFiles/main.dir/main/src/utils_file.cpp.i
 
 CMakeFiles/main.dir/main/src/utils_file.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/utils_file.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_file.cpp -o CMakeFiles/main.dir/main/src/utils_file.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_file.cpp -o CMakeFiles/main.dir/main/src/utils_file.cpp.s
 
 CMakeFiles/main.dir/main/src/utils_led.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/utils_led.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_led.cpp
+CMakeFiles/main.dir/main/src/utils_led.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_led.cpp
 CMakeFiles/main.dir/main/src/utils_led.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/main/src/utils_led.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_led.cpp.o -MF CMakeFiles/main.dir/main/src/utils_led.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_led.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_led.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/main/src/utils_led.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_led.cpp.o -MF CMakeFiles/main.dir/main/src/utils_led.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_led.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_led.cpp
 
 CMakeFiles/main.dir/main/src/utils_led.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/utils_led.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_led.cpp > CMakeFiles/main.dir/main/src/utils_led.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_led.cpp > CMakeFiles/main.dir/main/src/utils_led.cpp.i
 
 CMakeFiles/main.dir/main/src/utils_led.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/utils_led.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_led.cpp -o CMakeFiles/main.dir/main/src/utils_led.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_led.cpp -o CMakeFiles/main.dir/main/src/utils_led.cpp.s
 
 CMakeFiles/main.dir/main/src/utils_user.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/utils_user.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_user.cpp
+CMakeFiles/main.dir/main/src/utils_user.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_user.cpp
 CMakeFiles/main.dir/main/src/utils_user.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/main/src/utils_user.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_user.cpp.o -MF CMakeFiles/main.dir/main/src/utils_user.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_user.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_user.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/main/src/utils_user.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_user.cpp.o -MF CMakeFiles/main.dir/main/src/utils_user.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_user.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_user.cpp
 
 CMakeFiles/main.dir/main/src/utils_user.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/utils_user.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_user.cpp > CMakeFiles/main.dir/main/src/utils_user.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_user.cpp > CMakeFiles/main.dir/main/src/utils_user.cpp.i
 
 CMakeFiles/main.dir/main/src/utils_user.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/utils_user.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_user.cpp -o CMakeFiles/main.dir/main/src/utils_user.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_user.cpp -o CMakeFiles/main.dir/main/src/utils_user.cpp.s
 
 CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_wifi.cpp
+CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp
 CMakeFiles/main.dir/main/src/utils_wifi.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main.dir/main/src/utils_wifi.cpp.o"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_wifi.cpp.o -MF CMakeFiles/main.dir/main/src/utils_wifi.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_wifi.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_wifi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main.dir/main/src/utils_wifi.cpp.o"
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main/src/utils_wifi.cpp.o -MF CMakeFiles/main.dir/main/src/utils_wifi.cpp.o.d -o CMakeFiles/main.dir/main/src/utils_wifi.cpp.o -c /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp
 
 CMakeFiles/main.dir/main/src/utils_wifi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main/src/utils_wifi.cpp.i"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_wifi.cpp > CMakeFiles/main.dir/main/src/utils_wifi.cpp.i
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp > CMakeFiles/main.dir/main/src/utils_wifi.cpp.i
 
 CMakeFiles/main.dir/main/src/utils_wifi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main/src/utils_wifi.cpp.s"
-	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/src/utils_wifi.cpp -o CMakeFiles/main.dir/main/src/utils_wifi.cpp.s
+	riscv64-unknown-linux-musl-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/src/utils_wifi.cpp -o CMakeFiles/main.dir/main/src/utils_wifi.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -253,7 +253,7 @@ libmain.a: CMakeFiles/main.dir/main/src/utils_user.cpp.o
 libmain.a: CMakeFiles/main.dir/main/src/utils_wifi.cpp.o
 libmain.a: CMakeFiles/main.dir/build.make
 libmain.a: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libmain.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libmain.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/main.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
@@ -266,6 +266,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/main.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 

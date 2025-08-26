@@ -19,7 +19,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_misc.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp
@@ -201,7 +201,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_mqtt.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_mqtt.cpp
@@ -376,7 +376,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_rtsp.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_rtsp.cpp
@@ -491,7 +491,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_exception.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_websocket.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_websocket.cpp
@@ -782,7 +782,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_camera_sg200x.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_camera_sg200x.cpp
@@ -1139,7 +1139,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_device_sg200x.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_device_sg200x.cpp
@@ -1510,7 +1510,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/json/cJSON/cJSON.c.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/json/cJSON/cJSON.c
@@ -1668,7 +1668,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/cv/ma_cv.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.cpp
@@ -1823,7 +1823,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.cpp
@@ -1938,7 +1938,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.cpp
@@ -2053,7 +2053,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/math/ma_math_matrix.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/math/ma_math_matrix.cpp
@@ -2342,7 +2342,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.cpp
@@ -2528,7 +2528,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.cpp
@@ -2712,7 +2712,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_factory.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_factory.cpp
@@ -2913,7 +2913,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.cpp
@@ -3100,7 +3100,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.cpp
@@ -3306,7 +3306,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.cpp
@@ -3491,7 +3491,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.cpp
@@ -3674,7 +3674,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.cpp
@@ -3857,7 +3857,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.cpp
@@ -4071,7 +4071,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.cpp
@@ -4254,7 +4254,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.cpp
@@ -4467,7 +4467,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.cpp
@@ -4679,7 +4679,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.cpp
@@ -4890,7 +4890,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.cpp
@@ -5104,7 +5104,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.cpp
@@ -5312,7 +5312,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp
@@ -5525,7 +5525,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.cpp
@@ -5737,7 +5737,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.cpp
@@ -5919,7 +5919,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.cpp
@@ -6101,7 +6101,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp
@@ -6209,7 +6209,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.cpp
@@ -6320,7 +6320,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.cpp
@@ -6484,7 +6484,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/byte_tracker.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/byte_tracker.cpp
@@ -6861,7 +6861,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/lapjv.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/strack.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.cpp
@@ -7849,7 +7849,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.cpp
@@ -8003,7 +8003,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.cpp.o
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.cpp
@@ -8366,7 +8366,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/invoke.hpp
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/model.hpp
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/mqtt.hpp
- /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/rc.hpp
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/refactor_required.hpp
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/resource.hpp
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/sample.hpp
@@ -8377,5 +8376,5 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h
  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.h
- /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+ /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 

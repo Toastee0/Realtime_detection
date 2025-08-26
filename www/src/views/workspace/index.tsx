@@ -57,6 +57,7 @@ import usePlatformStore, {
 import useConfigStore from "@/store/config";
 import { getToken } from "@/store/user";
 import Network from "@/views/network";
+import Mode from "@/views/mode";
 import NodeRed from "@/views/nodered";
 import styles from "./index.module.css";
 
@@ -302,7 +303,8 @@ const Workspace = () => {
         model_data.model_id == "10001" ||
         model_data.model_id == "10002" ||
         model_data.model_id == "10003" ||
-        model_data.model_id == "10004";
+        model_data.model_id == "10004" ||
+        model_data.model_id == "10005";
 
       if (isPreset || url) {
         try {

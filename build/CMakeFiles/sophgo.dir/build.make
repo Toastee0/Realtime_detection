@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo
+CMAKE_SOURCE_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build
+CMAKE_BINARY_DIR = /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sophgo.dir/depend.make
@@ -72,7 +72,7 @@ include CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_comm.c.i: cmake_force
@@ -86,7 +86,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.c.i: cmake_force
@@ -100,7 +100,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/isp.c.i: cmake_force
@@ -114,7 +114,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/sensors.c.i: cmake_force
@@ -128,7 +128,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/venc.c.i: cmake_force
@@ -142,7 +142,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vi.c.i: cmake_force
@@ -156,7 +156,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_paramparse.c.i: cmake_force
@@ -170,7 +170,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/video_sys.c.i: cmake_force
@@ -184,7 +184,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/src/vpss.c.i: cmake_force
@@ -198,7 +198,7 @@ CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sop
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o: CMakeFiles/sophgo.dir/flags.make
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o: CMakeFiles/sophgo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o"
 	riscv64-unknown-linux-musl-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o -MF CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o.d -o CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o -c /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c
 
 CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.i: cmake_force
@@ -237,7 +237,7 @@ libsophgo.a: CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/c
 libsophgo.a: CMakeFiles/sophgo.dir/home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/video.c.o
 libsophgo.a: CMakeFiles/sophgo.dir/build.make
 libsophgo.a: CMakeFiles/sophgo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C static library libsophgo.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C static library libsophgo.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/sophgo.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sophgo.dir/link.txt --verbose=$(VERBOSE)
 
@@ -250,6 +250,6 @@ CMakeFiles/sophgo.dir/clean:
 .PHONY : CMakeFiles/sophgo.dir/clean
 
 CMakeFiles/sophgo.dir/depend:
-	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/build/CMakeFiles/sophgo.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/build/CMakeFiles/sophgo.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/sophgo.dir/depend
 

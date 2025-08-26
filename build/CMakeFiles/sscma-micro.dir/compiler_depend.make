@@ -18,7 +18,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/recamera/ma_config_board.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_misc.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -199,7 +199,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_mqtt.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_mqtt.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -373,7 +373,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_rtsp.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_rtsp.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/binders.h \
@@ -487,7 +487,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_exception.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_websocket.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_transport_websocket.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -777,7 +777,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_camera_sg200x.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_camera_sg200x.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -1133,7 +1133,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_device_sg200x.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/sg200x/ma_device_sg200x.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -1503,7 +1503,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_storage.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_transport.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/json/cJSON/cJSON.c.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/json/cJSON/cJSON.c \
   /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/alloca.h \
@@ -1657,7 +1657,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/cv/ma_cv.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/binders.h \
@@ -1811,7 +1811,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/binders.h \
@@ -1925,7 +1925,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_hailo.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/binders.h \
@@ -2039,7 +2039,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_tflite.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/math/ma_math_matrix.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/math/ma_math_matrix.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/concept_check.h \
@@ -2325,7 +2325,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/engine/ma_engine_cvi.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -2510,7 +2510,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_classifier.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -2693,7 +2693,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_factory.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_factory.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -2893,7 +2893,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -3079,7 +3079,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_fomo.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -3284,7 +3284,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_nvidia_det.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -3468,7 +3468,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pfld.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -3650,7 +3650,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -3832,7 +3832,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -4045,7 +4045,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_rtmdet.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -4227,7 +4227,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -4439,7 +4439,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -4650,7 +4650,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_pose.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -4860,7 +4860,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo11_seg.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -5073,7 +5073,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolo_world.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -5280,7 +5280,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov5.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -5492,7 +5492,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -5703,7 +5703,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -5884,7 +5884,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_pose_detector.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_pose_hailo.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -6065,7 +6065,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_segmentor.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8_seg_hailo.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/backward/binders.h \
@@ -6172,7 +6172,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -6282,7 +6282,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_base64.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -6445,7 +6445,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_config_internal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_types.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_nms.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/byte_tracker.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/byte_tracker.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -6821,7 +6821,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/lapjv.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/strack.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/extension/bytetrack/kalman_filter.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -7804,7 +7804,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_version.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/ma_osal.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/array \
@@ -7957,7 +7957,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/porting/osal/ma_osal_pthread.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.cpp.o: /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.cpp \
   /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/algorithm \
@@ -8319,7 +8319,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/invoke.hpp \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/model.hpp \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/mqtt.hpp \
-  /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/rc.hpp \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/refactor_required.hpp \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/resource.hpp \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/sample.hpp \
@@ -8330,7 +8329,7 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_base.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/codec/ma_codec_json.h \
   /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.h \
-  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h
+  /home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h
 
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/ma_server_at.h:
@@ -8577,6 +8576,14 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/ma_common.h:
 
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/atomic_lockfree_defines.h:
+
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/ostream_insert.h:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/streambuf:
+
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/misc/RealSvd2x2.h:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Eigenvalues/EigenSolver.h:
@@ -8703,12 +8710,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_construct.h:
 
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/Reverse.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/memoryfwd.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets_nonio.tcc:
-
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/utility:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Householder/BlockHouseholder.h:
@@ -8740,14 +8741,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/dirent.h:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/vector:
-
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_storage_file.cpp:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/atomic_lockfree_defines.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/ostream_insert.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/streambuf:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Geometry/Scaling.h:
 
@@ -8909,6 +8902,20 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/bits/posix.h:
 
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/forward_list.h:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/parse_numbers.h:
+
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp:
+
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Geometry/Transform.h:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_vector.h:
+
+/home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/ctype.h:
+
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_misc.c:
+
 /home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/features.h:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets.h:
@@ -8963,21 +8970,25 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/math/ma_math_matrix.h:
 
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/forward_list.h:
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/Reverse.h:
 
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/parse_numbers.h:
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/memoryfwd.h:
 
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/utils/ma_anchors.cpp:
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets_nonio.tcc:
 
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Geometry/Transform.h:
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp:
 
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_vector.h:
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_classes.h:
 
-/home/victoria/recamera/sg2002_recamera_emmc/buildroot-2021.05/output/cvitek_CV181X_musl_riscv64/host/riscv64-buildroot-linux-musl/sysroot/usr/include/ctype.h:
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/MathFunctionsImpl.h:
 
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/porting/sophgo/ma_misc.c:
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/valarray_after.h:
 
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/tr1/poly_laguerre.tcc:
+/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/invoke.h:
+
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/std_function.h:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/ostream:
 
@@ -8988,10 +8999,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_algobase.h:
 
 /home/victoria/recamera/sg2002_recamera_emmc/cvi_mpi/modules/isp/include/cv181x/cvi_comm_inc.h:
-
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/invoke.h:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/ostream.tcc:
 
@@ -9037,13 +9044,9 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/sstream.tcc:
 
-/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection_video_demo/main/include/ma_config.h:
-
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/streambuf_iterator.h:
 
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/valarray_after.h:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/std_function.h:
+/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/tr1/poly_laguerre.tcc:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/stl_multimap.h:
 
@@ -9359,8 +9362,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 
 /home/victoria/recamera/sscma-example-sg200x/components/sophgo/common/app_ipcam_ll.h:
 
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/server/at/callback/rc.hpp:
-
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_point_detector.h:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sophgo/video/include/app_ipcam_isp.h:
@@ -9394,6 +9395,8 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_facets_nonio.h:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Geometry/ParametrizedLine.h:
+
+/home/victoria/recamera/sscma-example-sg200x/solutions/Realtime_detection/main/include/ma_config.h:
 
 /home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/codecvt:
 
@@ -9614,12 +9617,6 @@ CMakeFiles/sscma-micro.dir/home/victoria/recamera/sscma-example-sg200x/component
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/IO.h:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/MathFunctions.h:
-
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/sscma/core/model/ma_model_yolov8.cpp:
-
-/home/victoria/recamera/host-tools/gcc/riscv64-linux-musl-x86_64/riscv64-unknown-linux-musl/include/c++/10.2.0/bits/locale_classes.h:
-
-/home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/MathFunctionsImpl.h:
 
 /home/victoria/recamera/sscma-example-sg200x/components/sscma-micro/sscma-micro/3rdparty/eigen/eigen/Eigen/src/Core/Matrix.h:
 
