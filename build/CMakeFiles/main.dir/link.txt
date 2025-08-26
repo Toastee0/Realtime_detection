@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmain.a CMakeFiles/main.dir/main/main.cpp.o CMakeFiles/main.dir/main/rtsp_demo.c.o CMakeFiles/main.dir/main/src/connect.cpp.o CMakeFiles/main.dir/main/src/daemon.cpp.o CMakeFiles/main.dir/main/src/frame_build.cpp.o CMakeFiles/main.dir/main/src/model_detector.cpp.o CMakeFiles/main.dir/main/src/utils_device.cpp.o CMakeFiles/main.dir/main/src/utils_file.cpp.o CMakeFiles/main.dir/main/src/utils_led.cpp.o CMakeFiles/main.dir/main/src/utils_user.cpp.o CMakeFiles/main.dir/main/src/utils_wifi.cpp.o
-/usr/bin/ranlib libmain.a
