@@ -162,8 +162,8 @@
 #define ZONE_THICKNESS                    2
 
 /* Límites de almacenamiento */
-#define MAX_IMAGES_STORED               1000   // Máximo de imágenes almacenadas
-#define MAX_STORAGE_SIZE_MB             500    // Máximo espacio en disco en MB
+#define MAX_IMAGES_STORED               5000   // Máximo de imágenes almacenadas
+
 
 #define DETECTION_CLASS_NO_HELMET         "no_helmet"
 #define DETECTION_CLASS_PERSON            "person"

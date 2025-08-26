@@ -17,6 +17,7 @@
 using json = nlohmann::json;
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
+#include <regex>
 
 class ColorPalette {
 public:
@@ -224,6 +225,58 @@ void flush_buffer(ma::Camera* camera) {
     }
 }
 
+int extract_number(const std::string& filename) {
+    auto dot_pos = filename.find_last_of('.');
+    std::string name = (dot_pos == std::string::npos) ? filename : filename.substr(0, dot_pos);
+    auto underscore_pos = name.find_last_of('_');
+    if (underscore_pos == std::string::npos) return -1;
+    std::string num_str = name.substr(underscore_pos + 1);
+    if (num_str.empty()) return -1;
+    try { return std::stoi(num_str); } catch (...) { return -1; }
+}
+
+void cleanup_old_images(const std::string& folder_path, int max_images_to_keep) {
+    namespace fs = std::filesystem;
+    if (max_images_to_keep <= 0) return;
+
+    try {
+        struct Item {
+            fs::path path;
+            fs::file_time_type t;
+            int num;
+        };
+
+        std::vector<Item> items;
+        for (const auto& entry : fs::directory_iterator(folder_path)) {
+            auto ext = entry.path().extension().string();
+            std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+            if (ext == ".jpg" || ext == ".jpeg") {
+                std::error_code ec;
+                auto t = fs::last_write_time(entry, ec);
+                if (ec) t = fs::file_time_type::min(); // si falla, lo tratamos como muy antiguo
+                items.push_back({entry.path(), t, extract_number(entry.path().filename().string())});
+            }
+        }
+
+        // Orden: más antiguo primero; si empata tiempo, usar número; si empata, por nombre.
+        std::sort(items.begin(), items.end(), [](const Item& a, const Item& b){
+            if (a.t != b.t) return a.t < b.t;
+            if ((a.num >= 0) && (b.num >= 0) && a.num != b.num) return a.num < b.num;
+            return a.path.filename().string() < b.path.filename().string();
+        });
+        if (items.size() > (size_t)max_images_to_keep) {
+            size_t to_delete = items.size() - (size_t)max_images_to_keep;
+            for (size_t i = 0; i < to_delete; ++i) {
+                std::error_code ec;
+                fs::remove(items[i].path, ec);
+               
+            }
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "cleanup_old_images error: " << e.what() << "\n";
+    }
+}
+
 std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb888, int frame_id, 
                                    bool report_person_count, bool can_alert_helmet, bool can_zone) {
     auto start = std::chrono::high_resolution_clock::now();
@@ -342,7 +395,7 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb
                     restricted_zone_violation = true;
                     need_output_image = true;
                     
-                    cv::rectangle(input_bgr_or_rgb888, rect, cv::Scalar(0, 0, 255), 3); // Rojo más intenso
+                    cv::rectangle(input_bgr_or_rgb888, rect, cv::Scalar(0, 0, 255), 3);
                     cv::putText(input_bgr_or_rgb888, "ZONE ALERT",
                                 {std::max(0, (int)x1), std::max(15, (int)y1 - 10)},
                                 cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
@@ -367,7 +420,7 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb
     if (detected_no_helmet) result_json[EVENT_DETECTED_NO_HELMET] = true;
     if (restricted_zone_violation) result_json[EVENT_RESTRICTED_ZONE] = true;
     result_json["cooldown"] = false;
-    
+
     if (need_output_image) {
         namespace fs = std::filesystem;
         std::string folder_name = PATH_IMAGES_DIR;
@@ -375,22 +428,24 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb
         if (!fs::exists(folder_name)) {
             try { fs::create_directory(folder_name); } catch (...) {}
         }
+
         std::string filename = folder_name + "/alarm_" + std::to_string(frame_id) + ".jpg";
         cv::Mat image_bgr;
         if (input_bgr_or_rgb888.channels() == 3) {
-           cv::cvtColor(input_bgr_or_rgb888, image_bgr, cv::COLOR_RGB2BGR);
+            cv::cvtColor(input_bgr_or_rgb888, image_bgr, cv::COLOR_RGB2BGR);
         } else {
-
             image_bgr = input_bgr_or_rgb888.clone();
         }
-        
+
         if (cv::imwrite(filename, image_bgr)) {
             result_json["image_saved"] = filename;
+
+            // 👇 LIMPIAR DESPUÉS DE GUARDAR
+            cleanup_old_images(folder_name, MAX_IMAGES_STORED);
         }
     }
-    
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout<<duration;
+    std::cout<<duration<< std::endl;
     return result_json.dump();
 }
