@@ -139,12 +139,27 @@
 #define DETECTION_INFERENCE_HEIGHT        640
 
 /* Zona restringida */
-#define ZONE_LINE_X1                      100
-#define ZONE_LINE_Y1                      200
-#define ZONE_LINE_X2                      800
-#define ZONE_LINE_Y2                      200
-#define ZONE_LINE_SLOPE                   0.0f   // pendiente (0 = horizontal)
-#define ZONE_LINE_INTERCEPT               200.0f // para ecuación y = mx + b
+#define ZONE_ENABLED                      true
+
+#define ZONE_TYPE "LINE"
+#define ZONE_DIVIDER_PERCENT 0.75f
+
+#define ZONE_TYPE "LINE_ADVANCED"
+#define ZONE_LINE_START_X_PERCENT 0.5f   // 50% izquierda
+#define ZONE_LINE_START_Y_PERCENT 0.0f   // Parte superior
+#define ZONE_LINE_END_X_PERCENT   1.0f   // 100% derecha  
+#define ZONE_LINE_END_Y_PERCENT   1.0f   // Parte inferior
+
+#define ZONE_TYPE "RECTANGLE"
+#define ZONE_RECT_TOP_LEFT_X_PERCENT      0.7f
+#define ZONE_RECT_TOP_LEFT_Y_PERCENT      0.2f  
+#define ZONE_RECT_BOTTOM_RIGHT_X_PERCENT  0.9f
+#define ZONE_RECT_BOTTOM_RIGHT_Y_PERCENT  0.8f
+
+#define ZONE_COLOR_R                      0
+#define ZONE_COLOR_G                      0
+#define ZONE_COLOR_B                      255
+#define ZONE_THICKNESS                    2
 
 /* Límites de almacenamiento */
 #define MAX_IMAGES_STORED               1000   // Máximo de imágenes almacenadas
