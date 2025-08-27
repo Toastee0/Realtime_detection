@@ -18,6 +18,7 @@ using json = nlohmann::json;
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
 #include <regex>
+#include "config.h"
 
 class ColorPalette {
 public:
@@ -277,17 +278,39 @@ void cleanup_old_images(const std::string& folder_path, int max_images_to_keep) 
     }
 }
 
-std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb888, int frame_id, 
-                                   bool report_person_count, bool can_alert_helmet, bool can_zone) {
+int find_max_image_number(const std::string& folder_path) {
+    namespace fs = std::filesystem;
+    int max_num = 0;
+    try {
+        for (const auto& entry : fs::directory_iterator(folder_path)) {
+            if (entry.is_regular_file()) {
+                std::string filename = entry.path().filename().string();
+                if (filename.find("alarm_") == 0 && 
+                    (filename.find(".jpg") != std::string::npos || 
+                     filename.find(".jpeg") != std::string::npos)) {
+                    int num = extract_number(filename);
+                    if (num > max_num) {
+                        max_num = num;
+                    }
+                }
+            }
+        }
+    } catch (...) {
+        // Si hay error al leer el directorio, empezamos desde 0
+    }
+    return max_num;
+}
+
+std::string model_detector_from_mat(ma::Model*& model, cv::Mat& frame,bool report_person_count, bool can_alert_helmet, bool can_zone) {
     auto start = std::chrono::high_resolution_clock::now();
     if (!model) return R"({"error":"model is null"})";
-    if (input_bgr_or_rgb888.empty()) return R"({"error":"input frame is empty"})";
+    if (frame.empty()) return R"({"error":"input frame is empty"})";
     
     ma_img_t img;
-    img.data   = (uint8_t*)input_bgr_or_rgb888.data;
-    img.size   = static_cast<uint32_t>(input_bgr_or_rgb888.rows * input_bgr_or_rgb888.cols * input_bgr_or_rgb888.channels());
-    img.width  = static_cast<uint32_t>(input_bgr_or_rgb888.cols);
-    img.height = static_cast<uint32_t>(input_bgr_or_rgb888.rows);
+    img.data   = (uint8_t*)frame.data;
+    img.size   = static_cast<uint32_t>(frame.rows * frame.cols * frame.channels());
+    img.width  = static_cast<uint32_t>(frame.cols);
+    img.height = static_cast<uint32_t>(frame.rows);
     img.format = MA_PIXEL_FORMAT_RGB888;
     img.rotate = MA_PIXEL_ROTATE_0;
     
@@ -301,115 +324,95 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb
     int person_count = 0;
     bool need_output_image = false;
     
-    if (can_zone && ZONE_ENABLED) {
-        cv::Scalar zone_color(ZONE_COLOR_B, ZONE_COLOR_G, ZONE_COLOR_R);
-        
-        #ifdef ZONE_TYPE
-        if (strcmp(ZONE_TYPE, "LINE") == 0) {
-            int divider_x = static_cast<int>(ZONE_DIVIDER_PERCENT * input_bgr_or_rgb888.cols);
-            cv::line(input_bgr_or_rgb888, 
-                    {divider_x, 0}, 
-                    {divider_x, input_bgr_or_rgb888.rows}, 
-                    zone_color, ZONE_THICKNESS);
-                    
-            cv::putText(input_bgr_or_rgb888, "restricted_zone",
-                        {divider_x + 10, 30},  
-                        cv::FONT_HERSHEY_SIMPLEX, 0.7, zone_color, 2);
-                    
-        } else if (strcmp(ZONE_TYPE, "LINE_ADVANCED") == 0) {
-            int start_x = static_cast<int>(ZONE_LINE_START_X_PERCENT * input_bgr_or_rgb888.cols);
-            int start_y = static_cast<int>(ZONE_LINE_START_Y_PERCENT * input_bgr_or_rgb888.rows);
-            int end_x = static_cast<int>(ZONE_LINE_END_X_PERCENT * input_bgr_or_rgb888.cols);
-            int end_y = static_cast<int>(ZONE_LINE_END_Y_PERCENT * input_bgr_or_rgb888.rows);
-            
-            cv::line(input_bgr_or_rgb888, 
-                    {start_x, start_y}, 
-                    {end_x, end_y}, 
-                    zone_color, ZONE_THICKNESS);
-                    
-            cv::putText(input_bgr_or_rgb888, "restricted_zone",
-                        {(start_x + end_x)/2, (start_y + end_y)/2},
-                        cv::FONT_HERSHEY_SIMPLEX, 0.7, zone_color, 2);
-                    
-        } else if (strcmp(ZONE_TYPE, "RECTANGLE") == 0) {
-            int rect_x1 = static_cast<int>(ZONE_RECT_TOP_LEFT_X_PERCENT * input_bgr_or_rgb888.cols);
-            int rect_y1 = static_cast<int>(ZONE_RECT_TOP_LEFT_Y_PERCENT * input_bgr_or_rgb888.rows);
-            int rect_x2 = static_cast<int>(ZONE_RECT_BOTTOM_RIGHT_X_PERCENT * input_bgr_or_rgb888.cols);
-            int rect_y2 = static_cast<int>(ZONE_RECT_BOTTOM_RIGHT_Y_PERCENT * input_bgr_or_rgb888.rows);
-            
-            cv::rectangle(input_bgr_or_rgb888,
-                        {rect_x1, rect_y1},
-                        {rect_x2, rect_y2},
-                        zone_color, ZONE_THICKNESS);
-            
-            cv::putText(input_bgr_or_rgb888, "restricted_zone",
-                        {rect_x1 + 10, rect_y1 + 30},
-                        cv::FONT_HERSHEY_SIMPLEX, 0.7, zone_color, 2);
+    if (can_zone && g_cfg.zone_enabled) {
+        cv::Scalar color(g_cfg.zone_b, g_cfg.zone_g, g_cfg.zone_r);
+
+        if (g_cfg.zone_type == "LINE") {
+            int div_x = static_cast<int>(g_cfg.zone_div * frame.cols);
+            cv::line(frame, {div_x, 0}, {div_x, frame.rows}, color, g_cfg.zone_thick);
+            cv::putText(frame, g_cfg.ev_zone, {div_x + 10, 30}, cv::FONT_HERSHEY_SIMPLEX, 0.7, color, 2);
+
+        } else if (g_cfg.zone_type == "LINE_ADVANCED") {
+            int sx = static_cast<int>(g_cfg.line_x1 * frame.cols);
+            int sy = static_cast<int>(g_cfg.line_y1 * frame.rows);
+            int ex = static_cast<int>(g_cfg.line_x2 * frame.cols);
+            int ey = static_cast<int>(g_cfg.line_y2 * frame.rows);
+
+            cv::line(frame, {sx, sy}, {ex, ey}, color, g_cfg.zone_thick);
+            cv::putText(frame, g_cfg.ev_zone, {(sx + ex) / 2, (sy + ey) / 2}, cv::FONT_HERSHEY_SIMPLEX, 0.7, color, 2);
+
+        } else if (g_cfg.zone_type == "RECTANGLE") {
+            int x1 = static_cast<int>(g_cfg.rect_x1 * frame.cols);
+            int y1 = static_cast<int>(g_cfg.rect_y1 * frame.rows);
+            int x2 = static_cast<int>(g_cfg.rect_x2 * frame.cols);
+            int y2 = static_cast<int>(g_cfg.rect_y2 * frame.rows);
+
+            cv::rectangle(frame, {x1, y1}, {x2, y2}, color, g_cfg.zone_thick);
+            cv::putText(frame, g_cfg.ev_zone, {x1 + 10, y1 + 30}, cv::FONT_HERSHEY_SIMPLEX, 0.7, color, 2);
         }
-        #endif
     }
-    
+
+
     for (const auto& r : results) {
         std::string cls = ClassMapper::get_class(r.target);
-        float x1 = (r.x - r.w / 2.0f) * input_bgr_or_rgb888.cols;
-        float y1 = (r.y - r.h / 2.0f) * input_bgr_or_rgb888.rows;
-        float x2 = (r.x + r.w / 2.0f) * input_bgr_or_rgb888.cols;
-        float y2 = (r.y + r.h / 2.0f) * input_bgr_or_rgb888.rows;
+        float x1 = (r.x - r.w / 2.0f) * frame.cols;
+        float y1 = (r.y - r.h / 2.0f) * frame.rows;
+        float x2 = (r.x + r.w / 2.0f) * frame.cols;
+        float y2 = (r.y + r.h / 2.0f) * frame.rows;
         cv::Rect rect(cv::Point((int)x1, (int)y1), cv::Point((int)x2, (int)y2));
 
-        if (cls == DETECTION_CLASS_PERSON) {
+        if (cls == g_cfg.cls_person) {
             person_count++;
-            
-            if (can_zone && ZONE_ENABLED) {
-                cv::Point person_center(r.x * input_bgr_or_rgb888.cols, r.y * input_bgr_or_rgb888.rows);
+
+            if (can_zone && g_cfg.zone_enabled) {
+                cv::Point person_center(static_cast<int>(r.x * frame.cols),
+                                        static_cast<int>(r.y * frame.rows));
                 bool in_restricted_zone = false;
-                
-                #ifdef ZONE_TYPE
-                if (strcmp(ZONE_TYPE, "LINE") == 0) {
-                    int divider_x = static_cast<int>(ZONE_DIVIDER_PERCENT * input_bgr_or_rgb888.cols);
+
+                if (g_cfg.zone_type == "LINE") {
+                    int divider_x = static_cast<int>(g_cfg.zone_div * frame.cols);
                     in_restricted_zone = (person_center.x > divider_x);
-                    
-                } else if (strcmp(ZONE_TYPE, "LINE_ADVANCED") == 0) {
-                    int start_x = static_cast<int>(ZONE_LINE_START_X_PERCENT * input_bgr_or_rgb888.cols);
-                    int start_y = static_cast<int>(ZONE_LINE_START_Y_PERCENT * input_bgr_or_rgb888.rows);
-                    int end_x = static_cast<int>(ZONE_LINE_END_X_PERCENT * input_bgr_or_rgb888.cols);
-                    int end_y = static_cast<int>(ZONE_LINE_END_Y_PERCENT * input_bgr_or_rgb888.rows);
-                    
+
+                } else if (g_cfg.zone_type == "LINE_ADVANCED") {
+                    int start_x = static_cast<int>(g_cfg.line_x1 * frame.cols);
+                    int start_y = static_cast<int>(g_cfg.line_y1 * frame.rows);
+                    int end_x   = static_cast<int>(g_cfg.line_x2 * frame.cols);
+                    int end_y   = static_cast<int>(g_cfg.line_y2 * frame.rows);
+
                     cv::Point line_vec(end_x - start_x, end_y - start_y);
                     cv::Point person_vec(person_center.x - start_x, person_center.y - start_y);
                     float cross = line_vec.x * person_vec.y - line_vec.y * person_vec.x;
                     in_restricted_zone = (cross < 0);
-                    
-                } else if (strcmp(ZONE_TYPE, "RECTANGLE") == 0) {
-                    int rect_x1 = static_cast<int>(ZONE_RECT_TOP_LEFT_X_PERCENT * input_bgr_or_rgb888.cols);
-                    int rect_y1 = static_cast<int>(ZONE_RECT_TOP_LEFT_Y_PERCENT * input_bgr_or_rgb888.rows);
-                    int rect_x2 = static_cast<int>(ZONE_RECT_BOTTOM_RIGHT_X_PERCENT * input_bgr_or_rgb888.cols);
-                    int rect_y2 = static_cast<int>(ZONE_RECT_BOTTOM_RIGHT_Y_PERCENT * input_bgr_or_rgb888.rows);
-                    
+
+                } else if (g_cfg.zone_type == "RECTANGLE") {
+                    int rect_x1 = static_cast<int>(g_cfg.rect_x1 * frame.cols);
+                    int rect_y1 = static_cast<int>(g_cfg.rect_y1 * frame.rows);
+                    int rect_x2 = static_cast<int>(g_cfg.rect_x2 * frame.cols);
+                    int rect_y2 = static_cast<int>(g_cfg.rect_y2 * frame.rows);
+
                     cv::Rect zone_rect(rect_x1, rect_y1, rect_x2 - rect_x1, rect_y2 - rect_y1);
                     in_restricted_zone = zone_rect.contains(person_center);
                 }
-                #endif
-                
+
                 if (in_restricted_zone) {
                     restricted_zone_violation = true;
                     need_output_image = true;
-                    
-                    cv::rectangle(input_bgr_or_rgb888, rect, cv::Scalar(0, 0, 255), 3);
-                    cv::putText(input_bgr_or_rgb888, "ZONE ALERT",
+
+                    cv::rectangle(frame, rect, cv::Scalar(0, 0, 255), 3);
+                    cv::putText(frame, "ZONE ALERT",
                                 {std::max(0, (int)x1), std::max(15, (int)y1 - 10)},
                                 cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
                 }
             }
         }
 
-        if (cls == DETECTION_CLASS_NO_HELMET && can_alert_helmet) {
+        if (cls == g_cfg.cls_no_helmet && can_alert_helmet) {
             detected_no_helmet = true;
             need_output_image = true;
-            
+
             cv::Scalar color = ColorPalette::getColor(r.target);
-            cv::rectangle(input_bgr_or_rgb888, rect, color, 3);
-            cv::putText(input_bgr_or_rgb888, EVENT_DETECTED_NO_HELMET,
+            cv::rectangle(frame, rect, color, 3);
+            cv::putText(frame, g_cfg.ev_no_helmet,
                         {std::max(0, (int)x1), std::max(15, (int)y1 - 10)},
                         cv::FONT_HERSHEY_SIMPLEX, 0.6, color, 2);
         }
@@ -417,35 +420,42 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& input_bgr_or_rgb
 
     json result_json;
     if (report_person_count) result_json["person_count"] = person_count;
-    if (detected_no_helmet) result_json[EVENT_DETECTED_NO_HELMET] = true;
-    if (restricted_zone_violation) result_json[EVENT_RESTRICTED_ZONE] = true;
+    if (detected_no_helmet) result_json[g_cfg.ev_no_helmet] = true;
+    if (restricted_zone_violation) result_json[g_cfg.ev_zone] = true;
     result_json["cooldown"] = false;
 
     if (need_output_image) {
         namespace fs = std::filesystem;
-        std::string folder_name = PATH_IMAGES_DIR;
+        std::string folder_name = g_cfg.dir_images;
 
-        if (!fs::exists(folder_name)) {
-            try { fs::create_directory(folder_name); } catch (...) {}
+        try {
+            if (!fs::exists(folder_name)) {
+                fs::create_directory(folder_name);
+            }
+        } catch (...) {
+            // si falla la creación, seguimos sin guardar la imagen
         }
+        static std::mutex counter_mutex;
+        static int image_counter = find_max_image_number(folder_name);
+        
+        std::lock_guard<std::mutex> lock(counter_mutex);
+        image_counter++;
 
-        std::string filename = folder_name + "/alarm_" + std::to_string(frame_id) + ".jpg";
+        std::string filename = folder_name + "/alarm_" + std::to_string(image_counter) + ".jpg";
         cv::Mat image_bgr;
-        if (input_bgr_or_rgb888.channels() == 3) {
-            cv::cvtColor(input_bgr_or_rgb888, image_bgr, cv::COLOR_RGB2BGR);
+        if (frame.channels() == 3) {
+            cv::cvtColor(frame, image_bgr, cv::COLOR_RGB2BGR);
         } else {
-            image_bgr = input_bgr_or_rgb888.clone();
+            image_bgr = frame.clone();
         }
 
         if (cv::imwrite(filename, image_bgr)) {
-            result_json["image_saved"] = filename;
-
-            // 👇 LIMPIAR DESPUÉS DE GUARDAR
-            cleanup_old_images(folder_name, MAX_IMAGES_STORED);
+            cleanup_old_images(folder_name, g_cfg.max_images);
         }
     }
+
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    std::cout<<duration<< std::endl;
+
     return result_json.dump();
 }

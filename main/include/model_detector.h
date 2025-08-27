@@ -32,11 +32,10 @@ ma::Model* initialize_model(const std::string& model_path) noexcept;
 // 目标检测主函数
 //std::string model_detector(ma::Model*& model, ma::Camera*& camera,int& i);
 // En el archivo donde está model_detector (declaración en .h)
-std::string model_detector(ma::Model*& model, ma::Camera*& camera,int& i,  bool report_person_count,bool can_alert_helmet, bool can_zone);
+std::string model_detector(ma::Model*& model, ma::Camera*& camera,  bool report_person_count,bool can_alert_helmet, bool can_zone);
 std::string model_detector_from_mat(
     ma::Model*& model,
     cv::Mat& input_bgr_or_rgb888,
-    int frame_id,
     bool report_person_count,
     bool can_alert_helmet,
     bool can_zone

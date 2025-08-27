@@ -31,6 +31,7 @@
 #include "cvi_sys.h"
 #include "cvi_comm_video.h"
 #include "global_cfg.h"
+#include "config.h"
 using nlohmann_json = nlohmann::json;
 using namespace hv;
 
@@ -348,7 +349,7 @@ int deinitHttpd() {
 
 
 void sendTestHttpPost(std::string payload) {
-    const std::string url = HTTP_SERVER_URL;
+    const std::string url = g_cfg.http_url;
     const char* url_cstr = url.c_str();
 
     http_headers headers;
@@ -374,7 +375,12 @@ struct AlarmConfig {
     std::chrono::steady_clock::time_point* last_alert; 
 };
 
-void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono::steady_clock::time_point& last_helmet_alert,std::chrono::steady_clock::time_point& last_zone_alert, std::chrono::steady_clock::time_point& last_person_report) {
+void process_detection_results(nlohmann_json& parsed,
+                               uint8_t* frame,
+                               std::chrono::steady_clock::time_point& last_helmet_alert,
+                               std::chrono::steady_clock::time_point& last_zone_alert,
+                               std::chrono::steady_clock::time_point& last_person_report) 
+{
     auto now = std::chrono::steady_clock::now();
 
     if (parsed.contains("image_saved")) {
@@ -384,14 +390,14 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
 
     try {
         std::vector<AlarmConfig> alarms = {
-            {EVENT_DETECTED_NO_HELMET,  EVENT_CODE_NO_HELMET,  MQTT_TOPIC_EVENTS, &last_helmet_alert},
-            {EVENT_RESTRICTED_ZONE, EVENT_CODE_ZONE_VIOLATION, MQTT_TOPIC_EVENTS, &last_zone_alert}
+            { g_cfg.ev_no_helmet, g_cfg.code_no_helmet, g_cfg.mqtt_ev_topic, &last_helmet_alert },
+            { g_cfg.ev_zone,      g_cfg.code_zone,      g_cfg.mqtt_ev_topic, &last_zone_alert }
         };
 
         for (const auto& alarm : alarms) {
             if (parsed.contains(alarm.json_key)) {
                 auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - *(alarm.last_alert)).count();
-                if (elapsed < ALERT_COOLDOWN_MS) {
+                if (elapsed < g_cfg.cooldown_ms) {
                     continue; // Todavía en cooldown
                 }
 
@@ -412,7 +418,6 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
             }
         }
 
-
         if (parsed.contains("person_count")) {
             last_person_report = now;
             int person_count = parsed["person_count"].get<int>();
@@ -422,7 +427,7 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
             report_msg["timestamp"] = std::chrono::system_clock::now().time_since_epoch().count();
 
             std::stringstream payload;
-            payload << EVENT_CODE_PERSON_COUNT
+            payload << g_cfg.code_person
                     << std::setw(4) << std::setfill('0') << std::hex << person_count;
             report_msg["payload"] = payload.str();
 
@@ -430,7 +435,7 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
             MA_LOGD(TAG, "Enviando reporte de personas: %s", msg_str.c_str());
 
             if (internal_mode == 0) {
-                sendDetectionJsonByMqtt(msg_str.c_str(), MQTT_TOPIC_STATUS);
+                sendDetectionJsonByMqtt(msg_str.c_str(), g_cfg.mqtt_st_topic.c_str());
             } else if (internal_mode == 1) {
                 sendTestHttpPost(report_msg["payload"].get<std::string>());
             }
@@ -443,7 +448,6 @@ void process_detection_results(nlohmann_json& parsed,uint8_t* frame, std::chrono
         MA_LOGE(TAG, "Error inesperado: %s", e.what());
     }
 }
-
 
 void initConnectivity(connectivity_mode_t& connectivity_mode) {
 
@@ -459,5 +463,4 @@ void initConnectivity(connectivity_mode_t& connectivity_mode) {
         internal_mode = 1;
     } 
 }
-
 }  // extern "C" {

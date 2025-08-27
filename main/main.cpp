@@ -16,12 +16,12 @@
 #include "connect.h"    
 #include "hv/hlog.h"
 #include "global_cfg.h"
+#include "config.h"
 
 using json = nlohmann::json;
-connectivity_mode_t connectivity_mode = CONNECTIVITY_MODE_MQTT;  
 static ma::Model* g_model = nullptr;
 static std::mutex g_det_mutex;
-
+connectivity_mode_t connectivity_mode = CONNECTIVITY_MODE_MQTT;  
 static std::chrono::steady_clock::time_point g_last_helmet_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
 static std::chrono::steady_clock::time_point g_last_zone_alert   = std::chrono::steady_clock::now() - std::chrono::seconds(10);
 static std::chrono::steady_clock::time_point g_last_person_report= std::chrono::steady_clock::now();
@@ -54,16 +54,14 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
     }
 
     cv::Mat frame_rgb888(f->u32Height, f->u32Width, CV_8UC3, f->pu8VirAddr[0]);
-    static int frame_id = 0;
-    frame_id++;
 
     auto now = std::chrono::steady_clock::now();
     bool report_person = (now - g_last_person_report) >= 
-                        std::chrono::milliseconds(PERSON_REPORT_INTERVAL_MS);
+                        std::chrono::milliseconds(g_cfg.report_ms);
     bool can_alert_helmet = (now - g_last_helmet_alert) >= 
-                           std::chrono::milliseconds(ALERT_COOLDOWN_MS);
+                           std::chrono::milliseconds(g_cfg.cooldown_ms);
     bool can_zone = (now - g_last_zone_alert) >= 
-                   std::chrono::milliseconds(ALERT_COOLDOWN_MS);
+                   std::chrono::milliseconds(g_cfg.cooldown_ms);
     
     std::string result_json_str;
     {
@@ -71,7 +69,6 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
         result_json_str = model_detector_from_mat(
             g_model,
             frame_rgb888,
-            frame_id,
             report_person,
             can_alert_helmet,
             can_zone
@@ -108,7 +105,9 @@ connectivity_mode_t parse_mode(int argc, char* argv[]) {
     exit(1);
 }
 
+
 int main(int argc, char* argv[]) {
+    loadConfig(PATH_CONF);
     connectivity_mode = parse_mode(argc, argv);
     signal(SIGINT, app_ipcam_ExitSig_handle);
     signal(SIGTERM, app_ipcam_ExitSig_handle);
@@ -128,7 +127,7 @@ int main(int argc, char* argv[]) {
     registerVideoFrameHandler(VIDEO_CH0, 0, fpRunYolo_CH0, NULL);
 
     // Usar la constante definida para la ruta del modelo
-    g_model = initialize_model(PATH_MODEL_YOLO);
+    g_model = initialize_model(g_cfg.model_yolo);
     if (!g_model) {
         char msg[128];
         snprintf(msg, sizeof(msg), "Model initialization failed");

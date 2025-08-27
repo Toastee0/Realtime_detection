@@ -30,7 +30,7 @@
 #define PATH_AVAHI_CONF            "/etc/avahi/avahi-daemon.conf"
 #define PATH_AVAHI_DAEMON_SERVICE  "/etc/init.d/S50avahi-daemon"
 #define PATH_HOSTAPD_CONF          "/etc/hostapd_2g4.conf"
-
+#define PATH_CONF                  "/usr/local/bin/config.ini"
 #define PATH_NODERED_CONF          "/home/recamera/.node-red/settings.js"
 
 #define PATH_SERVER_CRT            "/etc/cert/server.crt"
@@ -103,26 +103,6 @@
 #define SCRIPT_DEVICE_RESTARTSSCMA    SCRIPT_DEVICE(restartSscma)
 #define SCRIPT_DEVICE_ENABLE_SSHD     SCRIPT_DEVICE(enableSshd)
 
-
-/* Configuración de eventos y alertas */
-#define EVENT_DETECTED_NO_HELMET          "detected_no_helmet"
-#define EVENT_RESTRICTED_ZONE             "restricted_zone"
-#define EVENT_CODE_NO_HELMET              "E1140140002103"
-#define EVENT_CODE_ZONE_VIOLATION         "E1140140002102"
-#define EVENT_CODE_PERSON_COUNT           "E1140100004001"  
-#define MQTT_TOPIC_EVENTS                 "industria4-0/devices/cam_1/events"
-#define MQTT_TOPIC_STATUS                 "industria4-0/devices/cam_1/status" 
-#define HTTP_SERVER_URL                   "http://192.168.4.1/report"
-
-/* Tiempos de alerta (en milisegundos) */
-#define ALERT_COOLDOWN_MS                 5000
-#define PERSON_REPORT_INTERVAL_MS         5000
-
-/* Rutas de modelos y archivos */
-#define PATH_IMAGES_DIR                   "/usr/local/bin/images"
-#define PATH_MODEL_YOLO                   "/usr/local/bin/yolo11n_helmetPerson_int8_sym.cvimodel"
-#define PATH_SSL_CERTS                    "/etc/ssl/certs/cam_1/"
-
 /* Configuración de video */
 #define VIDEO_FORMAT_DEFAULT              VIDEO_FORMAT_RGB888
 #define VIDEO_WIDTH_DEFAULT               1920
@@ -131,43 +111,6 @@
 #define VISUAL_ZONE_DIVIDER_COLOR cv::Scalar(0, 0, 255)
 #define VISUAL_BBOX_THICKNESS 3
 #define VISUAL_ZONE_DIVIDER_THICKNESS 2
-
-/* Configuración de detección */
-#define DETECTION_CONFIDENCE_THRESHOLD    0.5f
-#define DETECTION_NMS_THRESHOLD           0.4f
-#define DETECTION_INFERENCE_WIDTH         640
-#define DETECTION_INFERENCE_HEIGHT        640
-
-/* Zona restringida */
-#define ZONE_ENABLED                      true
-
-#define ZONE_TYPE "LINE"
-#define ZONE_DIVIDER_PERCENT 0.75f
-
-#define ZONE_TYPE "LINE_ADVANCED"
-#define ZONE_LINE_START_X_PERCENT 0.5f   // 50% izquierda
-#define ZONE_LINE_START_Y_PERCENT 0.0f   // Parte superior
-#define ZONE_LINE_END_X_PERCENT   1.0f   // 100% derecha  
-#define ZONE_LINE_END_Y_PERCENT   1.0f   // Parte inferior
-
-#define ZONE_TYPE "RECTANGLE"
-#define ZONE_RECT_TOP_LEFT_X_PERCENT      0.7f
-#define ZONE_RECT_TOP_LEFT_Y_PERCENT      0.2f  
-#define ZONE_RECT_BOTTOM_RIGHT_X_PERCENT  0.9f
-#define ZONE_RECT_BOTTOM_RIGHT_Y_PERCENT  0.8f
-
-#define ZONE_COLOR_R                      0
-#define ZONE_COLOR_G                      0
-#define ZONE_COLOR_B                      255
-#define ZONE_THICKNESS                    2
-
-/* Límites de almacenamiento */
-#define MAX_IMAGES_STORED               5000   // Máximo de imágenes almacenadas
-
-
-#define DETECTION_CLASS_NO_HELMET         "no_helmet"
-#define DETECTION_CLASS_PERSON            "person"
-
 /* Modos de conectividad */
 typedef enum {
     CONNECTIVITY_MODE_MQTT = 0,
