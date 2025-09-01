@@ -427,33 +427,72 @@ std::string model_detector_from_mat(ma::Model*& model, cv::Mat& frame,bool repor
     if (need_output_image) {
         namespace fs = std::filesystem;
         std::string folder_name = g_cfg.dir_images;
-
+        std::string folder_name_bak = g_cfg.dir_images_bak;
+        
+        std::string target_folder = folder_name;
+        bool use_backup = false;
+        bool can_save_image = true;
+        // Primero intentamos con la carpeta principal
         try {
             if (!fs::exists(folder_name)) {
+                // Si no existe, intentamos crear la carpeta principal
                 fs::create_directory(folder_name);
             }
+            // Verificamos que realmente podemos acceder a la carpeta
+            if (!fs::is_directory(folder_name)) {
+                throw std::runtime_error("No es un directorio válido");
+            }
         } catch (...) {
-            // si falla la creación, seguimos sin guardar la imagen
+            // Si falla la creación o acceso a la carpeta principal, usamos el backup
+            use_backup = true;
+            target_folder = folder_name_bak;
+            
+            try {
+                // Intentamos crear la carpeta de respaldo si no existe
+                if (!fs::exists(folder_name_bak)) {
+                    fs::create_directory(folder_name_bak);
+                }
+            } catch (...) {
+                // Si también falla la creación del backup, no guardamos la imagen
+                std::cout << "Error: No se pudo acceder a ninguna carpeta de imágenes" << std::endl;
+                can_save_image = false;
+            }
         }
-        static std::mutex counter_mutex;
-        static int image_counter = find_max_image_number(folder_name);
         
-        std::lock_guard<std::mutex> lock(counter_mutex);
-        image_counter++;
 
-        std::string filename = folder_name + "/alarm_" + std::to_string(image_counter) + ".jpg";
-        cv::Mat image_bgr;
-        if (frame.channels() == 3) {
-            cv::cvtColor(frame, image_bgr, cv::COLOR_RGB2BGR);
-        } else {
-            image_bgr = frame.clone();
-        }
 
-        if (cv::imwrite(filename, image_bgr)) {
-            cleanup_old_images(folder_name, g_cfg.max_images);
+       if (can_save_image) {
+            try {
+                static std::mutex counter_mutex;
+                static int image_counter = find_max_image_number(target_folder);
+                
+                std::lock_guard<std::mutex> lock(counter_mutex);
+                image_counter++;
+
+                std::string filename = target_folder + "/alarm_" + std::to_string(image_counter) + ".jpg";
+                cv::Mat image_bgr;
+                if (frame.channels() == 3) {
+                    cv::cvtColor(frame, image_bgr, cv::COLOR_RGB2BGR);
+                } else {
+                    image_bgr = frame.clone();
+                }
+
+                if (cv::imwrite(filename, image_bgr)) {
+                    cleanup_old_images(target_folder, g_cfg.max_images);
+                    
+                    // Opcional: mostrar en qué carpeta se guardó
+                    if (use_backup) {
+                        std::cout << "Imagen guardada en respaldo: " << filename << std::endl;
+                    } else {
+                        std::cout << "Imagen guardada en principal: " << filename << std::endl;
+                    }
+                }
+            } catch (...) {
+                std::cout << "Error al guardar la imagen" << std::endl;
+            }
         }
     }
-
+    
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 

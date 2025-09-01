@@ -63,8 +63,15 @@ void initMqtt() {
     opt.key_file  = "/etc/ssl/certs/cam_1/cam_1-private.pem.key";
     opt.verify_peer = 1;
 
-    if (cli.newSslCtx(&opt) != 0) {
-        printf("Error creando SSL context\n");
+    std::cout << "[MQTT] Creando SSL context..." << std::endl;
+    int sslRet = cli.newSslCtx(&opt);
+    
+    // Mensaje más descriptivo para SSL
+    if (sslRet == 0) {
+        std::cout << "[MQTT] SSL context creado exitosamente" << std::endl;
+    } else {
+        std::cout << "[MQTT] ERROR creando SSL context (código: " << sslRet << ")" << std::endl;
+        std::cout << "[MQTT] Verifique los archivos de certificados en /etc/ssl/certs/cam_1/" << std::endl;
         return;
     }
 
@@ -73,33 +80,72 @@ void initMqtt() {
     int port = 8883;
 
     cli.onConnect = [](hv::MqttClient* cli) {
-        printf("MQTT conectado\n");
+        std::cout << "[MQTT] CONEXIÓN EXITOSA al broker MQTT" << std::endl;
     };
 
     cli.onClose = [](hv::MqttClient* cli) {
-        printf("MQTT desconectado, intentando reconectar...\n");
+        std::cout << "[MQTT] DESCONECTADO del broker, intentando reconectar..." << std::endl;
     };
 
     cli.onMessage = [](hv::MqttClient* cli, mqtt_message_t* msg) {
-        printf("Mensaje en topic: %.*s\n", msg->topic_len, msg->topic);
+        std::cout << "[MQTT] Mensaje recibido en topic: "
+                  << std::string(msg->topic, msg->topic_len) 
+                  << ", tamaño: " << msg->payload_len << " bytes" << std::endl;
     };
 
     // Conexión inicial
-    cli.connect(host, port, 1); // 1 = SSL
+    std::cout << "[MQTT] Intentando conectar a " << host << ":" << port << " con SSL..." << std::endl;
+    int connRet = cli.connect(host, port, 1); // 1 = SSL
+    
+    // Mensajes descriptivos para la conexión
+    if (connRet == 0) {
+        std::cout << "[MQTT] CONEXIÓN INICIAL EXITOSA" << std::endl;
+    } else {
+        std::cout << "[MQTT] ERROR en conexión inicial (código: " << connRet << ")" << std::endl;
+        std::cout << "[MQTT] Posibles causas: " << std::endl;
+        std::cout << "[MQTT]   - Problemas de red/resolución DNS" << std::endl;
+        std::cout << "[MQTT]   - Certificados SSL inválidos o expirados" << std::endl;
+        std::cout << "[MQTT]   - Broker no disponible" << std::endl;
+        std::cout << "[MQTT]   - Problemas de autenticación" << std::endl;
+    }
 
-    // Hilo de reconexión
+    // Hilo de reconexión con mensajes mejorados
     std::thread([host, port]() {
         while (true) {
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            std::this_thread::sleep_for(std::chrono::seconds(5)); // Aumentado a 5 segundos
+            
             if (!cli.isConnected()) {
-                printf("Reconectando MQTT...\n");
-                cli.connect(host, port, 1);
+                std::cout << "[MQTT] INTENTANDO RECONEXIÓN..." << std::endl;
+                int r = cli.connect(host, port, 1);
+                
+                if (r == 0) {
+                    std::cout << "[MQTT] RECONEXIÓN EXITOSA" << std::endl;
+                } else {
+                    std::cout << "[MQTT] FALLA en reconexión (código: " << r << ")" << std::endl;
+                    
+                    // Mensajes específicos basados en códigos de error comunes
+                    switch (r) {
+                        case -1:
+                            std::cout << "[MQTT] Error: Timeout de conexión" << std::endl;
+                            break;
+                        case -2:
+                            std::cout << "[MQTT] Error: Resolución DNS fallida" << std::endl;
+                            break;
+                        case -3:
+                            std::cout << "[MQTT] Error: Conexión rechazada" << std::endl;
+                            break;
+                        default:
+                            std::cout << "[MQTT] Error desconocido, verifique configuración" << std::endl;
+                            break;
+                    }
+                }
             }
         }
     }).detach();
 
-    // Hilo principal del loop de MQTT (bloqueante)
+    // Hilo principal del loop de MQTT
     std::thread([]() {
+        std::cout << "[MQTT] Iniciando loop MQTT..." << std::endl;
         cli.run();
     }).detach();
 }
@@ -125,7 +171,6 @@ ma::Camera* global_camera = nullptr;
 ma::Model* global_model = nullptr;
 ma::engine::EngineCVI* global_engine = nullptr;
 bool isInitialized = false;
-int i = 1;
 static HttpServer server;
 std::string url = "http://192.168.4.1/report";
 
@@ -382,11 +427,6 @@ void process_detection_results(nlohmann_json& parsed,
                                std::chrono::steady_clock::time_point& last_person_report) 
 {
     auto now = std::chrono::steady_clock::now();
-
-    if (parsed.contains("image_saved")) {
-        i++;
-        MA_LOGD(TAG, "Imagen guardada, contador incrementado a %d", i);
-    }
 
     try {
         std::vector<AlarmConfig> alarms = {

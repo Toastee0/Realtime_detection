@@ -56,9 +56,10 @@ bool loadConfig(const std::string& filename) {
     g_cfg.report_ms   = std::stoi(ini["timers.report_ms"]);
 
     // Paths
-    g_cfg.dir_images  = ini["paths.dir_images"];
-    g_cfg.model_yolo  = ini["paths.model_yolo"];
-    g_cfg.ssl_certs   = ini["paths.ssl_certs"];
+    g_cfg.dir_images        = ini["paths.dir_images"];
+    g_cfg.dir_images_bak    = ini["paths.dir_images_bak"];    
+    g_cfg.model_yolo        = ini["paths.model_yolo"];
+    g_cfg.ssl_certs         = ini["paths.ssl_certs"];
 
     // Detección
     g_cfg.conf_thresh   = std::stof(ini["detection.conf_thresh"]);

@@ -17,6 +17,7 @@ struct Config {
 
     // paths
     std::string dir_images;
+    std::string dir_images_bak;
     std::string model_yolo;
     std::string ssl_certs;
 
