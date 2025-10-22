@@ -1,50 +1,42 @@
-struct Config {
-    // eventos
-    std::string ev_no_helmet;
-    std::string ev_zone;
-    std::string code_no_helmet;
-    std::string code_zone;
-    std::string code_person;
+#include <sstream>
+#include <vector>
 
-    // MQTT / HTTP
-    std::string mqtt_ev_topic;
-    std::string mqtt_st_topic;
+struct Config {
+    // devices
+    std::string mac;
+    std::string deveui_concentrador;
+
+    // ¿ HTTP
     std::string http_url;
 
     // timers
-    int cooldown_ms;
-    int report_ms;
+    int cooldown;
+    int report;
+    int time_sync_interval;
 
     // paths
-    std::string dir_images;
-    std::string dir_images_bak;
-    std::string model_yolo;
-    std::string ssl_certs;
-
-    // detección
-    float conf_thresh;
-    float nms_thresh;
-    int infer_w;
-    int infer_h;
+    std::string disp;
 
     // zona
     bool zone_enabled;
     std::string zone_type;
-    float zone_div;
+    std::vector<float> z_coords;
 
-    float line_x1, line_y1, line_x2, line_y2;
-    float rect_x1, rect_y1, rect_x2, rect_y2;
+    std::string side;        // ARRIBA, ABAJO, IZQ, DER, DENTRO, FUERA
+    std::string orientation; // VERT, HORIZ (solo aplica a LINE y LINE_ADV)
 
     int zone_r, zone_g, zone_b;
     int zone_thick;
 
     // almacenamiento
     int max_images;
-
+    bool train;
     // clases
-    std::string cls_no_helmet;
-    std::string cls_person;
-
+    std::vector<std::string>  cls_detect;
+    bool reporte_personas;
+    bool toma_cap;
+    bool centro;
 };
-bool loadConfig(const std::string& filename);
+
+bool load_config(const std::string& filename);
 extern Config g_cfg;

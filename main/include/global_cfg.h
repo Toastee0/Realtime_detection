@@ -1,5 +1,6 @@
 #ifndef _GLOBAL_CFG_H_
 #define _GLOBAL_CFG_H_
+#include <chrono>
 
 /* HTTPD */
 #define HTTPD_PORT          80
@@ -116,5 +117,7 @@ typedef enum {
     CONNECTIVITY_MODE_MQTT = 0,
     CONNECTIVITY_MODE_HTTP = 1
 } connectivity_mode_t;
-
+extern std::chrono::steady_clock::time_point g_last_object_alert;
+extern std::chrono::steady_clock::time_point g_last_zone_alert;
+extern std::chrono::steady_clock::time_point g_last_report;
 #endif

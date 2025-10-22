@@ -32,11 +32,14 @@
 #include "cvi_comm_video.h"
 #include "global_cfg.h"
 #include "config.h"
+#include <cstdio>
+#include <ctime>
 using nlohmann_json = nlohmann::json;
 using namespace hv;
 
 hv::MqttClient cli;
 auto internal_mode = 0; //0: mqtt - 1:http
+
 uint64_t getUptime() {
     std::ifstream uptime_file("/proc/uptime");
     if (uptime_file.is_open()) {
@@ -58,9 +61,19 @@ uint64_t getTimestamp() {
 void initMqtt() {
     hssl_ctx_opt_t opt;
     memset(&opt, 0, sizeof(opt));
-    opt.ca_file   = "/etc/ssl/certs/cam_1/AmazonRootCA1.pem";
-    opt.crt_file  = "/etc/ssl/certs/cam_1/cam_1-certificate.pem.crt";
-    opt.key_file  = "/etc/ssl/certs/cam_1/cam_1-private.pem.key";
+
+    std::string pth = "/etc/ssl/certs/";
+    std::string disp = g_cfg.disp;
+
+    // Crear strings completas primero
+    std::string ca_file_str = pth + disp + "/AmazonRootCA1.pem";
+    std::string crt_file_str = pth + disp + "/" + disp + "-certificate.pem.crt";
+    std::string key_file_str = pth + disp + "/" + disp + "-private.pem.key";
+    
+    // Convertir a const char* usando .c_str()
+    opt.ca_file   = ca_file_str.c_str();
+    opt.crt_file  = crt_file_str.c_str();
+    opt.key_file  = key_file_str.c_str();
     opt.verify_peer = 1;
 
     std::cout << "[MQTT] Creando SSL context..." << std::endl;
@@ -71,7 +84,7 @@ void initMqtt() {
         std::cout << "[MQTT] SSL context creado exitosamente" << std::endl;
     } else {
         std::cout << "[MQTT] ERROR creando SSL context (código: " << sslRet << ")" << std::endl;
-        std::cout << "[MQTT] Verifique los archivos de certificados en /etc/ssl/certs/cam_1/" << std::endl;
+        std::cout << "[MQTT] Verifique los archivos de certificados en " <<pth + disp<< std::endl;
         return;
     }
 
@@ -150,29 +163,33 @@ void initMqtt() {
     }).detach();
 }
 
-void sendDetectionJsonByMqtt(const hv::Json& json, std::string topic) {
-    if (cli.isConnected()) {
-        cli.publish(topic, json);
-    } else {
-        printf("Cliente NO conectado\n");
-        syslog(LOG_WARNING, "MQTT client not connected. Skipping publish.");
-    }
-}
-
 extern "C" {
+std::atomic<bool> horaRecibida(false);
 
 #define API_STR(api, func)  "/api/" #api "/" #func
 #define API_GET(api, func)  router.GET(API_STR(api, func), func)
 #define API_POST(api, func) router.POST(API_STR(api, func), func)
+#define ENCABEZADO   "E114010000"
+#define NET_ID       "01"
+#define TMSTP        "02"
+#define CONT         "40"
+#define CONT_TYPE    "01"
+#define STATUS       "30"
+#define EVENT        "21"
+#define CAMIONETA    "01"
+#define SAMPI        "02"
+#define PERSONA      "16"
+#define EPP          "32"
 
-
-std::mutex detector_mutex;
-ma::Camera* global_camera = nullptr;
-ma::Model* global_model = nullptr;
-ma::engine::EngineCVI* global_engine = nullptr;
-bool isInitialized = false;
-static HttpServer server;
-std::string url = "http://192.168.4.1/report";
+std::mutex              detector_mutex;
+ma::Camera*             global_camera = nullptr;
+ma::Model*              global_model = nullptr;
+ma::engine::EngineCVI*  global_engine = nullptr;
+bool isInitialized      = false;
+static HttpServer       server;
+std::string url_report  = "http://192.168.4.1/report";
+std::string url_command = "http://192.168.4.1/command"; // Para enviar comandos (solicitud de hora)
+std::string url_id      = "http://192.168.4.1/id";      // Para mandar la mac/id para luego recibir comandos
 
 static void registerHttpRedirect(HttpService& router) {
     router.GET("/hotspot-detect*", [](HttpRequest* req, HttpResponse* resp) {  // IOS
@@ -277,6 +294,69 @@ static void registerWebSocket(HttpService& router) {
     });
 }
 
+static void registerResponseApi(HttpService& router) {
+    router.POST("/response", [](HttpRequest* req, HttpResponse* resp) {
+        if (!req || !resp) {
+            printf("[CRITICAL] Request o response nulos\n");
+            return resp->String("Error interno");
+        }
+
+        try {
+            std::string body = req->body;
+            if (body.empty()) {
+                return resp->String("Body vacío");
+            }
+
+            printf("[INFO] POST /response recibido: %s\n", body.c_str());
+
+            if (body.size() == 8) {
+                // Caso 1: solo epoch
+                std::string epoch_hex = body;
+                uint32_t epoch = std::stoul(epoch_hex, nullptr, 16);
+                std::string cmd = "date -s @" + std::to_string(epoch);
+                if (system(cmd.c_str()) == 0) {
+                    printf("[OK] Hora actualizada con epoch %u\n", epoch);
+                    return resp->String("OK");
+                } else {
+                    printf("[ERROR] No se pudo ejecutar date -s\n");
+                    return resp->String("Error actualizando hora");
+                }
+            } else if (body.substr(0, 2) == "C0") {
+                std::string comando = body.substr(2, 2);
+
+                if (comando == "01" && body.size() >= 10) {
+                    // Caso 2: encabezado C0 + comando 01 + epoch
+                    std::string epoch_hex = body.substr(4);
+                    uint32_t epoch = std::stoul(epoch_hex, nullptr, 16);
+                    std::string cmd = "date -s @" + std::to_string(epoch);
+                    if (system(cmd.c_str()) == 0) {
+                        printf("[OK] Hora actualizada con epoch %u\n", epoch);
+                        return resp->String("OK");
+                    } else {
+                        printf("[ERROR] No se pudo ejecutar date -s\n");
+                        return resp->String("Error actualizando hora");
+                    }
+                } else if (comando == "02") {
+                    // Caso 3: encabezado C0 + comando 02 => reboot
+                    printf("[INFO] Comando reboot recibido\n");
+                    system("sudo reboot");
+                    return resp->String("Reiniciando...");
+                } else {
+                    printf("[WARN] Comando desconocido: %s\n", comando.c_str());
+                    return resp->String("Comando desconocido");
+                }
+            } else {
+                printf("[WARN] Formato de body inválido\n");
+                return resp->String("Body inválido");
+            }
+
+        } catch (const std::exception& e) {
+            printf("[EXCEPTION] Error: %s\n", e.what());
+            return resp->String("Error interno");
+        }
+    });
+}
+
 int initWiFi() {
     char cmd[128]        = SCRIPT_WIFI_START;
     std::string wifiName = getWiFiName("wlan0");
@@ -300,10 +380,13 @@ int initWiFi() {
             g_wifiMode = 4;  // No wifi module
         }
     }
-
-    if (4 != g_wifiMode) {
-        th = std::thread(monitorWifiStatusThread);
-        th.detach();
+    try {
+        if (4 != g_wifiMode) {
+            th = std::thread(monitorWifiStatusThread);
+            th.detach();
+        }
+    } catch (const std::exception &e) {
+        syslog(LOG_ERR, "Exception in monitorWifiStatusThread: %s", e.what());
     }
 
     th = std::thread(updateSystemThread);
@@ -371,8 +454,9 @@ int initHttpd() {
     registerFileApi(router);
     registerLedApi(router);
     registerWebSocket(router);
-    
-    
+    // Llamar en initHttpd():
+    registerResponseApi(router);
+
 
 #if HTTPS_SUPPORT
     initHttpsService();
@@ -392,99 +476,265 @@ int deinitHttpd() {
     return 0;
 }
 
+// Función para obtener información WiFi (SSID, RSSI e IP)
+bool getWifiInfo(std::string& ssid, int& rssi, std::string& ip) {
+    FILE* fp = popen("iwconfig wlan0 2>/dev/null", "r");
+    if (!fp) {
+        return false;
+    }
 
-void sendTestHttpPost(std::string payload) {
-    const std::string url = g_cfg.http_url;
-    const char* url_cstr = url.c_str();
+    char buffer[256];
+    ssid = "unknown";
+    rssi = 0;
+    ip = "unknown";
 
-    http_headers headers;
-    headers["Content-Type"] = "text/plain";
+    // --- Leer SSID y RSSI ---
+    while (fgets(buffer, sizeof(buffer), fp)) {
+        // Buscar SSID
+        if (strstr(buffer, "ESSID:")) {
+            char* start = strchr(buffer, '\"');
+            if (start) {
+                char* end = strchr(start + 1, '\"');
+                if (end) {
+                    ssid = std::string(start + 1, end - start - 1);
+                }
+            }
+        }
 
-    MA_LOGI("LOG_INFO", "Enviando prueba HTTP POST a %s", url_cstr);
-    MA_LOGI("LOG_DEBUG", "Payload: %s", payload.c_str());
+        // Buscar Signal level
+        if (strstr(buffer, "Signal level=")) {
+            char* level_str = strstr(buffer, "Signal level=");
+            if (level_str) {
+                level_str += 13; // Saltar "Signal level="
+                rssi = atoi(level_str);
+            }
+        }
+    }
+    pclose(fp);
+
+    // --- Obtener la IP asociada a wlan0 ---
+    fp = popen("ip -4 addr show wlan0 | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}'", "r");
+    if (fp) {
+        if (fgets(buffer, sizeof(buffer), fp)) {
+            // Eliminar salto de línea al final si existe
+            buffer[strcspn(buffer, "\n")] = 0;
+            ip = buffer;
+        }
+        pclose(fp);
+    }
+
+    return true;
+}
+
+void sendDetectionByMqtt(const std::string& payload, const std::string& topic) {
+    if (cli.isConnected()) {
+        std::string ssid, ip, deveui;
+        int rssi;
+        deveui = g_cfg.deveui_concentrador;
+        getWifiInfo(ssid, rssi, ip);
+
+          nlohmann::json json_payload = {
+            {"PayloadData", payload},
+            {"WirelessMetadata", {
+                {"WiFi", {
+                    {"MacAddr", deveui},
+                    {"SSID", ssid},
+                    {"RSSI", rssi}
+                }}
+            }}
+        };
+        
+        // Convertir a string para enviar
+        std::string json_str = json_payload.dump();
+        cli.publish(topic, json_str.c_str());
+        printf("Mensaje enviado - SSID: %s, RSSI: %d dBm\n", ssid.c_str(), rssi);
+    } else {
+        printf("Cliente NO conectado\n");
+        syslog(LOG_WARNING, "MQTT client not connected. Skipping publish.");
+    }
+}
+
+void logToFile(const char* level, const char* msg) {
+    FILE* f = fopen("logfile.txt", "a");  // "a" = append
+    if (!f) return;
+
+    // timestamp
+    std::time_t now = std::time(nullptr);
+    char buf[64];
+    std::strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+
+    fprintf(f, "[%s] [%s] %s\n", buf, level, msg);
+    fclose(f);
+}
+
+void sendTestHttpPost(const std::string& payload) {
+    const char* url_cstr = url_report.c_str();
+
+    printf("[INFO] Enviando prueba HTTP POST a %s\n", url_cstr);
+    logToFile("INFO", ("Enviando prueba HTTP POST a " + url_report).c_str());
+
+    printf("[DEBUG] Payload: %s\n", payload.c_str());
+    logToFile("DEBUG", ("Payload: " + payload).c_str());
     
-    auto resp = requests::post(url_cstr, payload, headers);
+    auto resp = requests::post(url_cstr, payload, {{"Content-Type", "text/plain"}});
 
     if (resp == nullptr) {
-        MA_LOGI("LOG_ERR", "Error: No se recibió respuesta del servidor");
+        printf("[ERROR] No se recibió respuesta del servidor\n");
+        logToFile("ERROR", "No se recibió respuesta del servidor");
     } else {
-        MA_LOGI("LOG_INFO", "Respuesta HTTP %d - Contenido: %s", 
-              resp->status_code, resp->body.c_str());
+        printf("[INFO] Respuesta HTTP %d - Contenido: %s\n", resp->status_code, resp->body.c_str());
+        
+        std::string logMsg = "Respuesta HTTP " + std::to_string(resp->status_code) + 
+                             " - Contenido: " + resp->body;
+        logToFile("INFO", logMsg.c_str());
     }
+}
+
+void sendMacId() {
+    std::string mac = g_cfg.mac;
+    std::string payload = "0000" + mac;
+    const int timeout_seconds = 10;
+
+    printf("[INFO] Enviando MAC a %s\n", url_id.c_str());
+    printf("[DEBUG] Payload: %s\n", payload.c_str());
+
+    auto start_time = std::chrono::steady_clock::now();
+    auto resp = requests::post(url_id.c_str(), payload, {{"Content-Type", "text/plain"}});
+    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::steady_clock::now() - start_time
+    ).count();
+
+    if (resp == nullptr || elapsed > timeout_seconds) {
+        printf("[WARN] Sin respuesta o timeout (%lds). Reintentando...\n", elapsed);
+        std::this_thread::sleep_for(std::chrono::seconds(20));  // pequeña pausa
+        resp = requests::post(url_id.c_str(), payload, {{"Content-Type", "text/plain"}});
+    }
+
+    if (resp == nullptr) {
+        printf("[ERROR] No se recibió respuesta del servidor después del reintento\n");
+    } else {
+        printf("[INFO] Respuesta HTTP %d - Contenido: %s\n", resp->status_code, resp->body.c_str());
+    }
+}
+
+void solicitarHora() {
+    const char* url_cs = url_report.c_str();
+    std::string payload_cs = "FF";
+    const char* url_cstr = url_command.c_str();
+    std::string payload = "E11401800009000100000000";
+    MA_LOGD(TAG, "Enviando Solicitud de hora POST");
+    printf("[INFO] Enviando Solicitud de hora POST a %s\n", url_cstr);
+    printf("[DEBUG] Payload de hora: %s\n", payload.c_str());
+
+    auto resp1 = requests::post(url_cstr, payload, {{"Content-Type", "text/plain"}});
+    auto resp2 = requests::post(url_cs, payload_cs, {{"Content-Type", "text/plain"}});
+    if (resp1 == nullptr) {
+        printf("[ERROR] No se recibió respuesta del servidor\n");
+        logToFile("ERROR", "No se recibió respuesta del servidor");
+        return;
+    }
+
+    printf("[INFO] Respuesta HTTP %d - Contenido: %s\n", resp1->status_code, resp1->body.c_str());
+    logToFile("INFO", ("Respuesta HTTP " + std::to_string(resp1->status_code) + 
+                       " - Contenido: " + resp1->body).c_str());
+
+    // Ya no procesamos aquí la hora; esperamos que el gateway haga POST /response
+    if (resp1->body.find("OK") != std::string::npos) {
+        printf("[INFO] Solicitud enviada correctamente, esperando POST /response...\n");
+    } else {
+        printf("[ERROR] Respuesta de hora inválida: %s\n", resp1->body.c_str());
+        logToFile("ERROR", ("Respuesta de hora inválida: " + resp1->body).c_str());
+    }
+}
+
+std::string timestampToHexString(uint64_t timestamp) {
+    std::stringstream hex_stream;
+    uint32_t timestamp_32 = static_cast<uint32_t>(timestamp);
+    hex_stream << std::setw(8) << std::setfill('0') << std::hex << std::uppercase << timestamp_32;
+    return hex_stream.str();
 }
 
 struct AlarmConfig {
     std::string json_key; 
-    std::string payload; 
     std::string topic;     
     std::chrono::steady_clock::time_point* last_alert; 
 };
 
-void process_detection_results(nlohmann_json& parsed,
-                               uint8_t* frame,
-                               std::chrono::steady_clock::time_point& last_helmet_alert,
-                               std::chrono::steady_clock::time_point& last_zone_alert,
-                               std::chrono::steady_clock::time_point& last_person_report) 
+void process_detection_results(nlohmann_json& data, uint8_t* frame,
+    std::chrono::steady_clock::time_point& last_obj_alert,
+    std::chrono::steady_clock::time_point& last_zone_alert,
+    std::chrono::steady_clock::time_point& last_report) 
 {
-    auto now = std::chrono::steady_clock::now();
+    using clk = std::chrono::steady_clock;
+    auto now = clk::now();
+    uint64_t ts = getTimestamp();
+
+    // Estado de detección de camioneta
+    static clk::time_point last_cam_det;
+    static bool cam_active = false;
+    static bool first_cam = true;
+
+    std::string st_val = "00";
 
     try {
-        std::vector<AlarmConfig> alarms = {
-            { g_cfg.ev_no_helmet, g_cfg.code_no_helmet, g_cfg.mqtt_ev_topic, &last_helmet_alert },
-            { g_cfg.ev_zone,      g_cfg.code_zone,      g_cfg.mqtt_ev_topic, &last_zone_alert }
-        };
+        // Detección de camioneta
+        if (data.contains("camioneta")) {
+            auto secs = std::chrono::duration_cast<std::chrono::seconds>(now - last_cam_det).count();
 
-        for (const auto& alarm : alarms) {
-            if (parsed.contains(alarm.json_key)) {
-                auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - *(alarm.last_alert)).count();
-                if (elapsed < g_cfg.cooldown_ms) {
-                    continue; // Todavía en cooldown
-                }
+            last_cam_det = now;
+            cam_active = true;
 
-                *(alarm.last_alert) = now;
+            if (first_cam || secs >= 5 * 60) {
+                first_cam = false;
 
-                nlohmann_json alarm_msg;
-                alarm_msg["timestamp"] = std::chrono::system_clock::now().time_since_epoch().count();
-                alarm_msg["payload"]   = alarm.payload;
+                std::string payload = std::string(ENCABEZADO) + NET_ID + "0000" + g_cfg.mac +
+                    TMSTP + timestampToHexString(ts) +
+                    EVENT + CAMIONETA;
 
-                std::string msg_str = alarm_msg.dump();
-                MA_LOGD(TAG, "Enviando alerta %s: %s", alarm.json_key.c_str(), msg_str.c_str());
-
-                if (internal_mode == CONNECTIVITY_MODE_MQTT) {
-                    sendDetectionJsonByMqtt(msg_str, alarm.topic.c_str());
-                } else if (internal_mode == CONNECTIVITY_MODE_HTTP) {
-                    sendTestHttpPost(alarm.payload);
-                }
+                MA_LOGD(TAG, "Alerta camioneta: %s", payload.c_str());
+                if (internal_mode == CONNECTIVITY_MODE_MQTT)
+                    sendDetectionByMqtt(payload, ("industria4-0/devices/" + g_cfg.disp + "/events").c_str());
+                else
+                    sendTestHttpPost(payload);
+            } else {
+                MA_LOGD(TAG, "Camioneta detectada en cooldown");
             }
         }
 
-        if (parsed.contains("person_count")) {
-            last_person_report = now;
-            int person_count = parsed["person_count"].get<int>();
-
-            nlohmann_json report_msg;
-            report_msg["count"] = person_count;
-            report_msg["timestamp"] = std::chrono::system_clock::now().time_since_epoch().count();
-
-            std::stringstream payload;
-            payload << g_cfg.code_person
-                    << std::setw(4) << std::setfill('0') << std::hex << person_count;
-            report_msg["payload"] = payload.str();
-
-            std::string msg_str = report_msg.dump();
-            MA_LOGD(TAG, "Enviando reporte de personas: %s", msg_str.c_str());
-
-            if (internal_mode == 0) {
-                sendDetectionJsonByMqtt(msg_str.c_str(), g_cfg.mqtt_st_topic.c_str());
-            } else if (internal_mode == 1) {
-                sendTestHttpPost(report_msg["payload"].get<std::string>());
-            }
+        // Actualizar estado de camioneta, cada 5 minutos
+        if (cam_active) {
+            auto idle = std::chrono::duration_cast<std::chrono::seconds>(now - last_cam_det).count();
+            if (idle >= 5 * 60) {
+                cam_active = false;
+                st_val = "00";
+                std::cout << "Estado camioneta reseteado (sin detección > 5min)\n";
+            } else st_val = CAMIONETA;
         }
-    }
-    catch (const nlohmann_json::exception& e) {
-        MA_LOGE(TAG, "Error procesando JSON: %s", e.what());
-    }
-    catch (const std::exception& e) {
+
+        // Reporte periódico de estado
+        auto since_report = std::chrono::duration_cast<std::chrono::seconds>(now - last_report).count();
+        if (since_report >= g_cfg.cooldown && data.contains("person_count") && g_cfg.reporte_personas) {
+            last_report = now;
+            int count = data["person_count"].get<int>();
+
+            std::stringstream ss;
+            ss << std::setw(4) << std::setfill('0') << std::hex << count;
+
+            std::string payload = std::string(ENCABEZADO) + NET_ID + "0000" + g_cfg.mac +
+                TMSTP + timestampToHexString(ts) +
+                CONT + CONT_TYPE + ss.str() +
+                STATUS + st_val;
+
+            MA_LOGD(TAG, "Reporte: %s (personas=%d, estado=%s)", payload.c_str(), count, st_val.c_str());
+            if (internal_mode == CONNECTIVITY_MODE_MQTT)
+                sendDetectionByMqtt(payload, ("industria4-0/devices/" + g_cfg.disp + "/status").c_str());
+            else
+                sendTestHttpPost(payload);
+        }
+
+    } catch (const nlohmann_json::exception& e) {
+        MA_LOGE(TAG, "Error JSON: %s", e.what());
+    } catch (const std::exception& e) {
         MA_LOGE(TAG, "Error inesperado: %s", e.what());
     }
 }
@@ -499,8 +749,9 @@ void initConnectivity(connectivity_mode_t& connectivity_mode) {
         internal_mode = 0;
     } 
     if (connectivity_mode == CONNECTIVITY_MODE_HTTP){
-        MA_LOGI("System", "Iniciando modo WiFi...");
+        MA_LOGI("System", "Iniciando modo HTTP...");
         internal_mode = 1;
     } 
 }
+
 }  // extern "C" {

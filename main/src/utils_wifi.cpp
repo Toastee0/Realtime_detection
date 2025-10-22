@@ -10,7 +10,7 @@
 #include <syslog.h>
 #include <thread>
 #include <vector>
-
+#include "connect.h"
 #include "common.h"
 #include "global_cfg.h"
 #include "hv/HttpServer.h"
@@ -490,12 +490,25 @@ void monitorWifiStatusThread() {
     std::string wifiStatus;
     bool apStatus    = true;
     unsigned int cnt = 0;
+    bool wasConnected = false; // Trackear estado anterior
 
     while (g_wifiStatus) {
         std::this_thread::sleep_for(std::chrono::seconds(10));
         wifiStatus = getWifiConnectStatus();
 
         if (wifiStatus == "COMPLETED" && isLegalWifiIp()) {
+            // Detectar cambio de "no conectado" a "conectado"
+            if (!wasConnected) {
+                printf("[INFO] WiFi conectado exitosamente - Enviando MAC ID\n");
+                
+                // Pequeño delay para asegurar conexión estable
+                std::this_thread::sleep_for(std::chrono::seconds(2));
+                
+                // Enviar MAC ID
+                sendMacId();
+                wasConnected = true;
+            }
+
             if (apStatus) {
                 if (++cnt >= 12) {
                     apStatus = false;
@@ -506,6 +519,8 @@ void monitorWifiStatusThread() {
             continue;
         }
 
+        // Si llegamos aquí, no estamos conectados
+        wasConnected = false;
         cnt = 0;
 
         if (wifiStatus == "DISCONNECTED" || wifiStatus == "INACTIVE" || wifiStatus == "Failed") {

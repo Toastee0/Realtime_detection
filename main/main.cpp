@@ -1,6 +1,8 @@
 #include <iostream>
 #include <signal.h>
 #include <syslog.h>
+#include <thread> 
+#include <atomic> 
 #include <unistd.h>
 #include <mutex>
 #include "version.h"
@@ -17,25 +19,57 @@
 #include "hv/hlog.h"
 #include "global_cfg.h"
 #include "config.h"
-
+#include "hv/EventLoop.h"
 using json = nlohmann::json;
+
 static ma::Model* g_model = nullptr;
 static std::mutex g_det_mutex;
 connectivity_mode_t connectivity_mode = CONNECTIVITY_MODE_MQTT;  
-static std::chrono::steady_clock::time_point g_last_helmet_alert = std::chrono::steady_clock::now() - std::chrono::seconds(10);
-static std::chrono::steady_clock::time_point g_last_zone_alert   = std::chrono::steady_clock::now() - std::chrono::seconds(10);
-static std::chrono::steady_clock::time_point g_last_person_report= std::chrono::steady_clock::now();
+
+std::chrono::steady_clock::time_point g_last_object_alert = std::chrono::steady_clock::now();
+std::chrono::steady_clock::time_point g_last_zone_alert   = std::chrono::steady_clock::now();
+std::chrono::steady_clock::time_point g_last_report= std::chrono::steady_clock::now();
+
+std::atomic<bool> time_sync_running{true};
+
+void stopPeriodicTimeSync() {
+    time_sync_running = false;
+}
 
 static CVI_VOID app_ipcam_ExitSig_handle(CVI_S32 signo) {
     signal(SIGINT, SIG_IGN);
     signal(SIGTERM, SIG_IGN);
-
+    {
+        std::lock_guard<std::mutex> lock(save_mutex);
+        stop_saver = true;
+    }
+    save_cv.notify_all();
     if ((SIGINT == signo) || (SIGTERM == signo)) {
+        stopPeriodicTimeSync();
         deinitVideo();
         deinitRtsp();
 
     }
     exit(-1);
+}
+
+void startPeriodicTimeSync() {
+    std::thread([](){
+        // Delay inicial de 30 segundos
+        std::this_thread::sleep_for(std::chrono::seconds(30));
+        
+        // Luego ejecutar periódicamente
+        while (time_sync_running) {
+            if (connectivity_mode == CONNECTIVITY_MODE_HTTP) {
+                printf("[TIME SYNC] Solicitando sincronización de hora...\n");
+                solicitarHora();
+            }
+            
+            // Esperar el intervalo configurado (usa un valor por defecto si no existe)
+            int sync_interval = g_cfg.time_sync_interval > 0 ? g_cfg.time_sync_interval : 3600;
+            std::this_thread::sleep_for(std::chrono::seconds(sync_interval));
+        }
+    }).detach();
 }
 
 static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
@@ -56,34 +90,18 @@ static int fpRunYolo_CH0(void* pData, void* pArgs, void* pUserData) {
     cv::Mat frame_rgb888(f->u32Height, f->u32Width, CV_8UC3, f->pu8VirAddr[0]);
 
     auto now = std::chrono::steady_clock::now();
-    bool report_person = (now - g_last_person_report) >= 
-                        std::chrono::milliseconds(g_cfg.report_ms);
-    bool can_alert_helmet = (now - g_last_helmet_alert) >= 
-                           std::chrono::milliseconds(g_cfg.cooldown_ms);
-    bool can_zone = (now - g_last_zone_alert) >= 
-                   std::chrono::milliseconds(g_cfg.cooldown_ms);
+    bool report         = (now - g_last_report)  >= std::chrono::seconds(g_cfg.report);
+    bool can_alert      = (now - g_last_object_alert)   >= std::chrono::seconds(g_cfg.cooldown);
+    bool can_zone       = (now - g_last_zone_alert)     >= std::chrono::seconds(g_cfg.cooldown);
     
     std::string result_json_str;
     {
         std::lock_guard<std::mutex> lk(g_det_mutex);
-        result_json_str = model_detector_from_mat(
-            g_model,
-            frame_rgb888,
-            report_person,
-            can_alert_helmet,
-            can_zone
-        );
+        result_json_str = model_detector(g_model, frame_rgb888, report, can_alert, can_zone);
     }
-  
     try {
         json parsed = json::parse(result_json_str);
-        process_detection_results(
-            parsed,
-            f->pu8VirAddr[0],
-            g_last_helmet_alert,
-            g_last_zone_alert,
-            g_last_person_report
-        );
+        process_detection_results(parsed, f->pu8VirAddr[0], g_last_object_alert, g_last_zone_alert, g_last_report);
     } catch (...) {}
 
     CVI_SYS_Munmap(f->pu8VirAddr[0], f->u32Length[0]);
@@ -105,16 +123,19 @@ connectivity_mode_t parse_mode(int argc, char* argv[]) {
     exit(1);
 }
 
-
 int main(int argc, char* argv[]) {
-    loadConfig(PATH_CONF);
+    load_config(PATH_CONF);
     connectivity_mode = parse_mode(argc, argv);
     signal(SIGINT, app_ipcam_ExitSig_handle);
     signal(SIGTERM, app_ipcam_ExitSig_handle);
     initWiFi();
     initHttpd();
     initConnectivity(connectivity_mode); 
-    if (initVideo()) return -1;
+
+    if (initVideo()) {
+        printf("[ERROR] initVideo() falló\n");
+        return -1;
+    }
 
     video_ch_param_t param;
     
@@ -122,12 +143,11 @@ int main(int argc, char* argv[]) {
     param.width  = VIDEO_WIDTH_DEFAULT;
     param.height = VIDEO_HEIGHT_DEFAULT;
     param.fps    = VIDEO_FPS_DEFAULT;
-    
-    setupVideo(VIDEO_CH0, &param);
-    registerVideoFrameHandler(VIDEO_CH0, 0, fpRunYolo_CH0, NULL);
 
+    setupVideo(VIDEO_CH0, &param);
+    int ret = registerVideoFrameHandler(VIDEO_CH0, 0, fpRunYolo_CH0, NULL);
     // Usar la constante definida para la ruta del modelo
-    g_model = initialize_model(g_cfg.model_yolo);
+    g_model = initialize_model("/usr/local/bin/yolo11n_cv181x_int8.cvimodel");
     if (!g_model) {
         char msg[128];
         snprintf(msg, sizeof(msg), "Model initialization failed");
@@ -136,8 +156,11 @@ int main(int argc, char* argv[]) {
         deinitVideo();
         return -1;
     }
-
+    std::thread saver(imageSaverThread);
+    saver.detach();
     startVideo();
+    startPeriodicTimeSync();
+    sendMacId();
     while (1) sleep(1);
 
     return 0;

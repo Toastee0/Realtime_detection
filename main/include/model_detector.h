@@ -6,18 +6,22 @@
 #include <opencv2/opencv.hpp>
 #include <sscma.h>
 #include <numeric>
-struct ClassMapper {
-    static const std::vector<std::string> classes;
-    static std::string get_class(int index);
-};
-class ColorPalette {
-public:
-    static std::vector<cv::Scalar> getPalette();
-    static cv::Scalar getColor(int index);
+#include <queue>
+#include <mutex>
+#include <condition_variable>
 
-private:
-    static const std::vector<cv::Scalar> palette;
+extern std::mutex save_mutex;
+extern std::condition_variable save_cv;
+extern bool stop_saver;
+
+struct SaveTask {
+    cv::Mat image;
+    std::string path;
+    bool is_training = false; 
 };
+
+
+
 
 // 图像预处理函数声明
 cv::Mat preprocessImage(cv::Mat& image, ma::Model* model);
@@ -28,15 +32,15 @@ size_t getCurrentRSS();
 // 初始化函数
 ma::Camera* initialize_camera() noexcept;
 ma::Model* initialize_model(const std::string& model_path) noexcept;
-
+void imageSaverThread();
 // 目标检测主函数
 //std::string model_detector(ma::Model*& model, ma::Camera*& camera,int& i);
 // En el archivo donde está model_detector (declaración en .h)
-std::string model_detector(ma::Model*& model, ma::Camera*& camera,  bool report_person_count,bool can_alert_helmet, bool can_zone);
-std::string model_detector_from_mat(
+extern std::queue<SaveTask> save_queue;
+std::string model_detector(
     ma::Model*& model,
     cv::Mat& input_bgr_or_rgb888,
-    bool report_person_count,
-    bool can_alert_helmet,
+    bool person_count,
+    bool can_alert,
     bool can_zone
 );

@@ -1,6 +1,8 @@
 #ifndef CLASS_MAPPER_H
 #define CLASS_MAPPER_H
 
+#include <string>
+#include <vector>
 
 struct ClassMapper {
     static const std::vector<std::string> classes;

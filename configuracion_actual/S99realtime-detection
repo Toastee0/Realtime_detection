@@ -1,0 +1,198 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          realtime-detection
+# Required-Start:    $network network-time-setup
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start Realtime Detection at boot time
+# Description:       Start Realtime Detection service (uses MQTT and HTTP).
+### END INIT INFO
+
+DAEMON=/usr/local/bin/realtime-detection-wrapper.sh
+DEFAULT_OPTS=""   # ajusta según corresponda
+NAME=realtime-detection
+DESC="Realtime Detection Service"
+PIDFILE=/var/run/$NAME.pid
+LOGFILE=/var/log/$NAME.log
+MODE_FILE=/etc/realtime-detection/mode
+USER=root
+LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:/mnt/system/lib:/mnt/system/usr/lib:/mnt/system/usr/lib/3rd:/mnt/data/lib:/mnt/data/usr/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+DAEMON_OPTS="$DEFAULT_OPTS"
+# Función para obtener el modo guardado
+get_saved_mode() {
+    if [ -f "$MODE_FILE" ]; then
+        SAVED_MODE=$(cat "$MODE_FILE" | tr -d '[:space:]')
+        if [ "$SAVED_MODE" = "http" ] || [ "$SAVED_MODE" = "mqtt" ]; then
+            echo "$SAVED_MODE"
+            return 0
+        fi
+    fi
+    # Modo por defecto si no hay archivo o es inválido
+    echo "mqtt"
+    return 1
+}
+
+# Función para guardar el modo
+save_mode() {
+    MODE="$1"
+    if [ "$MODE" = "http" ] || [ "$MODE" = "mqtt" ]; then
+        echo "$MODE" > "$MODE_FILE"
+        echo "$(date) - Saved mode: $MODE" >> $LOGFILE
+        return 0
+    else
+        echo "$(date) - Invalid mode: $MODE (not saving)" >> $LOGFILE
+        return 1
+    fi
+}
+
+
+start() {
+    echo "==============================" >> $LOGFILE
+    echo "$(date) - STARTING $DESC ($NAME)" >> $LOGFILE
+    # Función para limpiar logs antiguos
+     
+    # Verificar que el tiempo del sistema es válido solo en modo MQTT
+    CURRENT_TS=$(date +%s)
+    MIN_VALID_TS=$(date -d "2025-01-01 00:00:00" +%s)
+
+    if [ "$ARGS" = "mqtt" ] && [ $CURRENT_TS -le $MIN_VALID_TS ]; then
+        echo "$(date) - ERROR: System time is invalid ($CURRENT_TS). Cannot start service in MQTT mode." >> $LOGFILE
+        echo "Please ensure network-time-setup service runs first and completes successfully." >> $LOGFILE
+        return 1
+    fi
+
+    # Determinar los argumentos a usar
+    if [ $# -eq 0 ]; then
+        # Si no se especifican argumentos, usar el modo guardado
+        SAVED_MODE=$(get_saved_mode)
+        ARGS="$SAVED_MODE"
+        echo "Using saved mode: $SAVED_MODE" >> $LOGFILE
+    else
+        ARGS="$@"
+        # Guardar el nuevo modo si es válido
+        if [ "$1" = "http" ] || [ "$1" = "mqtt" ]; then
+            save_mode "$1"
+        fi
+    fi
+   
+    echo "Using ARGS: $ARGS" >> $LOGFILE
+
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+        if [ -n "$PID" ] && kill -0 "$PID" 2>/dev/null; then
+            echo "$NAME is already running (PID: $PID)." >> $LOGFILE
+            return 1
+        else
+            echo "Removing stale PID file." >> $LOGFILE
+            rm -f $PIDFILE
+        fi
+    fi
+
+    echo "Executing start-stop-daemon with args: $ARGS" >> $LOGFILE
+    start-stop-daemon -S -q -m -b -p $PIDFILE --exec $DAEMON -- $ARGS >> $LOGFILE 2>&1
+    RESULT=$?
+    [ $RESULT = 0 ] && echo "OK" >> $LOGFILE || echo "FAIL" >> $LOGFILE
+
+    echo "==============================" >> $LOGFILE
+}
+
+stop() {
+    echo "Stopping $DESC: $NAME" >> $LOGFILE
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+        if [ -n "$PID" ] && kill -0 "$PID" 2>/dev/null; then
+            start-stop-daemon -K -q -p $PIDFILE
+            rm -f $PIDFILE
+            [ $? = 0 ] && echo "OK" >> $LOGFILE || echo "FAIL" >> $LOGFILE
+        else
+            echo "Process not running but PID file exists, cleaning up." >> $LOGFILE
+            rm -f $PIDFILE
+        fi
+    else
+        echo "$NAME is not running." >> $LOGFILE
+    fi
+}
+
+restart() {
+    echo "Restarting $DESC with args: $@" >> $LOGFILE
+    
+    # Guardar el nuevo modo si se especifica
+    if [ $# -gt 0 ]; then
+        if [ "$1" = "http" ] || [ "$1" = "mqtt" ]; then
+            save_mode "$1"
+        fi
+    fi
+    
+    stop
+    # Esperar un poco antes de reiniciar
+    sleep 2
+    start "$@"
+}
+
+status() {
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+        if [ -n "$PID" ] && kill -0 "$PID" 2>/dev/null; then
+            echo "$NAME is running (PID: $PID)."
+            # Mostrar los argumentos con los que se ejecutó
+            if [ -f /proc/$PID/cmdline ]; then
+                echo "Command line: $(cat /proc/$PID/cmdline | tr '\0' ' ')"
+            fi
+        else
+            echo "$NAME PID file exists but process is not running."
+        fi
+    else
+        echo "$NAME is not running."
+    fi
+    
+    # Mostrar el modo actual guardado
+    CURRENT_MODE=$(get_saved_mode)
+    echo "Current saved mode: $CURRENT_MODE"
+}
+
+case "$1" in
+    start)
+        shift
+        start "$@"
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        shift
+        restart "$@"
+        ;;
+    status)
+        status
+        ;;
+    set-mode)
+        if [ $# -ge 2 ]; then
+            if [ "$2" = "http" ] || [ "$2" = "mqtt" ]; then
+                save_mode "$2"
+                echo "Mode set to: $2"
+            else
+                echo "Invalid mode. Use 'http' or 'mqtt'"
+                exit 1
+            fi
+        else
+            echo "Usage: $0 set-mode {http|mqtt}"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status|set-mode} [http|mqtt]"
+        echo "  start [http|mqtt]    - Start service (uses saved mode if none specified)"
+        echo "  restart [http|mqtt]  - Restart service with optional mode change"
+        echo "  set-mode {http|mqtt} - Change mode without restarting"
+        echo "  stop                 - Stop service"
+        echo "  status               - Show service status and current mode"
+        exit 1
+        ;;
+esac
+
+exit 0
+

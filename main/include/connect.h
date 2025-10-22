@@ -14,8 +14,9 @@ extern "C" {
 int initWiFi();
 int initHttpd();
 int deinitHttpd();
+void solicitarHora();
+void sendMacId();
 void initConnectivity(connectivity_mode_t& connectivity_mode);
-
 int stopWifi();
 void process_detection_results(nlohmann_json& parsed, uint8_t* frame,std::chrono::steady_clock::time_point& last_helmet_alert, std::chrono::steady_clock::time_point& last_zone_alert,std::chrono::steady_clock::time_point& last_person_report) ;
 
